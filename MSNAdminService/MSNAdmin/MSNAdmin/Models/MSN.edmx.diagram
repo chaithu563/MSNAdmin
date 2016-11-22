@@ -5,21 +5,21 @@
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
       <Diagram DiagramId="e48bb07b09834f76bfdec7f6f21c8d59" Name="Diagram1">
-        <EntityTypeShape EntityType="myserviceneedModel.CITY" Width="1.5" PointX="2.875" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.CITYAREA" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.MEMBERSHIP" Width="1.5" PointX="8" PointY="14.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.SERVICEBID" Width="1.5" PointX="7.625" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.SERVICECATEGORY" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.SERVICESTATE" Width="1.5" PointX="11.625" PointY="0.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.SERVICESUBCATEGORY" Width="1.5" PointX="7.125" PointY="3.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.SERVICETIMETYPE" Width="1.5" PointX="10.5" PointY="12.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.SOCIALLOGIN" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.USERBID" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.USERFUND" Width="1.5" PointX="5.125" PointY="13.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.USERINFO" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.USERMEMBERSHIP" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.USERSERVICE" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="myserviceneedModel.USERSERVICENEED" Width="1.75" PointX="12.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.CITY" Width="1.5" PointX="3.75" PointY="8.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.CITYAREA" Width="1.5" PointX="1.875" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.MEMBERSHIP" Width="1.5" PointX="10.125" PointY="12" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICEBID" Width="1.5" PointX="9.125" PointY="4.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICECATEGORY" Width="1.5" PointX="12" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICESTATE" Width="1.5" PointX="9.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICESUBCATEGORY" Width="1.5" PointX="3.625" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICETIMETYPE" Width="1.5" PointX="11.625" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SOCIALLOGIN" Width="1.5" PointX="3.25" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERBID" Width="1.5" PointX="7.25" PointY="10.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERFUND" Width="1.5" PointX="2.25" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERINFO" Width="1.5" PointX="5.625" PointY="4.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERMEMBERSHIP" Width="1.5" PointX="9.125" PointY="8.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERSERVICE" Width="1.5" PointX="6.125" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERSERVICENEED" Width="1.75" PointX="12.625" PointY="4.25" IsExpanded="true" />
         <AssociationConnector Association="myserviceneedModel.FK__CITYAREA__CITYID__08EA5793" ManuallyRouted="false" />
         <AssociationConnector Association="myserviceneedModel.FK__USERINFO__CITYID__0DAF0CB0" ManuallyRouted="false" />
         <AssociationConnector Association="myserviceneedModel.FK__USERINFO__CITYAR__0EA330E9" ManuallyRouted="false" />
