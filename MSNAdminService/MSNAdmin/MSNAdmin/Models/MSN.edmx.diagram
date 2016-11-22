@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="e48bb07b09834f76bfdec7f6f21c8d59" Name="Diagram1">
+        <EntityTypeShape EntityType="myserviceneedModel.CITY" Width="1.5" PointX="2.875" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.CITYAREA" Width="1.5" PointX="3" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.MEMBERSHIP" Width="1.5" PointX="8" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICEBID" Width="1.5" PointX="7.625" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICECATEGORY" Width="1.5" PointX="3.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICESTATE" Width="1.5" PointX="11.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICESUBCATEGORY" Width="1.5" PointX="7.125" PointY="3.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SERVICETIMETYPE" Width="1.5" PointX="10.5" PointY="12.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.SOCIALLOGIN" Width="1.5" PointX="3" PointY="6.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERBID" Width="1.5" PointX="7.5" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERFUND" Width="1.5" PointX="5.125" PointY="13.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERINFO" Width="1.5" PointX="5.25" PointY="8.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERMEMBERSHIP" Width="1.5" PointX="10.5" PointY="9.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERSERVICE" Width="1.5" PointX="10.5" PointY="5.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERSERVICENEED" Width="1.75" PointX="12.75" PointY="7.875" IsExpanded="true" />
+        <AssociationConnector Association="myserviceneedModel.FK__CITYAREA__CITYID__08EA5793" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERINFO__CITYID__0DAF0CB0" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERINFO__CITYAR__0EA330E9" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERMEMBE__MEMBE__1920BF5C" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__SERVICEBI__USERI__46E78A0C" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__SERVICEBI__USERS__47DBAE45" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__ALLOC__48CFD27E" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__SERVICESU__SERVI__2B3F6F97" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__SERVI__30F848ED" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__SERVI__3F466844" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__SERVI__412EB0B6" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__SERVI__31EC6D26" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__SERVI__403A8C7D" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__SERVI__4222D4EF" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERINFO__LOGINT__0F975522" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERBIDS__USERID__22AA2996" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERFUNDS__USERI__1DE57479" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERMEMBE__USERI__182C9B23" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__USERI__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__USERI__3E52440B" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
