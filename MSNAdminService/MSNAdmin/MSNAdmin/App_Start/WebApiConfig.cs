@@ -3,6 +3,7 @@ using System.Web.Http;
 using System.Web.Http.OData.Builder;
 using System.Web.Http.OData.Routing;
 using System.Web.Http.OData.Routing.Conventions;
+using System.Web.Http.OData.Extensions;
 namespace MSNAdmin
 {
     public static class WebApiConfig
@@ -43,12 +44,12 @@ namespace MSNAdmin
 
 
 
-            //config.Routes.MapODataRoute(routeName: "odata",
-            //		routePrefix: "odata",
-            //		model: builder.GetEdmModel(),
-            //		pathHandler: new DefaultODataPathHandler(),
-            //		routingConventions: conventions);
-            config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
+						config.Routes.MapODataServiceRoute(routeName: "odata",
+								routePrefix: "odata",
+								model: builder.GetEdmModel(),
+								pathHandler: new DefaultODataPathHandler(),
+								routingConventions: conventions);
+					//	config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
         }
     }
 }

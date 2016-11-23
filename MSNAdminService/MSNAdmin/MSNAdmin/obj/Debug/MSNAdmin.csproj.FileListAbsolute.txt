@@ -158,3 +158,17 @@ C:\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\zh-Hant\System.Spatial.resourc
 C:\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\obj\Debug\MSNAdmin.dll
 C:\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\obj\Debug\MSNAdmin.pdb
 C:\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\obj\Debug\MSNAdmin.csprojResolveAssemblyReference.cache
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\csc.exe.config
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\csc.rsp
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\csi.exe
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\csi.rsp
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\System.AppContext.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\System.IO.FileSystem.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\vbc.exe.config
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\roslyn\vbc.rsp
