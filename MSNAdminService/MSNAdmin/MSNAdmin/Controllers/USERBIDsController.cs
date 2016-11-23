@@ -20,29 +20,29 @@ namespace MSNAdmin.Controllers
     using System.Web.Http.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<USERBID>("USERBIDs");
+    builder.EntitySet<USERBID>("USERBIDS");
     builder.EntitySet<USERINFO>("USERINFOes"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
-    public class USERBIDsController : ODataController
+    public class USERBIDSController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
 
-        // GET: odata/USERBIDs
+        // GET: odata/USERBIDS
         [Queryable]
-        public IQueryable<USERBID> GetUSERBIDs()
+        public IQueryable<USERBID> GetUSERBIDS()
         {
             return db.USERBIDS;
         }
 
-        // GET: odata/USERBIDs(5)
+        // GET: odata/USERBIDS(5)
         [Queryable]
         public SingleResult<USERBID> GetUSERBID([FromODataUri] decimal key)
         {
             return SingleResult.Create(db.USERBIDS.Where(uSERBID => uSERBID.ID == key));
         }
 
-        // PUT: odata/USERBIDs(5)
+        // PUT: odata/USERBIDS(5)
         public IHttpActionResult Put([FromODataUri] decimal key, USERBID uSERBID)
         {
             if (!ModelState.IsValid)
@@ -76,7 +76,7 @@ namespace MSNAdmin.Controllers
             return Updated(uSERBID);
         }
 
-        // POST: odata/USERBIDs
+        // POST: odata/USERBIDS
         public IHttpActionResult Post(USERBID uSERBID)
         {
             if (!ModelState.IsValid)
@@ -90,7 +90,7 @@ namespace MSNAdmin.Controllers
             return Created(uSERBID);
         }
 
-        // PATCH: odata/USERBIDs(5)
+        // PATCH: odata/USERBIDS(5)
         [AcceptVerbs("PATCH", "MERGE")]
         public IHttpActionResult Patch([FromODataUri] decimal key, Delta<USERBID> patch)
         {
@@ -126,7 +126,7 @@ namespace MSNAdmin.Controllers
             return Updated(uSERBID);
         }
 
-        // DELETE: odata/USERBIDs(5)
+        // DELETE: odata/USERBIDS(5)
         public IHttpActionResult Delete([FromODataUri] decimal key)
         {
             USERBID uSERBID = db.USERBIDS.Find(key);
@@ -141,7 +141,7 @@ namespace MSNAdmin.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/USERBIDs(5)/USERINFO
+        // GET: odata/USERBIDS(5)/USERINFO
         [Queryable]
         public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
         {

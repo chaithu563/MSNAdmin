@@ -160,8 +160,8 @@
     <Compile Include="Controllers\SERVICESUBCATEGORiesController.cs" />
     <Compile Include="Controllers\SERVICETIMETYPEsController.cs" />
     <Compile Include="Controllers\SOCIALLOGINsController.cs" />
-    <Compile Include="Controllers\USERBIDsController.cs" />
-    <Compile Include="Controllers\USERFUNDsController.cs" />
+    <Compile Include="Controllers\USERBIDSController.cs" />
+    <Compile Include="Controllers\USERFUNDSController.cs" />
     <Compile Include="Controllers\USERINFOesController.cs" />
     <Compile Include="Controllers\USERMEMBERSHIPsController.cs" />
     <Compile Include="Controllers\USERSERVICENEEDsController.cs" />

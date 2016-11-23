@@ -20,29 +20,29 @@ namespace MSNAdmin.Controllers
     using System.Web.Http.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<USERFUND>("USERFUNDs");
+    builder.EntitySet<USERFUND>("USERFUNDS");
     builder.EntitySet<USERINFO>("USERINFOes"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
-    public class USERFUNDsController : ODataController
+    public class USERFUNDSController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
 
-        // GET: odata/USERFUNDs
+        // GET: odata/USERFUNDS
         [Queryable]
-        public IQueryable<USERFUND> GetUSERFUNDs()
+        public IQueryable<USERFUND> GetUSERFUNDS()
         {
             return db.USERFUNDS;
         }
 
-        // GET: odata/USERFUNDs(5)
+        // GET: odata/USERFUNDS(5)
         [Queryable]
         public SingleResult<USERFUND> GetUSERFUND([FromODataUri] decimal key)
         {
             return SingleResult.Create(db.USERFUNDS.Where(uSERFUND => uSERFUND.ID == key));
         }
 
-        // PUT: odata/USERFUNDs(5)
+        // PUT: odata/USERFUNDS(5)
         public IHttpActionResult Put([FromODataUri] decimal key, USERFUND uSERFUND)
         {
             if (!ModelState.IsValid)
@@ -76,7 +76,7 @@ namespace MSNAdmin.Controllers
             return Updated(uSERFUND);
         }
 
-        // POST: odata/USERFUNDs
+        // POST: odata/USERFUNDS
         public IHttpActionResult Post(USERFUND uSERFUND)
         {
             if (!ModelState.IsValid)
@@ -90,7 +90,7 @@ namespace MSNAdmin.Controllers
             return Created(uSERFUND);
         }
 
-        // PATCH: odata/USERFUNDs(5)
+        // PATCH: odata/USERFUNDS(5)
         [AcceptVerbs("PATCH", "MERGE")]
         public IHttpActionResult Patch([FromODataUri] decimal key, Delta<USERFUND> patch)
         {
@@ -126,7 +126,7 @@ namespace MSNAdmin.Controllers
             return Updated(uSERFUND);
         }
 
-        // DELETE: odata/USERFUNDs(5)
+        // DELETE: odata/USERFUNDS(5)
         public IHttpActionResult Delete([FromODataUri] decimal key)
         {
             USERFUND uSERFUND = db.USERFUNDS.Find(key);
@@ -141,7 +141,7 @@ namespace MSNAdmin.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/USERFUNDs(5)/USERINFO
+        // GET: odata/USERFUNDS(5)/USERINFO
         [Queryable]
         public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
         {
