@@ -1,2 +1,4 @@
 http://jaydata.org/download
 JaySvcUtil --metadataUri  http://localhost/MSNAdmin/odata --out MSNCMD.js
+
+ get "Allow-Control-Allow-Origin" plugin

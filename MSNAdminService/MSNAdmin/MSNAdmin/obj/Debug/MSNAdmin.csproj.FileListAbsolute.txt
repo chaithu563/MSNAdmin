@@ -264,3 +264,6 @@ D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\ko\Microsoft.Spatial
 D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\ru\Microsoft.Spatial.resources.dll
 D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\zh-Hans\Microsoft.Spatial.resources.dll
 D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\zh-Hant\Microsoft.Spatial.resources.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Cors.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Http.Cors.dll
+D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Http.Cors.xml

@@ -4,6 +4,7 @@ using System.Web.OData.Builder;
 using System.Web.OData.Routing;
 using System.Web.OData.Routing.Conventions;
 using System.Web.OData.Extensions;
+
 namespace MSNAdmin
 {
     public static class WebApiConfig
@@ -22,6 +23,8 @@ namespace MSNAdmin
 						//);
 
 					// Create the default collection of built-in conventions.
+					//config.SetCorsPolicyProviderFactory(new CorsPolicyFactory());
+					config.EnableCors();
 					var conventions = ODataRoutingConventions.CreateDefault();
 					//MapODataServiceRoute
 						ODataModelBuilder builder = new ODataConventionModelBuilder();

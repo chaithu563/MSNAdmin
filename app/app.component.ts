@@ -19,13 +19,10 @@ export class AppComponent {
         );
     }
     private OnContextLoaded(context:any) {
-        context.CITies
+        context.CITies.toArray(function(cities){
             
-            .toArray()
-            .then(
-            cities => {
                 this.cities = cities;
-                
+                console.log(this.cities);
             });
     }
 

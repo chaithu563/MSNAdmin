@@ -31,11 +31,9 @@ System.register(['@angular/core', './services/msn.service'], function(exports_1,
                     this.mSNService.getContext(function (context) { return _this.OnContextLoaded(context); });
                 };
                 AppComponent.prototype.OnContextLoaded = function (context) {
-                    var _this = this;
-                    context.CITies
-                        .toArray()
-                        .then(function (cities) {
-                        _this.cities = cities;
+                    context.CITies.toArray(function (cities) {
+                        this.cities = cities;
+                        console.log(this.cities);
                     });
                 };
                 AppComponent = __decorate([
