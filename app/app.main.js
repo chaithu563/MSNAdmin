@@ -1,4 +1,4 @@
-System.register(['@angular/platform-browser-dynamic', './services/index', './app.module'], function(exports_1, context_1) {
+System.register(['@angular/platform-browser-dynamic', './services/index', './app.module', 'rxjs/Rx'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var platform_browser_dynamic_1, index_1, app_module_1;
@@ -13,7 +13,8 @@ System.register(['@angular/platform-browser-dynamic', './services/index', './app
             },
             function (app_module_1_1) {
                 app_module_1 = app_module_1_1;
-            }],
+            },
+            function (_1) {}],
         execute: function() {
             platform = platform_browser_dynamic_1.platformBrowserDynamic();
             platform.bootstrapModule(app_module_1.AppModule, index_1.APP_PROVIDERS);
