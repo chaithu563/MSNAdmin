@@ -1,9 +1,9 @@
 ﻿using MSNAdmin.Models;
 using System.Web.Http;
-using System.Web.Http.OData.Builder;
-using System.Web.Http.OData.Routing;
-using System.Web.Http.OData.Routing.Conventions;
-using System.Web.Http.OData.Extensions;
+using System.Web.OData.Builder;
+using System.Web.OData.Routing;
+using System.Web.OData.Routing.Conventions;
+using System.Web.OData.Extensions;
 namespace MSNAdmin
 {
     public static class WebApiConfig
@@ -44,7 +44,7 @@ namespace MSNAdmin
 
 
 
-						config.Routes.MapODataServiceRoute(routeName: "odata",
+						config.MapODataServiceRoute(routeName: "odata",
 								routePrefix: "odata",
 								model: builder.GetEdmModel(),
 								pathHandler: new DefaultODataPathHandler(),

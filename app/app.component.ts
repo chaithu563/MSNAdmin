@@ -1,6 +1,29 @@
 ﻿import { Component } from '@angular/core';
+import { MSN } from '../jaydata-model/MSN';
+import { MSNService } from './services/msn.service';
 @Component({
     selector: 'my-app',
-    template: '<h1>Hello Angular!</h1>'
+    template: '<h1>Hello Angularnn!</h1>',
+    providers: [MSNService]
 })
-export class AppComponent { }
+export class AppComponent {
+    cities: any;
+    constructor(private mSNService: MSNService) { }
+
+    private init() {
+        this.mSNService.getContext(
+            context => this.OnContextLoaded(context)
+        );
+    }
+    private OnContextLoaded(context:any) {
+        context.CITies
+            
+            .toArray()
+            .then(
+            cities => {
+                this.cities = cities;
+                
+            });
+    }
+
+}

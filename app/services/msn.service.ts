@@ -1,0 +1,40 @@
+﻿import { Injectable } from '@angular/core';
+import { Observable } from "rxjs/Observable";
+import { Subject } from "rxjs/Subject";
+import { MSN } from '../../jaydata-model/MSN';
+import "jaydata/odata";
+
+
+@Injectable()
+export class MSNService {
+    private context: MSN.MSNContext;
+    private subject: Subject<MSN.MSNContext>;
+
+    private config = {
+        provider: 'oData',
+        oDataServiceHost: "http://localhost/MSNAdmin/odata"
+    };
+
+    constructor() {
+        this.subject = new Subject();
+       // need to fix this
+        new MSN.MSNContext(this.config)
+            .onReady()
+            .then(context => this.onReady(context));
+    }
+
+    getContext(setContext: (context: MSN.MSNContext) => void) {
+        if (this.context) {
+            setContext(this.context);
+        }
+        else {
+            this.subject.subscribe(setContext);
+        }
+    }
+
+    private onReady(context: MSN.MSNContext) {
+        this.context = context;
+        this.subject.next(this.context);
+        this.subject.complete();
+    }
+}
