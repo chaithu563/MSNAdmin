@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-import { MSN } from '../jaydata-model/MSN';
+import { MSN } from './jaydata-model/MSN';
 import { MSNService } from './services/msn.service';
 @Component({
     selector: 'my-app',
@@ -8,7 +8,10 @@ import { MSNService } from './services/msn.service';
 })
 export class AppComponent {
     cities: any;
-    constructor(private mSNService: MSNService) { }
+    constructor(private mSNService: MSNService) {
+
+			this.init();
+		}
 
     private init() {
         this.mSNService.getContext(

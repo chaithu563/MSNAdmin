@@ -24,6 +24,7 @@ System.register(['@angular/core', './services/msn.service'], function(exports_1,
             AppComponent = (function () {
                 function AppComponent(mSNService) {
                     this.mSNService = mSNService;
+                    this.init();
                 }
                 AppComponent.prototype.init = function () {
                     var _this = this;

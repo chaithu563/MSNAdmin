@@ -39,9 +39,19 @@
       }
     },
     meta: {
-        'jaydata/odata': {
-            format: 'cjs',
-            deps: ['jaydata/core']
+        //'jaydata/odata': {
+        //    format: 'cjs',
+        //    deps: ['jaydata/core']
+    	//},
+    	'jaydata/core': {
+    		format: 'cjs'
+    	},
+    	'jaydata/odata': {
+    		format: 'cjs',
+    		deps: ['jaydata/core']
+    	},
+        './jaydata-model/MSN': {
+        	deps: ['jaydata/core', 'jaydata/odata']
         }
     }
   });

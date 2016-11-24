@@ -1,7 +1,7 @@
 ﻿import { Injectable } from '@angular/core';
 import { Observable } from "rxjs/Observable";
 import { Subject } from "rxjs/Subject";
-import { MSN } from '../../jaydata-model/MSN';
+import { MSN } from '../jaydata-model/MSN';
 import "jaydata/odata";
 
 

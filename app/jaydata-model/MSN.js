@@ -1,8 +1,8 @@
-(function(mod) {
+﻿(function (mod) {
     if (typeof exports == "object" && typeof module == "object") return mod(exports, require("jaydata/core")); // CommonJS
     if (typeof define == "function" && define.amd) return define(["exports", "jaydata/core"], mod); // AMD
     mod($data.generatedContext || ($data.generatedContext = {}), $data); // Plain browser env
-})(function(exports, $data) {
+})(function (exports, $data) {
 
     exports.$data = $data;
 
@@ -476,7 +476,7 @@
         }
     });
 
-    exports.type = types["Default.Container"] = $data("$data.EntityContext").extend("Default.Container", {
+    exports.type = types["MSN.MSNContext"] = $data("$data.EntityContext").extend("MSN.MSNContext", {
         CITies: {
             "type": "$data.EntitySet",
             "elementType": "MSNAdmin.Models.CITY"
@@ -559,12 +559,12 @@
         }
     };
 
-    exports.Default = {
-        "Container": types["Default.Container"]
+    exports.MSN = {
+        "MSNContext": types["MSN.MSNContext"]
     };
 
     var ctxType = exports.type;
-    exports.factory = function(config) {
+    exports.factory = function (config) {
         if (ctxType) {
             var cfg = $data.typeSystem.extend({
                 name: "oData",
@@ -578,6 +578,6 @@
         }
     };
 
-    if (typeof Reflect !== "undefined" && typeof Reflect.defineMetadata === "function") {}
+    if (typeof Reflect !== "undefined" && typeof Reflect.defineMetadata === "function") { }
 
 });
