@@ -1,5 +1,6 @@
 ﻿using MSNAdmin.Models;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.OData.Builder;
 using System.Web.OData.Routing;
 using System.Web.OData.Routing.Conventions;
@@ -24,7 +25,8 @@ namespace MSNAdmin
 
 					// Create the default collection of built-in conventions.
 					//config.SetCorsPolicyProviderFactory(new CorsPolicyFactory());
-					config.EnableCors();
+					//var cors = new EnableCorsAttribute("*", "*", "*");
+					//config.EnableCors(cors);
 					var conventions = ODataRoutingConventions.CreateDefault();
 					//MapODataServiceRoute
 						ODataModelBuilder builder = new ODataConventionModelBuilder();

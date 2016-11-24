@@ -25,6 +25,7 @@ namespace MSNAdmin.Controllers
     builder.EntitySet<USERINFO>("USERINFOes"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
+
     public class CITiesController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
