@@ -2,6 +2,7 @@
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
 import { MSN } from '../jaydata-model/MSN';
+import {MSN_DI_CONFIG } from '../app.config';
 import "jaydata/odata";
 
 
@@ -11,8 +12,8 @@ export class MSNService {
     private subject: Subject<MSN.MSNContext>;
 
     private config = {
-        provider: 'oData',
-        oDataServiceHost: "http://localhost/MSNAdmin/odata"
+			  provider: MSN_DI_CONFIG.oDataProvider,
+				oDataServiceHost: MSN_DI_CONFIG.oDataEndPoint
     };
 
     constructor() {

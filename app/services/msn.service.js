@@ -1,4 +1,4 @@
-System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', "jaydata/odata"], function(exports_1, context_1) {
+System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', '../app.config', "jaydata/odata"], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', "jayda
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, Subject_1, MSN_1;
+    var core_1, Subject_1, MSN_1, app_config_1;
     var MSNService;
     return {
         setters:[
@@ -23,14 +23,17 @@ System.register(['@angular/core', 'rxjs/Subject', '../jaydata-model/MSN', "jayda
             function (MSN_1_1) {
                 MSN_1 = MSN_1_1;
             },
+            function (app_config_1_1) {
+                app_config_1 = app_config_1_1;
+            },
             function (_1) {}],
         execute: function() {
             MSNService = (function () {
                 function MSNService() {
                     var _this = this;
                     this.config = {
-                        provider: 'oData',
-                        oDataServiceHost: "http://localhost/MSNAdmin/odata"
+                        provider: app_config_1.MSN_DI_CONFIG.oDataProvider,
+                        oDataServiceHost: app_config_1.MSN_DI_CONFIG.oDataEndPoint
                     };
                     this.subject = new Subject_1.Subject();
                     // need to fix this

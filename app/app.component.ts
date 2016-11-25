@@ -19,11 +19,12 @@ export class AppComponent {
         );
     }
     private OnContextLoaded(context:any) {
-        context.CITies.toArray(function(cities){
+			context.CITies.toArray(function(cities){
             
                 this.cities = cities;
                 console.log(this.cities);
-            });
+			});
+				
     }
 
 }
