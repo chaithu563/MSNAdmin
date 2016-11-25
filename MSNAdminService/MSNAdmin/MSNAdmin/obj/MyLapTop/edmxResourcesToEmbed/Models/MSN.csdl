@@ -1,0 +1,521 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="myserviceneedModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="CITY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CITYAREAs" Relationship="Self.FK__CITYAREA__CITYID__08EA5793" FromRole="CITY" ToRole="CITYAREA" />
+    <NavigationProperty Name="USERINFOes" Relationship="Self.FK__USERINFO__CITYID__0DAF0CB0" FromRole="CITY" ToRole="USERINFO" />
+  </EntityType>
+  <EntityType Name="CITYAREA">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="CITYID" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="CITY" Relationship="Self.FK__CITYAREA__CITYID__08EA5793" FromRole="CITYAREA" ToRole="CITY" />
+    <NavigationProperty Name="USERINFOes" Relationship="Self.FK__USERINFO__CITYAR__0EA330E9" FromRole="CITYAREA" ToRole="USERINFO" />
+  </EntityType>
+  <EntityType Name="MEMBERSHIP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USERMEMBERSHIPs" Relationship="Self.FK__USERMEMBE__MEMBE__1920BF5C" FromRole="MEMBERSHIP" ToRole="USERMEMBERSHIP" />
+  </EntityType>
+  <EntityType Name="SERVICEBID">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="USERSERVICENEEDID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BIDTITLE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="BIDDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="BIDAMOUNT" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="USERINFO" Relationship="Self.FK__SERVICEBI__USERI__46E78A0C" FromRole="SERVICEBID" ToRole="USERINFO" />
+    <NavigationProperty Name="USERSERVICENEED" Relationship="Self.FK__SERVICEBI__USERS__47DBAE45" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
+    <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__ALLOC__48CFD27E" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
+  </EntityType>
+  <EntityType Name="SERVICECATEGORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="SERVICESUBCATEGORies" Relationship="Self.FK__SERVICESU__SERVI__2B3F6F97" FromRole="SERVICECATEGORY" ToRole="SERVICESUBCATEGORY" />
+    <NavigationProperty Name="USERSERVICEs" Relationship="Self.FK__USERSERVI__SERVI__30F848ED" FromRole="SERVICECATEGORY" ToRole="USERSERVICE" />
+    <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__SERVI__3F466844" FromRole="SERVICECATEGORY" ToRole="USERSERVICENEED" />
+  </EntityType>
+  <EntityType Name="SERVICESTATE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__SERVI__412EB0B6" FromRole="SERVICESTATE" ToRole="USERSERVICENEED" />
+  </EntityType>
+  <EntityType Name="SERVICESUBCATEGORY">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SERVICECATEGORYID" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="SERVICECATEGORY" Relationship="Self.FK__SERVICESU__SERVI__2B3F6F97" FromRole="SERVICESUBCATEGORY" ToRole="SERVICECATEGORY" />
+    <NavigationProperty Name="USERSERVICEs" Relationship="Self.FK__USERSERVI__SERVI__31EC6D26" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICE" />
+    <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__SERVI__403A8C7D" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICENEED" />
+  </EntityType>
+  <EntityType Name="SERVICETIMETYPE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__SERVI__4222D4EF" FromRole="SERVICETIMETYPE" ToRole="USERSERVICENEED" />
+  </EntityType>
+  <EntityType Name="SOCIALLOGIN">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USERINFOes" Relationship="Self.FK__USERINFO__LOGINT__0F975522" FromRole="SOCIALLOGIN" ToRole="USERINFO" />
+  </EntityType>
+  <EntityType Name="USERBID">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BIDS" Type="Int32" />
+    <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERBIDS__USERID__22AA2996" FromRole="USERBIDS" ToRole="USERINFO" />
+  </EntityType>
+  <EntityType Name="USERFUND">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="BALANCE" Type="Decimal" Precision="19" Scale="4" />
+    <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERFUNDS__USERI__1DE57479" FromRole="USERFUNDS" ToRole="USERINFO" />
+  </EntityType>
+  <EntityType Name="USERINFO">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="EMAIL" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
+    <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="CITYID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="CITYAREAID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="LOGINTYPEID" Type="Int32" />
+    <Property Name="CURRENTLOCATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="CITY" Relationship="Self.FK__USERINFO__CITYID__0DAF0CB0" FromRole="USERINFO" ToRole="CITY" />
+    <NavigationProperty Name="CITYAREA" Relationship="Self.FK__USERINFO__CITYAR__0EA330E9" FromRole="USERINFO" ToRole="CITYAREA" />
+    <NavigationProperty Name="SERVICEBIDs" Relationship="Self.FK__SERVICEBI__USERI__46E78A0C" FromRole="USERINFO" ToRole="SERVICEBID" />
+    <NavigationProperty Name="SOCIALLOGIN" Relationship="Self.FK__USERINFO__LOGINT__0F975522" FromRole="USERINFO" ToRole="SOCIALLOGIN" />
+    <NavigationProperty Name="USERBIDS" Relationship="Self.FK__USERBIDS__USERID__22AA2996" FromRole="USERINFO" ToRole="USERBIDS" />
+    <NavigationProperty Name="USERFUNDS" Relationship="Self.FK__USERFUNDS__USERI__1DE57479" FromRole="USERINFO" ToRole="USERFUNDS" />
+    <NavigationProperty Name="USERMEMBERSHIPs" Relationship="Self.FK__USERMEMBE__USERI__182C9B23" FromRole="USERINFO" ToRole="USERMEMBERSHIP" />
+    <NavigationProperty Name="USERSERVICEs" Relationship="Self.FK__USERSERVI__USERI__300424B4" FromRole="USERINFO" ToRole="USERSERVICE" />
+    <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__USERI__3E52440B" FromRole="USERINFO" ToRole="USERSERVICENEED" />
+  </EntityType>
+  <EntityType Name="USERMEMBERSHIP">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MEMBERSHIPID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="COMMENTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="MEMBERSHIP" Relationship="Self.FK__USERMEMBE__MEMBE__1920BF5C" FromRole="USERMEMBERSHIP" ToRole="MEMBERSHIP" />
+    <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERMEMBE__USERI__182C9B23" FromRole="USERMEMBERSHIP" ToRole="USERINFO" />
+  </EntityType>
+  <EntityType Name="USERSERVICE">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SERVICECATEGORYID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SERVICESUBCATEGORYID" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="SERVICECATEGORY" Relationship="Self.FK__USERSERVI__SERVI__30F848ED" FromRole="USERSERVICE" ToRole="SERVICECATEGORY" />
+    <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="Self.FK__USERSERVI__SERVI__31EC6D26" FromRole="USERSERVICE" ToRole="SERVICESUBCATEGORY" />
+    <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERSERVI__USERI__300424B4" FromRole="USERSERVICE" ToRole="USERINFO" />
+  </EntityType>
+  <EntityType Name="USERSERVICENEED">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SERVICELOCATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SERVICETITLE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+    <Property Name="SERVICEDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <Property Name="SERVICECATEGORYID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SERVICESUBCATEGORYID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MINBUDGET" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="MAXBUDGET" Type="Decimal" Precision="19" Scale="4" />
+    <Property Name="SERVICESTATE" Type="Int32" />
+    <Property Name="SERVICETIMETYPE" Type="Int32" />
+    <Property Name="SERVICENEEDEDDATE" Type="DateTime" Precision="3" />
+    <Property Name="ALLOCATEDBIDID" Type="Decimal" Precision="18" Scale="0" />
+    <NavigationProperty Name="SERVICEBIDs" Relationship="Self.FK__SERVICEBI__USERS__47DBAE45" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
+    <NavigationProperty Name="SERVICEBID" Relationship="Self.FK__USERSERVI__ALLOC__48CFD27E" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
+    <NavigationProperty Name="SERVICECATEGORY" Relationship="Self.FK__USERSERVI__SERVI__3F466844" FromRole="USERSERVICENEED" ToRole="SERVICECATEGORY" />
+    <NavigationProperty Name="SERVICESTATE1" Relationship="Self.FK__USERSERVI__SERVI__412EB0B6" FromRole="USERSERVICENEED" ToRole="SERVICESTATE" />
+    <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="Self.FK__USERSERVI__SERVI__403A8C7D" FromRole="USERSERVICENEED" ToRole="SERVICESUBCATEGORY" />
+    <NavigationProperty Name="SERVICETIMETYPE1" Relationship="Self.FK__USERSERVI__SERVI__4222D4EF" FromRole="USERSERVICENEED" ToRole="SERVICETIMETYPE" />
+    <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERSERVI__USERI__3E52440B" FromRole="USERSERVICENEED" ToRole="USERINFO" />
+  </EntityType>
+  <Association Name="FK__CITYAREA__CITYID__08EA5793">
+    <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+    <End Role="CITYAREA" Type="Self.CITYAREA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CITY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="CITYAREA">
+        <PropertyRef Name="CITYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERINFO__CITYID__0DAF0CB0">
+    <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CITY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERINFO">
+        <PropertyRef Name="CITYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERINFO__CITYAR__0EA330E9">
+    <End Role="CITYAREA" Type="Self.CITYAREA" Multiplicity="0..1" />
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="CITYAREA">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERINFO">
+        <PropertyRef Name="CITYAREAID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERMEMBE__MEMBE__1920BF5C">
+    <End Role="MEMBERSHIP" Type="Self.MEMBERSHIP" Multiplicity="0..1" />
+    <End Role="USERMEMBERSHIP" Type="Self.USERMEMBERSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MEMBERSHIP">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERMEMBERSHIP">
+        <PropertyRef Name="MEMBERSHIPID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SERVICEBI__USERI__46E78A0C">
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+    <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERINFO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SERVICEBID">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SERVICEBI__USERS__47DBAE45">
+    <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="0..1" />
+    <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERSERVICENEED">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SERVICEBID">
+        <PropertyRef Name="USERSERVICENEEDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__ALLOC__48CFD27E">
+    <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="0..1" />
+    <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICEBID">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICENEED">
+        <PropertyRef Name="ALLOCATEDBIDID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__SERVICESU__SERVI__2B3F6F97">
+    <End Role="SERVICECATEGORY" Type="Self.SERVICECATEGORY" Multiplicity="0..1" />
+    <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICECATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="SERVICESUBCATEGORY">
+        <PropertyRef Name="SERVICECATEGORYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__SERVI__30F848ED">
+    <End Role="SERVICECATEGORY" Type="Self.SERVICECATEGORY" Multiplicity="0..1" />
+    <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICECATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICE">
+        <PropertyRef Name="SERVICECATEGORYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__SERVI__3F466844">
+    <End Role="SERVICECATEGORY" Type="Self.SERVICECATEGORY" Multiplicity="0..1" />
+    <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICECATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICENEED">
+        <PropertyRef Name="SERVICECATEGORYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__SERVI__412EB0B6">
+    <End Role="SERVICESTATE" Type="Self.SERVICESTATE" Multiplicity="0..1" />
+    <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICESTATE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICENEED">
+        <PropertyRef Name="SERVICESTATE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__SERVI__31EC6D26">
+    <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="0..1" />
+    <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICESUBCATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICE">
+        <PropertyRef Name="SERVICESUBCATEGORYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__SERVI__403A8C7D">
+    <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="0..1" />
+    <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICESUBCATEGORY">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICENEED">
+        <PropertyRef Name="SERVICESUBCATEGORYID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__SERVI__4222D4EF">
+    <End Role="SERVICETIMETYPE" Type="Self.SERVICETIMETYPE" Multiplicity="0..1" />
+    <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SERVICETIMETYPE">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICENEED">
+        <PropertyRef Name="SERVICETIMETYPE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERINFO__LOGINT__0F975522">
+    <End Role="SOCIALLOGIN" Type="Self.SOCIALLOGIN" Multiplicity="0..1" />
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="SOCIALLOGIN">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERINFO">
+        <PropertyRef Name="LOGINTYPEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERBIDS__USERID__22AA2996">
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+    <End Role="USERBIDS" Type="Self.USERBID" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERINFO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERBIDS">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERFUNDS__USERI__1DE57479">
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+    <End Role="USERFUNDS" Type="Self.USERFUND" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERINFO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERFUNDS">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERMEMBE__USERI__182C9B23">
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+    <End Role="USERMEMBERSHIP" Type="Self.USERMEMBERSHIP" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERINFO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERMEMBERSHIP">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__USERI__300424B4">
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+    <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERINFO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICE">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__USERI__3E52440B">
+    <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
+    <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERINFO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICENEED">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="myserviceneedEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="CITies" EntityType="Self.CITY" />
+    <EntitySet Name="CITYAREAs" EntityType="Self.CITYAREA" />
+    <EntitySet Name="MEMBERSHIPs" EntityType="Self.MEMBERSHIP" />
+    <EntitySet Name="SERVICEBIDs" EntityType="Self.SERVICEBID" />
+    <EntitySet Name="SERVICECATEGORies" EntityType="Self.SERVICECATEGORY" />
+    <EntitySet Name="SERVICESTATEs" EntityType="Self.SERVICESTATE" />
+    <EntitySet Name="SERVICESUBCATEGORies" EntityType="Self.SERVICESUBCATEGORY" />
+    <EntitySet Name="SERVICETIMETYPEs" EntityType="Self.SERVICETIMETYPE" />
+    <EntitySet Name="SOCIALLOGINs" EntityType="Self.SOCIALLOGIN" />
+    <EntitySet Name="USERBIDS" EntityType="Self.USERBID" />
+    <EntitySet Name="USERFUNDS" EntityType="Self.USERFUND" />
+    <EntitySet Name="USERINFOes" EntityType="Self.USERINFO" />
+    <EntitySet Name="USERMEMBERSHIPs" EntityType="Self.USERMEMBERSHIP" />
+    <EntitySet Name="USERSERVICEs" EntityType="Self.USERSERVICE" />
+    <EntitySet Name="USERSERVICENEEDs" EntityType="Self.USERSERVICENEED" />
+    <AssociationSet Name="FK__CITYAREA__CITYID__08EA5793" Association="Self.FK__CITYAREA__CITYID__08EA5793">
+      <End Role="CITY" EntitySet="CITies" />
+      <End Role="CITYAREA" EntitySet="CITYAREAs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERINFO__CITYID__0DAF0CB0" Association="Self.FK__USERINFO__CITYID__0DAF0CB0">
+      <End Role="CITY" EntitySet="CITies" />
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERINFO__CITYAR__0EA330E9" Association="Self.FK__USERINFO__CITYAR__0EA330E9">
+      <End Role="CITYAREA" EntitySet="CITYAREAs" />
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERMEMBE__MEMBE__1920BF5C" Association="Self.FK__USERMEMBE__MEMBE__1920BF5C">
+      <End Role="MEMBERSHIP" EntitySet="MEMBERSHIPs" />
+      <End Role="USERMEMBERSHIP" EntitySet="USERMEMBERSHIPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SERVICEBI__USERI__46E78A0C" Association="Self.FK__SERVICEBI__USERI__46E78A0C">
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+      <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SERVICEBI__USERS__47DBAE45" Association="Self.FK__SERVICEBI__USERS__47DBAE45">
+      <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+      <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__ALLOC__48CFD27E" Association="Self.FK__USERSERVI__ALLOC__48CFD27E">
+      <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
+      <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__SERVICESU__SERVI__2B3F6F97" Association="Self.FK__SERVICESU__SERVI__2B3F6F97">
+      <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
+      <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__SERVI__30F848ED" Association="Self.FK__USERSERVI__SERVI__30F848ED">
+      <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
+      <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__SERVI__3F466844" Association="Self.FK__USERSERVI__SERVI__3F466844">
+      <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
+      <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__SERVI__412EB0B6" Association="Self.FK__USERSERVI__SERVI__412EB0B6">
+      <End Role="SERVICESTATE" EntitySet="SERVICESTATEs" />
+      <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__SERVI__31EC6D26" Association="Self.FK__USERSERVI__SERVI__31EC6D26">
+      <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
+      <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__SERVI__403A8C7D" Association="Self.FK__USERSERVI__SERVI__403A8C7D">
+      <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
+      <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__SERVI__4222D4EF" Association="Self.FK__USERSERVI__SERVI__4222D4EF">
+      <End Role="SERVICETIMETYPE" EntitySet="SERVICETIMETYPEs" />
+      <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERINFO__LOGINT__0F975522" Association="Self.FK__USERINFO__LOGINT__0F975522">
+      <End Role="SOCIALLOGIN" EntitySet="SOCIALLOGINs" />
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERBIDS__USERID__22AA2996" Association="Self.FK__USERBIDS__USERID__22AA2996">
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+      <End Role="USERBIDS" EntitySet="USERBIDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERFUNDS__USERI__1DE57479" Association="Self.FK__USERFUNDS__USERI__1DE57479">
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+      <End Role="USERFUNDS" EntitySet="USERFUNDS" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERMEMBE__USERI__182C9B23" Association="Self.FK__USERMEMBE__USERI__182C9B23">
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+      <End Role="USERMEMBERSHIP" EntitySet="USERMEMBERSHIPs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__USERI__300424B4" Association="Self.FK__USERSERVI__USERI__300424B4">
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+      <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__USERI__3E52440B" Association="Self.FK__USERSERVI__USERI__3E52440B">
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+      <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

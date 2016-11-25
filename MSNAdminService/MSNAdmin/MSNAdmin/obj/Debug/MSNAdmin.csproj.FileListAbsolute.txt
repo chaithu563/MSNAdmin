@@ -267,3 +267,6 @@ D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\zh-Hant\Microsoft.Sp
 D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Cors.dll
 D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Http.Cors.dll
 D:\chaitanya\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Http.Cors.xml
+C:\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Cors.dll
+C:\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Http.Cors.dll
+C:\MSNAdmin\MSNAdminService\MSNAdmin\MSNAdmin\bin\System.Web.Http.Cors.xml
