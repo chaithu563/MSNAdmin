@@ -5,3 +5,6 @@ JaySvcUtil --metadataUri  http://localhost/MSNAdmin/odata --out MSNCMD.js
  enableJsonpCallback: true,
 
 http://www.primefaces.org/primeng/#/accordion   sample page for admin
+
+routing
+https://johnpapa.net/introducing-angular-modules-routing-module/
