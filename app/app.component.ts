@@ -1,10 +1,15 @@
 ﻿import { Component } from '@angular/core';
+
+
 import { MSN } from './jaydata-model/MSN';
 import { MSNService } from './services/msn.service';
+
 @Component({
     selector: 'my-app',
-    template: '<h1>Hello Angularnn!</h1>',
+    template: '<header> </header> <h1>Hello Angularnn!</h1>',
     providers: [MSNService]
+   // directives: [HeaderComponent]
+   
 })
 export class AppComponent {
     cities: any;

@@ -39,7 +39,7 @@ System.register(['@angular/core', './services/msn.service'], function(exports_1,
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<h1>Hello Angularnn!</h1>',
+                        template: '<header> </header> <h1>Hello Angularnn!</h1>',
                         providers: [msn_service_1.MSNService]
                     }), 
                     __metadata('design:paramtypes', [msn_service_1.MSNService])
