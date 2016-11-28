@@ -2,7 +2,8 @@
 
 @Component({
     selector: 'header',
-    template: '<h1>My Header </h1>',
+    templateUrl: 'app/core/header/header.html',
+		styleUrls: ['app/core/header/header.css'],
     providers: []
 })
 export class HeaderComponent {

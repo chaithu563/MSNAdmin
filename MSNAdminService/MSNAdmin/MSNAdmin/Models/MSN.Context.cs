@@ -40,5 +40,6 @@ namespace MSNAdmin.Models
         public virtual DbSet<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
         public virtual DbSet<USERSERVICE> USERSERVICEs { get; set; }
         public virtual DbSet<USERSERVICENEED> USERSERVICENEEDs { get; set; }
+        public virtual DbSet<ADMININFO> ADMININFOes { get; set; }
     }
 }

@@ -183,6 +183,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\ADMININFOesController.cs" />
     <Compile Include="Controllers\CITiesController.cs" />
     <Compile Include="Controllers\CITYAREAsController.cs" />
     <Compile Include="Controllers\MEMBERSHIPsController.cs" />
@@ -200,6 +201,9 @@
     <Compile Include="Controllers\USERSERVICEsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ADMININFO.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CITY.cs">
       <DependentUpon>MSN.tt</DependentUpon>
