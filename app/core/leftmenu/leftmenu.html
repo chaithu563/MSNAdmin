@@ -2,8 +2,8 @@
 	<div >
 		<h3> Manage Options </h3>
 		<accordion closeOthers="true" closeOtherPanels="true">
-			<accordion-panel heading="Admins"> Handle Admins</accordion-panel>
-			<accordion-panel heading="Users"> Hanlde Users</accordion-panel>
+			<accordion-panel  heading="Admins"> <a [routerLink]="['/manageadmins']">Handle admins </a> </accordion-panel>
+			<accordion-panel (click)="linkClicked(this)"  heading="Users"> Hanlde Users</accordion-panel>
 			<accordion-panel heading="Cities"> Manage Cities</accordion-panel>
 			<accordion-panel heading="Areas"> Manage Areas in City</accordion-panel>
 			<accordion-panel heading="MemberShips"> Manage User Memberships</accordion-panel>
@@ -14,8 +14,6 @@
 			<accordion-panel heading="User Bids"> Handle User Bids</accordion-panel>
 			<accordion-panel heading="User Services">Manage what services user provide</accordion-panel>
 			<accordion-panel heading="Users Service Needs">Manage what services user need</accordion-panel>
-			
-
 
 		</accordion>
 </div>

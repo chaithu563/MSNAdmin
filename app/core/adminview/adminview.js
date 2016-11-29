@@ -1,4 +1,4 @@
-System.register(['@angular/core'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/router', './adminuser/adminuser'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,14 +10,25 @@ System.register(['@angular/core'], function(exports_1, context_1) {
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1;
-    var AdminViewComponent;
+    var core_1, router_1, adminuser_1;
+    var routes, routing, AdminViewComponent;
     return {
         setters:[
             function (core_1_1) {
                 core_1 = core_1_1;
+            },
+            function (router_1_1) {
+                router_1 = router_1_1;
+            },
+            function (adminuser_1_1) {
+                adminuser_1 = adminuser_1_1;
             }],
         execute: function() {
+            // Route Configuration
+            exports_1("routes", routes = [
+                { path: '/manageadmins', component: adminuser_1.AdminUserComponent }
+            ]);
+            exports_1("routing", routing = router_1.RouterModule.forRoot(routes));
             AdminViewComponent = (function () {
                 function AdminViewComponent() {
                 }
@@ -26,7 +37,8 @@ System.register(['@angular/core'], function(exports_1, context_1) {
                         selector: 'adminview',
                         templateUrl: 'app/core/adminview/adminview.html',
                         styleUrls: ['app/core/adminview/adminview.css'],
-                        providers: []
+                        providers: [],
+                        directives: [router_1.ROUTER_DIRECTIVES]
                     }), 
                     __metadata('design:paramtypes', [])
                 ], AdminViewComponent);
