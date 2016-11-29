@@ -6,7 +6,8 @@ import { MSNService } from './services/msn.service';
 
 @Component({
     selector: 'my-app',
-    template: '<header> </header> <h1>Hello Angularnn!</h1>',
+  //  template: '<header> </header> <leftmenu> </leftmenu> <adminview></adminview>',
+		template: '<header> </header> <div class="row" >  <div class="col-md-3" style="height: 100%;"> <leftmenu> </leftmenu> </div> <div class="col-md-9" style="height: 100%;"> <adminview></adminview>  </div> </div>',
     providers: [MSNService]
    // directives: [HeaderComponent]
    

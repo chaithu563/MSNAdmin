@@ -39,7 +39,8 @@ System.register(['@angular/core', './services/msn.service'], function(exports_1,
                 AppComponent = __decorate([
                     core_1.Component({
                         selector: 'my-app',
-                        template: '<header> </header> <h1>Hello Angularnn!</h1>',
+                        //  template: '<header> </header> <leftmenu> </leftmenu> <adminview></adminview>',
+                        template: '<header> </header> <div class="row" >  <div class="col-md-3" style="height: 100%;"> <leftmenu> </leftmenu> </div> <div class="col-md-9" style="height: 100%;"> <adminview></adminview>  </div> </div>',
                         providers: [msn_service_1.MSNService]
                     }), 
                     __metadata('design:paramtypes', [msn_service_1.MSNService])
