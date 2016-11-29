@@ -2,8 +2,9 @@
 import { HeaderComponent } from './core/header/header';
 import {LeftMenuComponent} from './core/leftmenu/leftmenu';
 import {AdminViewComponent} from './core/adminview/adminview';
+//import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
-	HeaderComponent, LeftMenuComponent, AdminViewComponent,AppComponent
+	HeaderComponent, LeftMenuComponent, AdminViewComponent, AppComponent
 ];
 
 export const myDirectives = [

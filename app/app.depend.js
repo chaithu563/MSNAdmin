@@ -18,6 +18,7 @@ System.register(['./app.component', './core/header/header', './core/leftmenu/lef
                 adminview_1 = adminview_1_1;
             }],
         execute: function() {
+            //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
             exports_1("myComponents", myComponents = [
                 header_1.HeaderComponent, leftmenu_1.LeftMenuComponent, adminview_1.AdminViewComponent, app_component_1.AppComponent
             ]);
