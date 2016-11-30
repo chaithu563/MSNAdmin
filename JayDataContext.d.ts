@@ -233,6 +233,17 @@ declare module MSNAdmin.Models {
         USERINFO: MSNAdmin.Models.USERINFO;
     }
 
+    export class ADMININFO extends $data.Entity {
+        constructor();
+        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; EMAIL?: Edm.String; PHONE?: Edm.String; PWD?: Edm.String });
+
+        ID: Edm.Decimal;
+        NAME: Edm.String;
+        EMAIL: Edm.String;
+        PHONE: Edm.String;
+        PWD: Edm.String;
+    }
+
     export class USERINFO extends $data.Entity {
         constructor();
         constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; EMAIL?: Edm.String; PHONE?: Edm.String; CITYID?: Edm.Decimal; CITYAREAID?: Edm.Decimal; LOGINTYPEID?: Edm.Int32; CURRENTLOCATION?: Edm.String; CITY?: MSNAdmin.Models.CITY; CITYAREA?: MSNAdmin.Models.CITYAREA; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SOCIALLOGIN?: MSNAdmin.Models.SOCIALLOGIN; USERBIDS?: MSNAdmin.Models.USERBID[]; USERFUNDS?: MSNAdmin.Models.USERFUND[]; USERMEMBERSHIPs?: MSNAdmin.Models.USERMEMBERSHIP[]; USERSERVICEs?: MSNAdmin.Models.USERSERVICE[]; USERSERVICENEEDs?: MSNAdmin.Models.USERSERVICENEED[] });
@@ -381,7 +392,7 @@ declare module MSNAdmin.Models {
 }
 export {MSNAdmin as MSNAdmin}
 
-declare module Default {
+declare module MSN {
 
     export class Container extends $data.EntityContext {
         onReady(): Promise<Container>;
@@ -398,13 +409,14 @@ declare module Default {
         USERBIDS: $data.EntitySet<typeof MSNAdmin.Models.USERBID, MSNAdmin.Models.USERBID>;
         USERFUNDS: $data.EntitySet<typeof MSNAdmin.Models.USERFUND, MSNAdmin.Models.USERFUND>;
         USERINFOes: $data.EntitySet<typeof MSNAdmin.Models.USERINFO, MSNAdmin.Models.USERINFO>;
+        ADMININFOes: $data.EntitySet<typeof MSNAdmin.Models.ADMININFO, MSNAdmin.Models.ADMININFO>;
         USERMEMBERSHIPs: $data.EntitySet<typeof MSNAdmin.Models.USERMEMBERSHIP, MSNAdmin.Models.USERMEMBERSHIP>;
         USERSERVICEs: $data.EntitySet<typeof MSNAdmin.Models.USERSERVICE, MSNAdmin.Models.USERSERVICE>;
         USERSERVICENEEDs: $data.EntitySet<typeof MSNAdmin.Models.USERSERVICENEED, MSNAdmin.Models.USERSERVICENEED>;
     }
 
 }
-export {Default as Default}
+export {MSN as MSN}
 
-export var type: typeof Default.Container;
-export var factory: (config:any) => Default.Container;
+export var type: typeof MSN.Container;
+export var factory: (config:any) => MSN.Container;

@@ -43,6 +43,7 @@ namespace MSNAdmin
             builder.EntitySet<USERBID>("USERBIDS");
             builder.EntitySet<USERFUND>("USERFUNDS");
             builder.EntitySet<USERINFO>("USERINFOes");
+						builder.EntitySet<ADMININFO>("ADMININFOes");
             builder.EntitySet<USERMEMBERSHIP>("USERMEMBERSHIPs");
             builder.EntitySet<USERSERVICE>("USERSERVICEs");
             builder.EntitySet<USERSERVICENEED>("USERSERVICENEEDs");

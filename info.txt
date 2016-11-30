@@ -1,6 +1,9 @@
 http://jaydata.org/download
 JaySvcUtil --metadataUri  http://localhost/MSNAdmin/odata --out MSNCMD.js
 
+In node npm
+JaySvcUtil --metadataUri  http://localhost/MSNAdmin/odata --out MSN.js --namespace MSN
+
  get "Allow-Control-Allow-Origin" plugin
  enableJsonpCallback: true,
 
