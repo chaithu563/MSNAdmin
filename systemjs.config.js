@@ -28,7 +28,9 @@
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
       'jaydata/core': 'lib/jaydata/jaydata.min.js',
-      'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js'
+      'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
+      'ag-grid-ng2': 'node_modules/ag-grid-ng2',
+      'ag-grid': 'node_modules/ag-grid'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -38,8 +40,16 @@
       },
       rxjs: {
         defaultExtension: 'js'
+      },
+      'ag-grid-ng2': {
+      	defaultExtension: "js"
+      },
+      'ag-grid': {
+      	defaultExtension: "js"
       }
+			
     },
+
     meta: {
         //'jaydata/odata': {
         //    format: 'cjs',

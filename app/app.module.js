@@ -1,4 +1,4 @@
-System.register(['@angular/core', '@angular/platform-browser', './app.component', './app.depend', 'ng2-bootstrap', '@angular/common', '@angular/router', './app.routing'], function(exports_1, context_1) {
+System.register(['@angular/core', '@angular/platform-browser', './app.component', './app.depend', 'ng2-bootstrap', '@angular/common', '@angular/router', './app.routing', 'ag-grid-ng2/main'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
@@ -10,7 +10,7 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, platform_browser_1, app_component_1, app_depend_1, ng2_bootstrap_1, common_1, router_1, app_routing_1;
+    var core_1, platform_browser_1, app_component_1, app_depend_1, ng2_bootstrap_1, common_1, router_1, app_routing_1, main_1;
     var AppModule;
     return {
         setters:[
@@ -37,6 +37,9 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
             },
             function (app_routing_1_1) {
                 app_routing_1 = app_routing_1_1;
+            },
+            function (main_1_1) {
+                main_1 = main_1_1;
             }],
         execute: function() {
             AppModule = (function () {
@@ -44,7 +47,7 @@ System.register(['@angular/core', '@angular/platform-browser', './app.component'
                 }
                 AppModule = __decorate([
                     core_1.NgModule({
-                        imports: [router_1.RouterModule, platform_browser_1.BrowserModule, ng2_bootstrap_1.Ng2BootstrapModule, app_routing_1.routing],
+                        imports: [router_1.RouterModule, platform_browser_1.BrowserModule, ng2_bootstrap_1.Ng2BootstrapModule, main_1.AgGridModule.withNg2ComponentSupport(), app_routing_1.routing],
                         declarations: app_depend_1.myComponents.slice(),
                         providers: [{ provide: common_1.APP_BASE_HREF, useValue: '/' }],
                         bootstrap: [app_component_1.AppComponent]
