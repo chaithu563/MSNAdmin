@@ -1,14 +1,15 @@
 ﻿<div>
 
-	<h1> Admin Users</h1>
+	<h3> Admin Users</h3>
 
-	<ag-grid-ng2 #aggrid style="width: 100%; height: 350px;" class="ag-fresh"
+	<ag-grid-ng2 #aggrid style="width: 50%; " class="ag-material"
 							 [gridOptions]="gridOptions"
                      [columnDefs]="columnDefs"
                      [showToolPanel]="showToolPanel"
                      [rowData]="rowData"
-
-                     enableColResize
+							 enableColResize
+                    (cell-clicked)="onCellClicked($event)"  
+							 (rowClicked)="onRowClicked($event)"
                      enableSorting
                      enableFilter
                      groupHeaders
@@ -16,7 +17,9 @@
                      toolPanelSuppressGroups
                      toolPanelSuppressValues
                      debug
-                     rowHeight="22"
+                     rowHeight="32"
                      rowSelection="multiple">
 	</ag-grid-ng2>
+
+	<router-outlet></router-outlet>
 </div>

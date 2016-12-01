@@ -2,7 +2,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import {AppComponent} from './app.component';
 import {AdminUserComponent} from './core/adminview/adminuser/adminuser';
-
+import {EditAdminComponent} from './core/adminview/adminuser/editadmin';
 
 // Route Configuration
 //export const routes: Routes = [
@@ -14,6 +14,15 @@ const appRoutes: Routes = [
     path: 'manageadmins',
     component: AdminUserComponent
   },
+
+	 {
+		 path: 'admindetails/:id', component: EditAdminComponent,
+    //children: [
+    //  { path: '', redirectTo: 'overview', pathMatch: 'full' },
+    //  { path: 'overview', component: EditAdminComponent }
+    // // { path: 'specs', component: Specs }
+    //]
+  }
   //{
   //  	path: 'dashboard',
   //  	component: DashboardComponent

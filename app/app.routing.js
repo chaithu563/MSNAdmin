@@ -1,7 +1,7 @@
-System.register(['@angular/router', './core/adminview/adminuser/adminuser'], function(exports_1, context_1) {
+System.register(['@angular/router', './core/adminview/adminuser/adminuser', './core/adminview/adminuser/editadmin'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, adminuser_1;
+    var router_1, adminuser_1, editadmin_1;
     var appRoutes, routing;
     return {
         setters:[
@@ -10,6 +10,9 @@ System.register(['@angular/router', './core/adminview/adminuser/adminuser'], fun
             },
             function (adminuser_1_1) {
                 adminuser_1 = adminuser_1_1;
+            },
+            function (editadmin_1_1) {
+                editadmin_1 = editadmin_1_1;
             }],
         execute: function() {
             // Route Configuration
@@ -21,6 +24,9 @@ System.register(['@angular/router', './core/adminview/adminuser/adminuser'], fun
                     path: 'manageadmins',
                     component: adminuser_1.AdminUserComponent
                 },
+                {
+                    path: 'admindetails/:id', component: editadmin_1.EditAdminComponent,
+                }
             ];
             exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));
         }

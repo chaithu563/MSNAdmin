@@ -1,12 +1,19 @@
 ﻿import { Component } from '@angular/core';
 import {GridOptions} from 'ag-grid/main';
 import { MSNService } from '../../../services/msn.service';
+import {EditAdminComponent} from './editadmin';
+import {Router} from '@angular/router';
 @Component({
 	selector: 'adminuser',
 	templateUrl: 'app/core/adminview/adminuser/adminuser.html',
-	styleUrls: ['app/core/adminview/adminuser/adminuser.css'],
-	providers: []
+	styleUrls: ['app/core/adminview/adminuser/adminuser.css']
+	//providers: [],
+	//children: [
+	//	{ path: '' },
+	//	{ path: 'manageadmins/:id', component: EditAdminComponent },
+	//]
 })
+
 
 export class AdminUserComponent {
 
@@ -17,7 +24,7 @@ export class AdminUserComponent {
 	private rowCount: string;
 	private adminusers: any;
 	private _this: any;
-	constructor(private mSNService: MSNService) {
+	constructor(private mSNService: MSNService, private router: Router) {
 
 		this.init();
 		this.gridOptions = <GridOptions>{};
@@ -51,6 +58,7 @@ export class AdminUserComponent {
 		for (var i = 0; i < this.adminusers.length; i++) {
 			var userData = this.adminusers;
 			rowData.push({
+				id: userData[i].ID,
 				name: userData[i].NAME,
 				
 				email: userData[i].EMAIL,
@@ -65,7 +73,10 @@ export class AdminUserComponent {
 
 	private createColumnDefs() {
 		this.columnDefs = [
-	
+			{
+				headerName: 'ID', field: "id", width: 150, pinned: true
+			},
+			
 		
 					{
 						headerName: 'User', field: "name", width: 150, pinned: true
@@ -81,6 +92,11 @@ export class AdminUserComponent {
 					{
 						headerName: "Phone", field: "phone", width: 150, pinned: true
 					}
+				,
+
+					{
+						headerName: "Edit", width: 150, pinned: true, cellRenderer: this.editCellRenderer,
+					}
 				
 		];
 	}
@@ -94,6 +110,44 @@ export class AdminUserComponent {
 		}
 	}
 
+	private editCellRenderer(params) {
+		var flag = 
+			`<button type="button" data-action-type="view" class="btn btn-default">
+               View
+             </button>
+
+            <button type="button" data-action-type="remove" class="btn btn-default">
+               Remove
+            </button>`;
+		//var flag = "<a  href='admindetails" + "/" + params.data.id  + "' > edit </a>";
+	return flag ;
+		
+	}
+
+	 public onRowClicked(e) {
+		if (e.event.target !== undefined) {
+			let data = e.data;
+			let actionType = e.event.target.getAttribute("data-action-type");
+
+			switch (actionType) {
+				case "view":
+					return this.onActionViewClick(data);
+				case "remove":
+					return this.onActionRemoveClick(data);
+			}
+		}
+	}
+	 public onActionViewClick(data) {
+
+		 this.router.navigate(['admindetails', data.id ]);
+
+		 }
+
+	 public onActionRemoveClick(data) {
+
+
+
+		 }
 
 
 }
