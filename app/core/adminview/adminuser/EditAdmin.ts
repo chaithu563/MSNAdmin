@@ -15,13 +15,14 @@ export class EditAdminComponent {
 	private rowData: any[];
 	private columnDefs: any[];
 	private rowCount: string;
-	private adminusers: any;
-	private _this: any;
+	private userdetails: any;
+	private userdetailsorig: any;
+	private context: any;
 	constructor(private mSNService: MSNService) {
 
 		this.init();
 
-
+		this.userdetails = [];
 
 		}
 
@@ -32,15 +33,22 @@ export class EditAdminComponent {
 			);
 	}
 	private OnContextLoaded(context: any) {
-
-		context.ADMININFOes.toArray().then(function (admininfoes) {
-
-
-
+		var _this = this;
+		_this.context = context;
+		context.ADMININFOes.first(x=>x.ID==1)
+			.then(function (admininfoes) {
+			
+			_this.userdetailsorig = admininfoes;
+			_this.userdetails = admininfoes;
 		});
 
 	}
 
-
+	private saveUser(user) {
+		this.context.ADMININFOes.attach(this.userdetailsorig)
+		this.userdetailsorig.NAME = user.NAME;
+		console.log(user);
+		this.context.saveChanges();
+		}
 
 }
