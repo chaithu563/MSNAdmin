@@ -34,23 +34,17 @@ System.register(['@angular/core', '../../../services/msn.service'], function(exp
                 EditAdminComponent.prototype.OnContextLoaded = function (context) {
                     var _this = this;
                     _this.context = context;
-                    context.ADMININFOes.find(function (x) { return x.ID == 1; })
+                    context.ADMININFOes.first(function (x) { return x.ID == 1; })
                         .then(function (admininfoes) {
-                        //_this.userdetailsorig = admininfoes;
+                        _this.userdetailsorig = admininfoes;
                         _this.userdetails = admininfoes;
-                        _this.context.saveChanges();
                     });
                 };
                 EditAdminComponent.prototype.saveUser = function (user) {
-                    var _this = this;
-                    this.mSNService.getContext(function (context) { return _this.OnContextLoaded(context); });
-                    //  this.context.ADMININFOes.attachOrGet(this.userdetailsorig);
-                    //  this.userdetailsorig.NAME = this.userdetails.NAME;
-                    //  this.userdetailsorig.ID = Number(user.ID);
-                    //this.userdetailsorig.EMAIL = user.EMAIL;
-                    //this.userdetailsorig.PHONE = user.PHONE;
+                    this.context.ADMININFOes.attach(this.userdetailsorig);
+                    this.userdetailsorig.NAME = user.NAME;
                     console.log(user);
-                    //this.context.saveChanges();
+                    this.context.saveChanges();
                 };
                 EditAdminComponent = __decorate([
                     core_1.Component({

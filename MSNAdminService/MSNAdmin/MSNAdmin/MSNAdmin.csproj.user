@@ -8,7 +8,6 @@
     <WebStackScaffolding_LayoutPageFile />
     <WebStackScaffolding_IsAsyncSelected>False</WebStackScaffolding_IsAsyncSelected>
     <WebStackScaffolding_DbContextTypeFullName>MSNAdmin.Models.myserviceneedEntities</WebStackScaffolding_DbContextTypeFullName>
-    <ProjectView>ShowAllFiles</ProjectView>
   </PropertyGroup>
   <ProjectExtensions>
     <VisualStudio>
