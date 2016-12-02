@@ -36,15 +36,25 @@ System.register(['@angular/core', '../../../services/msn.service'], function(exp
                     _this.context = context;
                     context.ADMININFOes.first(function (x) { return x.ID == 1; })
                         .then(function (admininfoes) {
+                        _this.userdetails = JSON.parse(JSON.stringify(admininfoes));
                         _this.userdetailsorig = admininfoes;
-                        _this.userdetails = admininfoes;
                     });
                 };
                 EditAdminComponent.prototype.saveUser = function (user) {
-                    this.context.ADMININFOes.attach(this.userdetailsorig);
+                    this.context.ADMININFOes.attachOrGet(this.userdetailsorig);
                     this.userdetailsorig.NAME = user.NAME;
+                    //this.userdetailsorig.ID = 2;
+                    //	this.context.ADMININFOes.add(this.userdetailsorig);
                     console.log(user);
                     this.context.saveChanges();
+                    //var _this = this;
+                    //this.context.ADMININFOes.first(x=> x.ID == 1)
+                    //	.then(function (admininfoes) {
+                    //	_this.context.ADMININFOes.attachOrGet(admininfoes)
+                    //	admininfoes.NAME = user.NAME;
+                    ////	console.log(user);
+                    //	_this.context.saveChanges();
+                    //	});
                 };
                 EditAdminComponent = __decorate([
                     core_1.Component({
