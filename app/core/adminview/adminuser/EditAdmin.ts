@@ -27,28 +27,35 @@ export class EditAdminComponent {
 		}
 
 	private init() {
-
-		this.mSNService.getContext(
-			context => this.OnContextLoaded(context)
-			);
+        this.mSNService.getContext(
+            context => this.OnContextLoaded(context)
+        );
+		
 	}
 	private OnContextLoaded(context: any) {
 		var _this = this;
 		_this.context = context;
-		context.ADMININFOes.first(x=>x.ID==1)
+		context.ADMININFOes.find(x=>x.ID==1)
 			.then(function (admininfoes) {
 			
-			_this.userdetailsorig = admininfoes;
-			_this.userdetails = admininfoes;
+			//_this.userdetailsorig = admininfoes;
+            _this.userdetails = admininfoes;
+           // _this.context.saveChanges();
 		});
 
 	}
 
-	private saveUser(user) {
-		this.context.ADMININFOes.attach(this.userdetailsorig)
-		this.userdetailsorig.NAME = user.NAME;
+    private saveUser(user) {
+        this.mSNService.getContext(
+            context => this.OnContextLoaded(context)
+        );
+      //  this.context.ADMININFOes.attachOrGet(this.userdetailsorig);
+      //  this.userdetailsorig.NAME = this.userdetails.NAME;
+      //  this.userdetailsorig.ID = Number(user.ID);
+        //this.userdetailsorig.EMAIL = user.EMAIL;
+        //this.userdetailsorig.PHONE = user.PHONE;
 		console.log(user);
-		this.context.saveChanges();
+		//this.context.saveChanges();
 		}
 
 }

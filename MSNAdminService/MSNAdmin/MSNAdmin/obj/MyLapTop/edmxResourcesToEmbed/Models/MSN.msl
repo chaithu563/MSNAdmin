@@ -157,5 +157,16 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="ADMININFOes">
+      <EntityTypeMapping TypeName="myserviceneedModel.ADMININFO">
+        <MappingFragment StoreEntitySet="ADMININFO">
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>
