@@ -27,7 +27,7 @@
       // other libraries
       'rxjs':                      'npm:rxjs',
       'angular-in-memory-web-api': 'npm:angular-in-memory-web-api/bundles/in-memory-web-api.umd.js',
-      'jaydata/core': 'lib/jaydata/jaydata.min.js',
+      'jaydata/core': 'lib/jaydata/jaydata.js',
       'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
       'ag-grid-ng2': 'node_modules/ag-grid-ng2',
       'ag-grid': 'node_modules/ag-grid'
