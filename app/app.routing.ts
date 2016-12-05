@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {AppComponent} from './app.component';
 import {AdminUserComponent} from './core/adminview/adminuser/adminuser';
 import {EditAdminComponent} from './core/adminview/adminuser/editadmin';
+import {AddAdminComponent} from './core/adminview/adminuser/addadmin';
 
 // Route Configuration
 //export const routes: Routes = [
@@ -13,6 +14,10 @@ const appRoutes: Routes = [
   {
     path: 'manageadmins',
     component: AdminUserComponent
+    },
+  {
+      path: 'addadmin',
+      component: AddAdminComponent
   },
 
 	 {

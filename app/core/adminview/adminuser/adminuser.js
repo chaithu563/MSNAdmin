@@ -39,6 +39,7 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                 };
                 AdminUserComponent.prototype.OnContextLoaded = function (context) {
                     var _this = this;
+                    _this.context = context;
                     context.ADMININFOes.toArray().then(function (admininfoes) {
                         _this.adminusers = admininfoes;
                         console.log(_this.adminusers);
@@ -106,6 +107,11 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                     this.router.navigate(['admindetails', data.id]);
                 };
                 AdminUserComponent.prototype.onActionRemoveClick = function (data) {
+                    var _this = this;
+                    this.context.ADMININFOes.remove({ ID: data.id });
+                    this.context.saveChanges().then(function () {
+                        _this.init();
+                    });
                 };
                 AdminUserComponent = __decorate([
                     core_1.Component({

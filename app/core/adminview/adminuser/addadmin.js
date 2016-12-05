@@ -11,7 +11,7 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, msn_service_1, router_1;
-    var EditAdminComponent;
+    var AddAdminComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -24,53 +24,49 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                 router_1 = router_1_1;
             }],
         execute: function() {
-            EditAdminComponent = (function () {
-                function EditAdminComponent(mSNService, route, router) {
+            AddAdminComponent = (function () {
+                function AddAdminComponent(mSNService, router) {
                     this.mSNService = mSNService;
-                    this.route = route;
                     this.router = router;
                     this.init();
                     this.userdetails = [];
                 }
-                EditAdminComponent.prototype.init = function () {
+                AddAdminComponent.prototype.init = function () {
                     var _this = this;
                     this.mSNService.getContext(function (context) { return _this.OnContextLoaded(context); });
                 };
-                EditAdminComponent.prototype.OnContextLoaded = function (context) {
+                AddAdminComponent.prototype.OnContextLoaded = function (context) {
                     var _this = this;
                     _this.context = context;
-                    var adminid = _this.route.snapshot.params['id'];
-                    _this.context.ADMININFOes.first("x=> x.ID == this.Adminid", { Adminid: adminid })
-                        .then(function (admininfoes) {
-                        _this.userdetails = JSON.parse(JSON.stringify(admininfoes));
-                        _this.userdetailsorig = admininfoes;
-                    });
                 };
-                EditAdminComponent.prototype.saveUser = function (user) {
-                    this.context.ADMININFOes.attachOrGet(this.userdetailsorig);
+                AddAdminComponent.prototype.saveUser = function (user) {
+                    // var userdetails=[];
                     var _this = this;
-                    this.userdetailsorig.NAME = user.NAME;
-                    this.userdetailsorig.EMAIL = user.EMAIL;
-                    this.userdetailsorig.PHONE = user.PHONE;
-                    this.userdetailsorig.PWD = user.PWD;
+                    this.userdetails.NAME = user.NAME;
+                    this.userdetails.EMAIL = user.EMAIL;
+                    this.userdetails.PHONE = user.PHONE;
+                    this.userdetails.PWD = user.PWD;
+                    this.context.ADMININFOes.add(this.userdetails);
                     //this.userdetailsorig.ID = 2;
                     //	this.context.ADMININFOes.add(this.userdetailsorig);
                     console.log(user);
+                    //this.context.saveChanges();
+                    //this.router.navigate(['manageadmins']);
                     this.context.saveChanges().then(function () {
                         _this.router.navigate(['manageadmins']);
                     });
                 };
-                EditAdminComponent = __decorate([
+                AddAdminComponent = __decorate([
                     core_1.Component({
-                        selector: 'editadmin',
-                        templateUrl: 'app/core/adminview/adminuser/editadmin.html',
+                        selector: 'addadmin',
+                        templateUrl: 'app/core/adminview/adminuser/addadmin.html',
                     }), 
-                    __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.ActivatedRoute, router_1.Router])
-                ], EditAdminComponent);
-                return EditAdminComponent;
+                    __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router])
+                ], AddAdminComponent);
+                return AddAdminComponent;
             }());
-            exports_1("EditAdminComponent", EditAdminComponent);
+            exports_1("AddAdminComponent", AddAdminComponent);
         }
     }
 });
-//# sourceMappingURL=editadmin.js.map
+//# sourceMappingURL=addadmin.js.map

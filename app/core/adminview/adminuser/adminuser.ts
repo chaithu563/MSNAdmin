@@ -22,7 +22,8 @@ export class AdminUserComponent {
 	private rowData: any[];
 	private columnDefs: any[];
 	private rowCount: string;
-	private adminusers: any;
+    private adminusers: any;
+    private context: any;
 	private _this: any;
 	constructor(private mSNService: MSNService, private router: Router) {
 
@@ -41,7 +42,8 @@ export class AdminUserComponent {
 			);
 	}
 	private OnContextLoaded(context: any) {
-		var _this = this;
+        var _this = this;
+        _this.context = context;
 		context.ADMININFOes.toArray().then(function (admininfoes) {
 
 			_this.adminusers = admininfoes;
@@ -144,9 +146,12 @@ export class AdminUserComponent {
 		 }
 
 	 public onActionRemoveClick(data) {
-
-
-
+         var _this = this;
+         this.context.ADMININFOes.remove({ ID: data.id });
+         this.context.saveChanges().then(function () {
+             _this.init();
+         });             
+        
 		 }
 
 
