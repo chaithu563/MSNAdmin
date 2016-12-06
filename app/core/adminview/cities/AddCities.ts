@@ -3,27 +3,27 @@ import {GridOptions} from 'ag-grid/main';
 import { MSNService } from '../../../services/msn.service';
 import {Router} from '@angular/router';
 @Component({
-    selector: 'addadmin',
-    templateUrl: 'app/core/adminview/adminuser/addadmin.html',
+    selector: 'addcity',
+    templateUrl: 'app/core/adminview/cities/AddCities.html',
 
 })
 
 
-export class AddAdminComponent {
+export class AddCitiesComponent {
 
-   
-   
+
+
     private rowData: any[];
     private columnDefs: any[];
     private rowCount: string;
-    private userdetails: any;
+    private city: any;
     private userdetailsorig: any;
     private context: any;
     constructor(private mSNService: MSNService, private router: Router) {
 
         this.init();
 
-        this.userdetails = [];
+        this.city = [];
 
     }
 
@@ -36,28 +36,26 @@ export class AddAdminComponent {
     private OnContextLoaded(context: any) {
         var _this = this;
         _this.context = context;
-      
+
 
     }
 
-    private saveUser(user) {
+    private saveCity(city) {
 
-       // var userdetails=[];
+        // var userdetails=[];
       
         var _this = this;
-        this.userdetails.NAME = user.NAME;
-        this.userdetails.EMAIL = user.EMAIL;
-        this.userdetails.PHONE = user.PHONE;
-        this.userdetails.PWD = user.PWD;
-        this.context.ADMININFOes.add(this.userdetails);
+        this.city.NAME = city.NAME;
+       
+        this.context.CITies.add(this.city);
         //this.userdetailsorig.ID = 2;
         //	this.context.ADMININFOes.add(this.userdetailsorig);
-        console.log(user);
+        console.log(city);
         //this.context.saveChanges();
 
         //this.router.navigate(['manageadmins']);
         this.context.saveChanges().then(function () {
-            _this.router.navigate(['manageadmins']);
+            _this.router.navigate(['cities']);
         });
 
     }

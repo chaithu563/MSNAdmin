@@ -1,7 +1,7 @@
-System.register(['@angular/router', './core/adminview/adminuser/adminuser', './core/adminview/adminuser/editadmin', './core/adminview/adminuser/addadmin'], function(exports_1, context_1) {
+System.register(['@angular/router', './core/adminview/adminuser/adminuser', './core/adminview/adminuser/editadmin', './core/adminview/adminuser/addadmin', './core/adminview/cities/cities', './core/adminview/cities/EditCity', './core/adminview/cities/AddCities'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, adminuser_1, editadmin_1, addadmin_1;
+    var router_1, adminuser_1, editadmin_1, addadmin_1, cities_1, EditCity_1, AddCities_1;
     var appRoutes, routing;
     return {
         setters:[
@@ -16,6 +16,15 @@ System.register(['@angular/router', './core/adminview/adminuser/adminuser', './c
             },
             function (addadmin_1_1) {
                 addadmin_1 = addadmin_1_1;
+            },
+            function (cities_1_1) {
+                cities_1 = cities_1_1;
+            },
+            function (EditCity_1_1) {
+                EditCity_1 = EditCity_1_1;
+            },
+            function (AddCities_1_1) {
+                AddCities_1 = AddCities_1_1;
             }],
         execute: function() {
             // Route Configuration
@@ -32,7 +41,18 @@ System.register(['@angular/router', './core/adminview/adminuser/adminuser', './c
                     component: addadmin_1.AddAdminComponent
                 },
                 {
-                    path: 'admindetails/:id', component: editadmin_1.EditAdminComponent,
+                    path: 'admindetails/:id', component: editadmin_1.EditAdminComponent
+                },
+                {
+                    path: 'cities',
+                    component: cities_1.CitiesComponent
+                },
+                {
+                    path: 'addcities',
+                    component: AddCities_1.AddCitiesComponent
+                },
+                {
+                    path: 'cities/:id', component: EditCity_1.EditCityComponent
                 }
             ];
             exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));

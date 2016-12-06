@@ -5,6 +5,10 @@ import {AdminUserComponent} from './core/adminview/adminuser/adminuser';
 import {EditAdminComponent} from './core/adminview/adminuser/editadmin';
 import {AddAdminComponent} from './core/adminview/adminuser/addadmin';
 
+import {CitiesComponent} from './core/adminview/cities/cities';
+import {EditCityComponent} from './core/adminview/cities/EditCity';
+import {AddCitiesComponent} from './core/adminview/cities/AddCities';
+
 // Route Configuration
 //export const routes: Routes = [
 //		{ path: '/manageadmins', component: AdminUserComponent }
@@ -21,27 +25,23 @@ const appRoutes: Routes = [
   },
 
 	 {
-		 path: 'admindetails/:id', component: EditAdminComponent,
-    //children: [
-    //  { path: '', redirectTo: 'overview', pathMatch: 'full' },
-    //  { path: 'overview', component: EditAdminComponent }
-    // // { path: 'specs', component: Specs }
-    //]
-  }
-  //{
-  //  	path: 'dashboard',
-  //  	component: DashboardComponent
-  //  },
-	//{
-	//	path: '',
-	//	component: AppComponent
-	//	//redirectTo: '/dashboard',
-	//	//pathMatch: 'full'
-	//},
-	//{
-	//	path: 'detail/:id',
-	//	component: HeroDetailComponent
-	//},
+		 path: 'admindetails/:id', component: EditAdminComponent
+   
+  },
+     {
+         path: 'cities',
+         component: CitiesComponent
+     },
+     {
+         path: 'addcities',
+         component: AddCitiesComponent
+     },
+
+     {
+         path: 'cities/:id', component: EditCityComponent
+
+     }
+ 
 ];
 
 export const routing: ModuleWithProviders = RouterModule.forRoot(appRoutes);
