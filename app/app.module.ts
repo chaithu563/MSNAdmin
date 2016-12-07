@@ -7,8 +7,9 @@ import {APP_BASE_HREF} from '@angular/common';
 import { RouterModule, Routes } from '@angular/router';
 import { routing }              from './app.routing';
 import {AgGridModule} from 'ag-grid-ng2/main';
+import {DropdownModule} from "ng2-dropdown";
 @NgModule({
-	imports: [RouterModule, BrowserModule, Ng2BootstrapModule, AgGridModule.withNg2ComponentSupport(), routing],
+    imports: [RouterModule, BrowserModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withNg2ComponentSupport(), routing],
 	declarations: [...myComponents],
 	 providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     bootstrap: [AppComponent]

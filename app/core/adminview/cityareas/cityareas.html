@@ -1,0 +1,40 @@
+﻿<div>
+
+
+    <div class="selectCity">
+        <div class="dropdown" dropdown [dropdownToggle]="false" (onOpen)="getCitiesOnOpen()" (onClose)="doSomeActionOnClose()">
+            <button class="btn btn-primary" dropdown-open>Select City</button>
+            <ul class="dropdown-menu">
+
+                <li *ngFor="let item of cities; let i = index" (click)="onCityChange(item.id)">
+                    <a>  {{item.NAME}}  </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="cityAreas">
+
+        <h3> City Areas </h3>
+
+        <ag-grid-ng2 #aggrid style="width: 70%; " class="ag-material"
+                     [gridOptions]="gridOptions"
+                     [columnDefs]="columnDefs"
+                     [showToolPanel]="showToolPanel"
+                     [rowData]="rowData"
+                     enableColResize
+                     (cell-clicked)="onCellClicked($event)"
+                     (rowClicked)="onRowClicked($event)"
+                     enableSorting
+                     enableFilter
+                     groupHeaders
+                     suppressRowClickSelection
+                     toolPanelSuppressGroups
+                     toolPanelSuppressValues
+                     debug
+                     rowHeight="32"
+                     rowSelection="multiple">
+        </ag-grid-ng2>
+    </div>
+
+</div>
