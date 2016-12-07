@@ -35,12 +35,12 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                 }
                 CityAreasComponent.prototype.onCityChange = function (id) {
                     var _this = this;
-                    this.mSNService.getContext(function (context) { return _this.OnContextLoaded(context); });
+                    this.mSNService.getContext(function (context) { return _this.OnContextLoaded(context, id); });
                 };
-                CityAreasComponent.prototype.OnContextLoaded = function (context) {
+                CityAreasComponent.prototype.OnContextLoaded = function (context, id) {
                     var _this = this;
                     _this.context = context;
-                    context.CITYAREAs.toArray().then(function (areas) {
+                    context.CITYAREAs.filter("x=>x.ID==this.cityid", { cityid: parseFloat(id.toString()) }).toArray().then(function (areas) {
                         _this.areas = areas;
                         console.log(_this.areas);
                         _this.createRowData();

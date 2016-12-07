@@ -6,7 +6,7 @@
             <button class="btn btn-primary" dropdown-open>Select City</button>
             <ul class="dropdown-menu">
 
-                <li *ngFor="let item of cities; let i = index" (click)="onCityChange(item.id)">
+                <li *ngFor="let item of cities; let i = index" (click)="onCityChange(item.ID)">
                     <a>  {{item.NAME}}  </a>
                 </li>
             </ul>

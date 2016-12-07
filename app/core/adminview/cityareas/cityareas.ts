@@ -39,13 +39,13 @@ export class CityAreasComponent {
     private onCityChange(id) {
 
         this.mSNService.getContext(
-            context => this.OnContextLoaded(context)
+            context => this.OnContextLoaded(context,id)
         );
     }
-    private OnContextLoaded(context: any) {
+    private OnContextLoaded(context: any,id: number) {
         var _this = this;
         _this.context = context;
-        context.CITYAREAs.toArray().then(function (areas) {
+        context.CITYAREAs.filter("x=>x.ID==this.cityid", { cityid: parseFloat(id.toString())}).toArray().then(function (areas) {
 
             _this.areas = areas;
             console.log(_this.areas);
