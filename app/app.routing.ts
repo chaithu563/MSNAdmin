@@ -13,6 +13,10 @@ import {CityAreasComponent} from './core/adminview/cityareas/cityareas';
 import {EditAreaComponent} from './core/adminview/cityareas/editarea';
 import {AddAreaComponent} from './core/adminview/cityareas/addarea';
 
+import {MembershipComponent} from './core/adminview/membership/membership';
+import {EditMembershipComponent} from './core/adminview/membership/editmembership';
+import {AddMembershipComponent} from './core/adminview/membership/addmembership';
+
 // Route Configuration
 //export const routes: Routes = [
 //		{ path: '/manageadmins', component: AdminUserComponent }
@@ -60,6 +64,20 @@ const appRoutes: Routes = [
      {
          path: 'addarea',
          component: AddAreaComponent
+     },
+
+     {
+         path: 'memberships',
+         component: MembershipComponent
+     },
+     {
+         path: 'addmembership',
+         component: AddMembershipComponent
+     },
+
+     {
+         path: 'membership/:id', component: EditMembershipComponent
+
      },
 
  

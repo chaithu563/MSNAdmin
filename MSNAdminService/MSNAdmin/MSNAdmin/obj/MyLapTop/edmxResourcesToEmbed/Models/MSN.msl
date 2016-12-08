@@ -121,6 +121,8 @@
     <EntitySetMapping Name="USERMEMBERSHIPs">
       <EntityTypeMapping TypeName="myserviceneedModel.USERMEMBERSHIP">
         <MappingFragment StoreEntitySet="USERMEMBERSHIP">
+          <ScalarProperty Name="ENDDATE" ColumnName="ENDDATE" />
+          <ScalarProperty Name="STARTDATE" ColumnName="STARTDATE" />
           <ScalarProperty Name="ID" ColumnName="ID" />
           <ScalarProperty Name="USERID" ColumnName="USERID" />
           <ScalarProperty Name="MEMBERSHIPID" ColumnName="MEMBERSHIPID" />
@@ -154,6 +156,17 @@
           <ScalarProperty Name="SERVICETIMETYPE" ColumnName="SERVICETIMETYPE" />
           <ScalarProperty Name="SERVICENEEDEDDATE" ColumnName="SERVICENEEDEDDATE" />
           <ScalarProperty Name="ALLOCATEDBIDID" ColumnName="ALLOCATEDBIDID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ADMININFOes">
+      <EntityTypeMapping TypeName="myserviceneedModel.ADMININFO">
+        <MappingFragment StoreEntitySet="ADMININFO">
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+          <ScalarProperty Name="PHONE" ColumnName="PHONE" />
+          <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
+          <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
