@@ -18,9 +18,16 @@ import {MembershipComponent} from './core/adminview/membership/membership';
 import {EditMembershipComponent} from './core/adminview/membership/editmembership';
 import {AddMembershipComponent} from './core/adminview/membership/addmembership';
 
+
+import {CategoriesComponent} from './core/adminview/categories/categories';
+import {EditCategoriesComponent} from './core/adminview/categories/editcategories';
+import {AddCategoriesComponent} from './core/adminview/categories/addcategories';
+
+
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
-    HeaderComponent, LeftMenuComponent, AdminViewComponent, AppComponent, AdminUserComponent, EditAdminComponent, AddAdminComponent, CitiesComponent, EditCityComponent, AddCitiesComponent, CityAreasComponent, EditAreaComponent, AddAreaComponent, MembershipComponent, EditMembershipComponent, AddMembershipComponent
+    HeaderComponent, LeftMenuComponent, AdminViewComponent, AppComponent, AdminUserComponent, EditAdminComponent, AddAdminComponent, CitiesComponent, EditCityComponent, AddCitiesComponent, CityAreasComponent, EditAreaComponent, AddAreaComponent,
+    MembershipComponent, EditMembershipComponent, AddMembershipComponent, CategoriesComponent, EditCategoriesComponent, AddCategoriesComponent
 ];
 
 export const myDirectives = [

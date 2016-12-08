@@ -1,0 +1,28 @@
+﻿<div>
+    <a [routerLink]="['/addcategories']">
+        Add Service Categories
+    </a>
+
+    <h3> Service Categories </h3>
+
+    <ag-grid-ng2 #aggrid style="width: 70%; " class="ag-material"
+                 [gridOptions]="gridOptions"
+                 [columnDefs]="columnDefs"
+                 [showToolPanel]="showToolPanel"
+                 [rowData]="rowData"
+                 enableColResize
+                 (cell-clicked)="onCellClicked($event)"
+                 (rowClicked)="onRowClicked($event)"
+                 enableSorting
+                 enableFilter
+                 groupHeaders
+                 suppressRowClickSelection
+                 toolPanelSuppressGroups
+                 toolPanelSuppressValues
+                 debug
+                 rowHeight="32"
+                 rowSelection="multiple">
+    </ag-grid-ng2>
+
+    <router-outlet></router-outlet>
+</div>

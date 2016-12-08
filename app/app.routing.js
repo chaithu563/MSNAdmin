@@ -1,7 +1,7 @@
-System.register(['@angular/router', './core/adminview/adminuser/adminuser', './core/adminview/adminuser/editadmin', './core/adminview/adminuser/addadmin', './core/adminview/cities/cities', './core/adminview/cities/EditCity', './core/adminview/cities/AddCities', './core/adminview/cityareas/cityareas', './core/adminview/cityareas/editarea', './core/adminview/cityareas/addarea', './core/adminview/membership/membership', './core/adminview/membership/editmembership', './core/adminview/membership/addmembership'], function(exports_1, context_1) {
+System.register(['@angular/router', './core/adminview/adminuser/adminuser', './core/adminview/adminuser/editadmin', './core/adminview/adminuser/addadmin', './core/adminview/cities/cities', './core/adminview/cities/EditCity', './core/adminview/cities/AddCities', './core/adminview/cityareas/cityareas', './core/adminview/cityareas/editarea', './core/adminview/cityareas/addarea', './core/adminview/membership/membership', './core/adminview/membership/editmembership', './core/adminview/membership/addmembership', './core/adminview/categories/categories', './core/adminview/categories/editcategories', './core/adminview/categories/addcategories'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, adminuser_1, editadmin_1, addadmin_1, cities_1, EditCity_1, AddCities_1, cityareas_1, editarea_1, addarea_1, membership_1, editmembership_1, addmembership_1;
+    var router_1, adminuser_1, editadmin_1, addadmin_1, cities_1, EditCity_1, AddCities_1, cityareas_1, editarea_1, addarea_1, membership_1, editmembership_1, addmembership_1, categories_1, editcategories_1, addcategories_1;
     var appRoutes, routing;
     return {
         setters:[
@@ -43,6 +43,15 @@ System.register(['@angular/router', './core/adminview/adminuser/adminuser', './c
             },
             function (addmembership_1_1) {
                 addmembership_1 = addmembership_1_1;
+            },
+            function (categories_1_1) {
+                categories_1 = categories_1_1;
+            },
+            function (editcategories_1_1) {
+                editcategories_1 = editcategories_1_1;
+            },
+            function (addcategories_1_1) {
+                addcategories_1 = addcategories_1_1;
             }],
         execute: function() {
             // Route Configuration
@@ -97,6 +106,17 @@ System.register(['@angular/router', './core/adminview/adminuser/adminuser', './c
                 },
                 {
                     path: 'membership/:id', component: editmembership_1.EditMembershipComponent
+                },
+                {
+                    path: 'categories',
+                    component: categories_1.CategoriesComponent
+                },
+                {
+                    path: 'addcategories',
+                    component: addcategories_1.AddCategoriesComponent
+                },
+                {
+                    path: 'categories/:id', component: editcategories_1.EditCategoriesComponent
                 },
             ];
             exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));

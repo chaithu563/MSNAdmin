@@ -17,6 +17,10 @@ import {MembershipComponent} from './core/adminview/membership/membership';
 import {EditMembershipComponent} from './core/adminview/membership/editmembership';
 import {AddMembershipComponent} from './core/adminview/membership/addmembership';
 
+import {CategoriesComponent} from './core/adminview/categories/categories';
+import {EditCategoriesComponent} from './core/adminview/categories/editcategories';
+import {AddCategoriesComponent} from './core/adminview/categories/addcategories';
+
 // Route Configuration
 //export const routes: Routes = [
 //		{ path: '/manageadmins', component: AdminUserComponent }
@@ -77,6 +81,20 @@ const appRoutes: Routes = [
 
      {
          path: 'membership/:id', component: EditMembershipComponent
+
+     },
+
+     {
+         path: 'categories',
+         component: CategoriesComponent
+     },
+     {
+         path: 'addcategories',
+         component: AddCategoriesComponent
+     },
+
+     {
+         path: 'categories/:id', component: EditCategoriesComponent
 
      },
 
