@@ -6,7 +6,10 @@
 			<accordion-panel   heading="users"> <a [routerLink]="['/users']">Handle Users </a>  </accordion-panel>
 			<accordion-panel heading="Cities">  <a [routerLink]="['/cities']"> Handle Cities </a></accordion-panel>
 			<accordion-panel heading="Areas"><a [routerLink]="['/cityareas']">Manage Areas in City </a> </accordion-panel>
-			<accordion-panel heading="MemberShips"> Manage User Memberships</accordion-panel>
+			<accordion-panel heading="MemberShips">
+            <a [routerLink]="['/managememberships']">Manage Membership </a>
+                <a [routerLink]="['/manageusermemberships']">Manage User Membership </a>
+            </accordion-panel>
 			<accordion-panel heading="Service Time Type">What Time type service user can have</accordion-panel>
 			<accordion-panel heading="Social Logins">Manage Social Login Options</accordion-panel>
 			<accordion-panel heading="Service Category"> Manage Service Categories available</accordion-panel>

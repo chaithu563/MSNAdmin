@@ -1,0 +1,22 @@
+﻿
+<div>
+
+    <h3> Add Area</h3>
+
+    NAME <input type="text" [(ngModel)]="area.NAME" /> <br />
+    DESCRIPTION <input type="text" [(ngModel)]="area.DESCRIPTION" /> <br />
+   SELECT CITY
+     <div class="selectCity">
+        <div class="dropdown" dropdown [dropdownToggle]="false" (onOpen)="getCitiesOnOpen()" (onClose)="doSomeActionOnClose()">
+            <button class="btn btn-primary" dropdown-open>Select City</button>
+            <ul class="dropdown-list">
+
+                <li *ngFor="let item of cities; let i = index" (click)="onCityChange(item.ID)">
+                    <a>  {{item.NAME}}  </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <input type="submit" (click)="saveArea(area)" />
+</div>

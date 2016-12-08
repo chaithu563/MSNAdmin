@@ -11,3 +11,10 @@ http://www.primefaces.org/primeng/#/accordion   sample page for admin
 
 routing
 https://johnpapa.net/introducing-angular-modules-routing-module/
+
+
+Membership Types
+
+Free --initially for all users
+Basic -- monthly 10 bids free
+Premium-- depends on user payments

@@ -1,7 +1,7 @@
-System.register(['@angular/router', './core/adminview/adminuser/adminuser', './core/adminview/adminuser/editadmin', './core/adminview/adminuser/addadmin', './core/adminview/cities/cities', './core/adminview/cities/EditCity', './core/adminview/cities/AddCities', './core/adminview/cityareas/cityareas'], function(exports_1, context_1) {
+System.register(['@angular/router', './core/adminview/adminuser/adminuser', './core/adminview/adminuser/editadmin', './core/adminview/adminuser/addadmin', './core/adminview/cities/cities', './core/adminview/cities/EditCity', './core/adminview/cities/AddCities', './core/adminview/cityareas/cityareas', './core/adminview/cityareas/editarea', './core/adminview/cityareas/addarea'], function(exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var router_1, adminuser_1, editadmin_1, addadmin_1, cities_1, EditCity_1, AddCities_1, cityareas_1;
+    var router_1, adminuser_1, editadmin_1, addadmin_1, cities_1, EditCity_1, AddCities_1, cityareas_1, editarea_1, addarea_1;
     var appRoutes, routing;
     return {
         setters:[
@@ -28,6 +28,12 @@ System.register(['@angular/router', './core/adminview/adminuser/adminuser', './c
             },
             function (cityareas_1_1) {
                 cityareas_1 = cityareas_1_1;
+            },
+            function (editarea_1_1) {
+                editarea_1 = editarea_1_1;
+            },
+            function (addarea_1_1) {
+                addarea_1 = addarea_1_1;
             }],
         execute: function() {
             // Route Configuration
@@ -60,6 +66,17 @@ System.register(['@angular/router', './core/adminview/adminuser/adminuser', './c
                 {
                     path: 'cityareas',
                     component: cityareas_1.CityAreasComponent
+                },
+                {
+                    path: 'cities/:id', component: EditCity_1.EditCityComponent
+                },
+                {
+                    path: 'area/:id',
+                    component: editarea_1.EditAreaComponent
+                },
+                {
+                    path: 'addarea',
+                    component: addarea_1.AddAreaComponent
                 },
             ];
             exports_1("routing", routing = router_1.RouterModule.forRoot(appRoutes));

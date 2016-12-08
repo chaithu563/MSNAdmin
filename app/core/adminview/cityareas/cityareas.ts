@@ -45,7 +45,7 @@ export class CityAreasComponent {
     private OnContextLoaded(context: any,id: number) {
         var _this = this;
         _this.context = context;
-        context.CITYAREAs.filter("x=>x.ID==this.cityid", { cityid: parseFloat(id.toString())}).toArray().then(function (areas) {
+        context.CITYAREAs.filter("x=>x.CITYID==this.cityid", { cityid: parseFloat(id.toString())}).toArray().then(function (areas) {
 
             _this.areas = areas;
             console.log(_this.areas);
@@ -63,6 +63,7 @@ export class CityAreasComponent {
             rowData.push({
                 id: area[i].ID,
                 name: area[i].NAME,
+                cityid: area[i].CITYID,
                 desc: area[i].DESCRIPTION
 
 
@@ -136,7 +137,7 @@ export class CityAreasComponent {
     }
     public onActionViewClick(data) {
 
-        this.router.navigate(['areas', data.id]);
+        this.router.navigate(['area', data.id]);
 
     }
 
@@ -144,7 +145,7 @@ export class CityAreasComponent {
         var _this = this;
         this.context.CITYAREAs.remove({ ID: data.id });
         this.context.saveChanges().then(function () {
-            _this.getCitiesOnOpen();
+            _this.onCityChange(data.cityid);
         });
 
     }

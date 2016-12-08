@@ -40,7 +40,7 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                 CityAreasComponent.prototype.OnContextLoaded = function (context, id) {
                     var _this = this;
                     _this.context = context;
-                    context.CITYAREAs.filter("x=>x.ID==this.cityid", { cityid: parseFloat(id.toString()) }).toArray().then(function (areas) {
+                    context.CITYAREAs.filter("x=>x.CITYID==this.cityid", { cityid: parseFloat(id.toString()) }).toArray().then(function (areas) {
                         _this.areas = areas;
                         console.log(_this.areas);
                         _this.createRowData();
@@ -53,6 +53,7 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                         rowData.push({
                             id: area[i].ID,
                             name: area[i].NAME,
+                            cityid: area[i].CITYID,
                             desc: area[i].DESCRIPTION
                         });
                     }
@@ -100,13 +101,13 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                     }
                 };
                 CityAreasComponent.prototype.onActionViewClick = function (data) {
-                    this.router.navigate(['areas', data.id]);
+                    this.router.navigate(['area', data.id]);
                 };
                 CityAreasComponent.prototype.onActionRemoveClick = function (data) {
                     var _this = this;
                     this.context.CITYAREAs.remove({ ID: data.id });
                     this.context.saveChanges().then(function () {
-                        _this.getCitiesOnOpen();
+                        _this.onCityChange(data.cityid);
                     });
                 };
                 CityAreasComponent.prototype.OnCitiesContextLoaded = function (context) {

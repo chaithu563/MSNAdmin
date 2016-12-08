@@ -10,6 +10,8 @@ import {EditCityComponent} from './core/adminview/cities/EditCity';
 import {AddCitiesComponent} from './core/adminview/cities/AddCities';
 
 import {CityAreasComponent} from './core/adminview/cityareas/cityareas';
+import {EditAreaComponent} from './core/adminview/cityareas/editarea';
+import {AddAreaComponent} from './core/adminview/cityareas/addarea';
 
 // Route Configuration
 //export const routes: Routes = [
@@ -42,11 +44,24 @@ const appRoutes: Routes = [
      {
          path: 'cities/:id', component: EditCityComponent
 
-     }
+     },
      {
          path: 'cityareas',
          component: CityAreasComponent
      },
+     {
+         path: 'cities/:id', component: EditCityComponent
+
+     },
+     {
+         path: 'area/:id',
+         component: EditAreaComponent
+     },
+     {
+         path: 'addarea',
+         component: AddAreaComponent
+     },
+
  
 ];
 
