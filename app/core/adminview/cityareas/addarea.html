@@ -5,17 +5,16 @@
 
     NAME <input type="text" [(ngModel)]="area.NAME" /> <br />
     DESCRIPTION <input type="text" [(ngModel)]="area.DESCRIPTION" /> <br />
-   SELECT CITY
+ 
      <div class="selectCity">
-        <div class="dropdown" dropdown [dropdownToggle]="false" (onOpen)="getCitiesOnOpen()" (onClose)="doSomeActionOnClose()">
-            <button class="btn btn-primary" dropdown-open>Select City</button>
-            <ul class="dropdown-list">
-
-                <li *ngFor="let item of cities; let i = index" (click)="onCityChange(item.ID)">
-                    <a>  {{item.NAME}}  </a>
-                </li>
-            </ul>
-        </div>
+      
+         SELECT CITY
+         <select   (change)="onCityChange($event.target.value)" >
+             <option  selected>
+                  Choose City
+             </option>
+             <option *ngFor="let x of cities" [value]="x.ID"  >{{x.NAME}}</option>
+         </select>
 
     </div>
     <input type="submit" (click)="saveArea(area)" />

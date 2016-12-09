@@ -4,27 +4,27 @@ import { MSNService } from '../../../services/msn.service';
 import {Router} from '@angular/router';
 @Component({
     selector: 'addcity',
-    templateUrl: 'app/core/adminview/cityareas/addarea.html',
+    templateUrl: 'app/core/adminview/subcategories/addsubcategories.html',
 
 })
 
 
-export class AddAreaComponent {
+export class AddSubCategoriesComponent {
 
 
 
     private rowData: any[];
     private columnDefs: any[];
     private rowCount: string;
-    private area: any;
-    private cities: any;
-    private userdetailsorig: any;
+    private subcategory: any;
+    private categories: any;
+    private subcategoryorig: any;
     private context: any;
     constructor(private mSNService: MSNService, private router: Router) {
 
         this.init();
-        this.getCitiesOnOpen();
-        this.area = [];
+        this.getCategoriesOnOpen();
+        this.subcategory = [];
 
     }
 
@@ -41,58 +41,58 @@ export class AddAreaComponent {
 
     }
 
-    private OnCitiesContextLoaded(context) {
+    private OnCategoriesContextLoaded(context) {
 
         var _this = this;
         _this.context = context;
-        context.CITies.toArray().then(function (cities) {
+        context.SERVICECATEGORies.toArray().then(function (categories) {
 
-            _this.cities = cities;
-            console.log(_this.cities);
+            _this.categories = categories;
+            console.log(_this.categories);
             // _this.createRowData();
 
         });
 
     }
 
-    private loadCitiesContext() {
+    private loadCategoriesContext() {
 
         this.mSNService.getContext(
-            context => this.OnCitiesContextLoaded(context)
+            context => this.OnCategoriesContextLoaded(context)
         );
 
     }
 
-    private getCitiesOnOpen() {
+    private getCategoriesOnOpen() {
 
-        this.loadCitiesContext();
+        this.loadCategoriesContext();
 
     }
 
-    private saveArea(area) {
+    private saveSubCategory(subcategory) {
 
         // var userdetails=[];
       
         var _this = this;
-        this.area.NAME = area.NAME;
-        this.area.DESCRIPTION = area.DESCRIPTION;
-        this.area.CITYID = area.CITYID;
-        this.context.CITYAREAs.add(this.area);
+        this.subcategory.NAME = subcategory.NAME;
+        this.subcategory.DESCRIPTION = subcategory.DESCRIPTION;
+        this.subcategory.SERVICECATEGORYID = subcategory.SERVICECATEGORYID;
+        this.context.SERVICESUBCATEGORies.add(this.subcategory);
         //this.userdetailsorig.ID = 2;
         //	this.context.ADMININFOes.add(this.userdetailsorig);
-        console.log(area);
+        console.log(subcategory);
         //this.context.saveChanges();
 
         //this.router.navigate(['cityareas']);
         this.context.saveChanges().then(function () {
-            _this.router.navigate(['cityareas']);
+            _this.router.navigate(['subcategories']);
         });
 
     }
 
-    private onCityChange(id) {
+    private onCategoryChange(id) {
 
-        this.area.CITYID = id;
+        this.subcategory.SERVICECATEGORYID = id;
     }
 }
    

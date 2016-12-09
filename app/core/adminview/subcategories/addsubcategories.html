@@ -1,0 +1,21 @@
+﻿
+<div>
+
+    <h3> Add Sub Category</h3>
+
+    NAME <input type="text" [(ngModel)]="subcategory.NAME" /> <br />
+    DESCRIPTION <input type="text" [(ngModel)]="subcategory.DESCRIPTION" /> <br />
+
+    <div class="selectCategory">
+
+        SELECT CATEGORY
+        <select (change)="onCategoryChange($event.target.value)">
+            <option selected>
+                Choose City
+            </option>
+            <option *ngFor="let x of categories" [value]="x.ID">{{x.NAME}}</option>
+        </select>
+
+    </div>
+    <input type="submit" (click)="saveSubCategory(subcategory)" />
+</div>

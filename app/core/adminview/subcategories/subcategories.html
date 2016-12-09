@@ -1,0 +1,42 @@
+﻿<div>
+    <a [routerLink]="['/addsubcategories']">
+        Add Subcategory
+    </a>
+
+    <div class="selectsubcategory">
+        <div class="dropdown" dropdown [dropdownToggle]="false" (onOpen)="getCategoriesOnOpen()" (onClose)="doSomeActionOnClose()">
+            <button class="btn btn-primary" dropdown-open>Select Category</button>
+            <ul class="dropdown-menu">
+
+                <li *ngFor="let item of categories; let i = index" (click)="onCategoryChange(item.ID)">
+                    <a>  {{item.NAME}}  </a>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <div class="subcategories">
+        
+        <h3>Service Sub Categories </h3>
+
+        <ag-grid-ng2 #aggrid style="width: 90%; " class="ag-material"
+                     [gridOptions]="gridOptions"
+                     [columnDefs]="columnDefs"
+                     [showToolPanel]="showToolPanel"
+                     [rowData]="rowData"
+                     enableColResize
+                     (cell-clicked)="onCellClicked($event)"
+                     (rowClicked)="onRowClicked($event)"
+                     enableSorting
+                     enableFilter
+                     groupHeaders
+                     suppressRowClickSelection
+                     toolPanelSuppressGroups
+                     toolPanelSuppressValues
+                     debug
+                     rowHeight="32"
+                     rowSelection="multiple">
+        </ag-grid-ng2>
+    </div>
+
+</div>

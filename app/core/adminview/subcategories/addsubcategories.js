@@ -11,7 +11,7 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
     var core_1, msn_service_1, router_1;
-    var AddAreaComponent;
+    var AddSubCategoriesComponent;
     return {
         setters:[
             function (core_1_1) {
@@ -24,68 +24,68 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                 router_1 = router_1_1;
             }],
         execute: function() {
-            AddAreaComponent = (function () {
-                function AddAreaComponent(mSNService, router) {
+            AddSubCategoriesComponent = (function () {
+                function AddSubCategoriesComponent(mSNService, router) {
                     this.mSNService = mSNService;
                     this.router = router;
                     this.init();
-                    this.getCitiesOnOpen();
-                    this.area = [];
+                    this.getCategoriesOnOpen();
+                    this.subcategory = [];
                 }
-                AddAreaComponent.prototype.init = function () {
+                AddSubCategoriesComponent.prototype.init = function () {
                     var _this = this;
                     this.mSNService.getContext(function (context) { return _this.OnContextLoaded(context); });
                 };
-                AddAreaComponent.prototype.OnContextLoaded = function (context) {
+                AddSubCategoriesComponent.prototype.OnContextLoaded = function (context) {
                     var _this = this;
                     _this.context = context;
                 };
-                AddAreaComponent.prototype.OnCitiesContextLoaded = function (context) {
+                AddSubCategoriesComponent.prototype.OnCategoriesContextLoaded = function (context) {
                     var _this = this;
                     _this.context = context;
-                    context.CITies.toArray().then(function (cities) {
-                        _this.cities = cities;
-                        console.log(_this.cities);
+                    context.SERVICECATEGORies.toArray().then(function (categories) {
+                        _this.categories = categories;
+                        console.log(_this.categories);
                         // _this.createRowData();
                     });
                 };
-                AddAreaComponent.prototype.loadCitiesContext = function () {
+                AddSubCategoriesComponent.prototype.loadCategoriesContext = function () {
                     var _this = this;
-                    this.mSNService.getContext(function (context) { return _this.OnCitiesContextLoaded(context); });
+                    this.mSNService.getContext(function (context) { return _this.OnCategoriesContextLoaded(context); });
                 };
-                AddAreaComponent.prototype.getCitiesOnOpen = function () {
-                    this.loadCitiesContext();
+                AddSubCategoriesComponent.prototype.getCategoriesOnOpen = function () {
+                    this.loadCategoriesContext();
                 };
-                AddAreaComponent.prototype.saveArea = function (area) {
+                AddSubCategoriesComponent.prototype.saveSubCategory = function (subcategory) {
                     // var userdetails=[];
                     var _this = this;
-                    this.area.NAME = area.NAME;
-                    this.area.DESCRIPTION = area.DESCRIPTION;
-                    this.area.CITYID = area.CITYID;
-                    this.context.CITYAREAs.add(this.area);
+                    this.subcategory.NAME = subcategory.NAME;
+                    this.subcategory.DESCRIPTION = subcategory.DESCRIPTION;
+                    this.subcategory.SERVICECATEGORYID = subcategory.SERVICECATEGORYID;
+                    this.context.SERVICESUBCATEGORies.add(this.subcategory);
                     //this.userdetailsorig.ID = 2;
                     //	this.context.ADMININFOes.add(this.userdetailsorig);
-                    console.log(area);
+                    console.log(subcategory);
                     //this.context.saveChanges();
                     //this.router.navigate(['cityareas']);
                     this.context.saveChanges().then(function () {
-                        _this.router.navigate(['cityareas']);
+                        _this.router.navigate(['subcategories']);
                     });
                 };
-                AddAreaComponent.prototype.onCityChange = function (id) {
-                    this.area.CITYID = id;
+                AddSubCategoriesComponent.prototype.onCategoryChange = function (id) {
+                    this.subcategory.SERVICECATEGORYID = id;
                 };
-                AddAreaComponent = __decorate([
+                AddSubCategoriesComponent = __decorate([
                     core_1.Component({
                         selector: 'addcity',
-                        templateUrl: 'app/core/adminview/cityareas/addarea.html',
+                        templateUrl: 'app/core/adminview/subcategories/addsubcategories.html',
                     }), 
                     __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router])
-                ], AddAreaComponent);
-                return AddAreaComponent;
+                ], AddSubCategoriesComponent);
+                return AddSubCategoriesComponent;
             }());
-            exports_1("AddAreaComponent", AddAreaComponent);
+            exports_1("AddSubCategoriesComponent", AddSubCategoriesComponent);
         }
     }
 });
-//# sourceMappingURL=addarea.js.map
+//# sourceMappingURL=addsubcategories.js.map

@@ -21,6 +21,10 @@ import {CategoriesComponent} from './core/adminview/categories/categories';
 import {EditCategoriesComponent} from './core/adminview/categories/editcategories';
 import {AddCategoriesComponent} from './core/adminview/categories/addcategories';
 
+import {SubCategoriesComponent} from './core/adminview/subcategories/subcategories';
+import {EditSubCategoriesComponent} from './core/adminview/subcategories/editsubcategories';
+import {AddSubCategoriesComponent} from './core/adminview/subcategories/addsubcategories';
+
 // Route Configuration
 //export const routes: Routes = [
 //		{ path: '/manageadmins', component: AdminUserComponent }
@@ -95,6 +99,20 @@ const appRoutes: Routes = [
 
      {
          path: 'categories/:id', component: EditCategoriesComponent
+
+     },
+
+     {
+         path: 'subcategories',
+         component: SubCategoriesComponent
+     },
+     {
+         path: 'addsubcategories',
+         component: AddSubCategoriesComponent
+     },
+
+     {
+         path: 'subcategories/:id', component: EditSubCategoriesComponent
 
      },
 
