@@ -18,6 +18,7 @@ namespace MSNAdmin.Models
         public USERSERVICENEED()
         {
             this.SERVICEBIDs = new HashSet<SERVICEBID>();
+            this.USERSERVICETIMEREOCRDs = new HashSet<USERSERVICETIMEREOCRD>();
         }
     
         public decimal ID { get; set; }
@@ -31,7 +32,6 @@ namespace MSNAdmin.Models
         public Nullable<decimal> MAXBUDGET { get; set; }
         public Nullable<int> SERVICESTATE { get; set; }
         public Nullable<int> SERVICETIMETYPE { get; set; }
-        public Nullable<System.DateTime> SERVICENEEDEDDATE { get; set; }
         public Nullable<decimal> ALLOCATEDBIDID { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -42,5 +42,7 @@ namespace MSNAdmin.Models
         public virtual SERVICESUBCATEGORY SERVICESUBCATEGORY { get; set; }
         public virtual SERVICETIMETYPE SERVICETIMETYPE1 { get; set; }
         public virtual USERINFO USERINFO { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERSERVICETIMEREOCRD> USERSERVICETIMEREOCRDs { get; set; }
     }
 }

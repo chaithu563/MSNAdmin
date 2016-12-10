@@ -41,6 +41,10 @@
         <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__USERI__300424B4" ManuallyRouted="false" />
         <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__USERI__3E52440B" ManuallyRouted="false" />
         <EntityTypeShape EntityType="myserviceneedModel.ADMININFO" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERPWD" Width="1.5" PointX="7.875" PointY="13.875" />
+        <EntityTypeShape EntityType="myserviceneedModel.USERSERVICETIMEREOCRD" Width="1.5" PointX="15.125" PointY="5.5" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERPWD__USERID__182C9B23" />
+        <AssociationConnector Association="myserviceneedModel.FK__USERSERVI__SERVI__4F7CD00D" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

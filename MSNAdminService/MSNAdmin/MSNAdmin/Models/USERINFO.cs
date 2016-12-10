@@ -23,6 +23,7 @@ namespace MSNAdmin.Models
             this.USERMEMBERSHIPs = new HashSet<USERMEMBERSHIP>();
             this.USERSERVICEs = new HashSet<USERSERVICE>();
             this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
+            this.USERPWDs = new HashSet<USERPWD>();
         }
     
         public decimal ID { get; set; }
@@ -49,5 +50,7 @@ namespace MSNAdmin.Models
         public virtual ICollection<USERSERVICE> USERSERVICEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERPWD> USERPWDs { get; set; }
     }
 }

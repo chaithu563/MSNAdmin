@@ -154,7 +154,6 @@
           <ScalarProperty Name="MAXBUDGET" ColumnName="MAXBUDGET" />
           <ScalarProperty Name="SERVICESTATE" ColumnName="SERVICESTATE" />
           <ScalarProperty Name="SERVICETIMETYPE" ColumnName="SERVICETIMETYPE" />
-          <ScalarProperty Name="SERVICENEEDEDDATE" ColumnName="SERVICENEEDEDDATE" />
           <ScalarProperty Name="ALLOCATEDBIDID" ColumnName="ALLOCATEDBIDID" />
         </MappingFragment>
       </EntityTypeMapping>
@@ -166,6 +165,28 @@
           <ScalarProperty Name="PHONE" ColumnName="PHONE" />
           <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
           <ScalarProperty Name="NAME" ColumnName="NAME" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERPWDs">
+      <EntityTypeMapping TypeName="myserviceneedModel.USERPWD">
+        <MappingFragment StoreEntitySet="USERPWD">
+          <ScalarProperty Name="PWD" ColumnName="PWD" />
+          <ScalarProperty Name="USERID" ColumnName="USERID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="USERSERVICETIMEREOCRDs">
+      <EntityTypeMapping TypeName="myserviceneedModel.USERSERVICETIMEREOCRD">
+        <MappingFragment StoreEntitySet="USERSERVICETIMEREOCRD">
+          <ScalarProperty Name="SERVICEENDTIME" ColumnName="SERVICEENDTIME" />
+          <ScalarProperty Name="SERVICESTARTTIME" ColumnName="SERVICESTARTTIME" />
+          <ScalarProperty Name="SERVICEENDDATE" ColumnName="SERVICEENDDATE" />
+          <ScalarProperty Name="SERVICESTARTDATE" ColumnName="SERVICESTARTDATE" />
+          <ScalarProperty Name="SERVICENEEDEDDATE" ColumnName="SERVICENEEDEDDATE" />
+          <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
           <ScalarProperty Name="ID" ColumnName="ID" />
         </MappingFragment>
       </EntityTypeMapping>

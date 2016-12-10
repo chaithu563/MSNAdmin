@@ -33,7 +33,8 @@ namespace MSNAdmin
 						builder.EntitySet<CITY>("CITies");
             builder.EntitySet<CITYAREA>("CITYAREAs");
             builder.EntitySet<MEMBERSHIP>("MEMBERSHIPs");
-
+            builder.EntitySet<USERPWD>("USERPWDs");
+            builder.EntitySet<USERSERVICETIMEREOCRD>("USERSERVICETIMEREOCRDs");
             builder.EntitySet<SERVICEBID>("SERVICEBIDs");
             builder.EntitySet<SERVICECATEGORY>("SERVICECATEGORies");
             builder.EntitySet<SERVICESTATE>("SERVICESTATEs");

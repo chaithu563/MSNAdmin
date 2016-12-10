@@ -197,8 +197,10 @@
     <Compile Include="Controllers\USERFUNDSController.cs" />
     <Compile Include="Controllers\USERINFOesController.cs" />
     <Compile Include="Controllers\USERMEMBERSHIPsController.cs" />
+    <Compile Include="Controllers\USERPWDsController.cs" />
     <Compile Include="Controllers\USERSERVICENEEDsController.cs" />
     <Compile Include="Controllers\USERSERVICEsController.cs" />
+    <Compile Include="Controllers\USERSERVICETIMEREOCRDsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -259,10 +261,16 @@
     <Compile Include="Models\USERMEMBERSHIP.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\USERPWD.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\USERSERVICE.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USERSERVICENEED.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERSERVICETIMEREOCRD.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
