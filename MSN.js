@@ -77,6 +77,56 @@
         }
     });
 
+    types["MSNAdmin.Models.USERPWD"] = $data("$data.Entity").extend("MSNAdmin.Models.USERPWD", {
+        ID: {
+            "type": "Edm.Decimal",
+            "nullable": false,
+            "required": true,
+            "key": true
+        },
+        USERID: {
+            "type": "Edm.Decimal"
+        },
+        PWD: {
+            "type": "Edm.String"
+        },
+        USERINFO: {
+            "type": "MSNAdmin.Models.USERINFO",
+            "inverseProperty": "$$unbound"
+        }
+    });
+
+    types["MSNAdmin.Models.USERSERVICETIMEREOCRD"] = $data("$data.Entity").extend("MSNAdmin.Models.USERSERVICETIMEREOCRD", {
+        ID: {
+            "type": "Edm.Decimal",
+            "nullable": false,
+            "required": true,
+            "key": true
+        },
+        SERVICEID: {
+            "type": "Edm.Decimal"
+        },
+        SERVICENEEDEDDATE: {
+            "type": "Edm.DateTimeOffset"
+        },
+        SERVICESTARTDATE: {
+            "type": "Edm.DateTimeOffset"
+        },
+        SERVICEENDDATE: {
+            "type": "Edm.DateTimeOffset"
+        },
+        SERVICESTARTTIME: {
+            "type": "Edm.Duration"
+        },
+        SERVICEENDTIME: {
+            "type": "Edm.Duration"
+        },
+        USERSERVICENEED: {
+            "type": "MSNAdmin.Models.USERSERVICENEED",
+            "inverseProperty": "$$unbound"
+        }
+    });
+
     types["MSNAdmin.Models.SERVICEBID"] = $data("$data.Entity").extend("MSNAdmin.Models.SERVICEBID", {
         ID: {
             "type": "Edm.Decimal",
@@ -343,6 +393,11 @@
             "type": "Array",
             "elementType": "MSNAdmin.Models.USERSERVICENEED",
             "inverseProperty": "$$unbound"
+        },
+        USERPWDs: {
+            "type": "Array",
+            "elementType": "MSNAdmin.Models.USERPWD",
+            "inverseProperty": "$$unbound"
         }
     });
 
@@ -382,6 +437,12 @@
         },
         COMMENTS: {
             "type": "Edm.String"
+        },
+        STARTDATE: {
+            "type": "Edm.DateTimeOffset"
+        },
+        ENDDATE: {
+            "type": "Edm.DateTimeOffset"
         },
         MEMBERSHIP: {
             "type": "MSNAdmin.Models.MEMBERSHIP",
@@ -460,9 +521,6 @@
         SERVICETIMETYPE: {
             "type": "Edm.Int32"
         },
-        SERVICENEEDEDDATE: {
-            "type": "Edm.DateTimeOffset"
-        },
         ALLOCATEDBIDID: {
             "type": "Edm.Decimal"
         },
@@ -494,6 +552,11 @@
         USERINFO: {
             "type": "MSNAdmin.Models.USERINFO",
             "inverseProperty": "$$unbound"
+        },
+        USERSERVICETIMEREOCRDs: {
+            "type": "Array",
+            "elementType": "MSNAdmin.Models.USERSERVICETIMEREOCRD",
+            "inverseProperty": "$$unbound"
         }
     });
 
@@ -509,6 +572,14 @@
         MEMBERSHIPs: {
             "type": "$data.EntitySet",
             "elementType": "MSNAdmin.Models.MEMBERSHIP"
+        },
+        USERPWDs: {
+            "type": "$data.EntitySet",
+            "elementType": "MSNAdmin.Models.USERPWD"
+        },
+        USERSERVICETIMEREOCRDs: {
+            "type": "$data.EntitySet",
+            "elementType": "MSNAdmin.Models.USERSERVICETIMEREOCRD"
         },
         SERVICEBIDs: {
             "type": "$data.EntitySet",
@@ -569,6 +640,8 @@
             "CITY": types["MSNAdmin.Models.CITY"],
             "CITYAREA": types["MSNAdmin.Models.CITYAREA"],
             "MEMBERSHIP": types["MSNAdmin.Models.MEMBERSHIP"],
+            "USERPWD": types["MSNAdmin.Models.USERPWD"],
+            "USERSERVICETIMEREOCRD": types["MSNAdmin.Models.USERSERVICETIMEREOCRD"],
             "SERVICEBID": types["MSNAdmin.Models.SERVICEBID"],
             "SERVICECATEGORY": types["MSNAdmin.Models.SERVICECATEGORY"],
             "SERVICESTATE": types["MSNAdmin.Models.SERVICESTATE"],

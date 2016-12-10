@@ -184,7 +184,7 @@ declare module MSNAdmin.Models {
 
     export class USERSERVICENEED extends $data.Entity {
         constructor();
-        constructor(initData: { ID?: Edm.Decimal; USERID?: Edm.Decimal; SERVICELOCATION?: Edm.String; SERVICETITLE?: Edm.String; SERVICEDESCRIPTION?: Edm.String; SERVICECATEGORYID?: Edm.Decimal; SERVICESUBCATEGORYID?: Edm.Decimal; MINBUDGET?: Edm.Decimal; MAXBUDGET?: Edm.Decimal; SERVICESTATE?: Edm.Int32; SERVICETIMETYPE?: Edm.Int32; SERVICENEEDEDDATE?: Edm.DateTimeOffset; ALLOCATEDBIDID?: Edm.Decimal; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SERVICEBID?: MSNAdmin.Models.SERVICEBID; SERVICECATEGORY?: MSNAdmin.Models.SERVICECATEGORY; SERVICESTATE1?: MSNAdmin.Models.SERVICESTATE; SERVICESUBCATEGORY?: MSNAdmin.Models.SERVICESUBCATEGORY; SERVICETIMETYPE1?: MSNAdmin.Models.SERVICETIMETYPE; USERINFO?: MSNAdmin.Models.USERINFO });
+        constructor(initData: { ID?: Edm.Decimal; USERID?: Edm.Decimal; SERVICELOCATION?: Edm.String; SERVICETITLE?: Edm.String; SERVICEDESCRIPTION?: Edm.String; SERVICECATEGORYID?: Edm.Decimal; SERVICESUBCATEGORYID?: Edm.Decimal; MINBUDGET?: Edm.Decimal; MAXBUDGET?: Edm.Decimal; SERVICESTATE?: Edm.Int32; SERVICETIMETYPE?: Edm.Int32; ALLOCATEDBIDID?: Edm.Decimal; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SERVICEBID?: MSNAdmin.Models.SERVICEBID; SERVICECATEGORY?: MSNAdmin.Models.SERVICECATEGORY; SERVICESTATE1?: MSNAdmin.Models.SERVICESTATE; SERVICESUBCATEGORY?: MSNAdmin.Models.SERVICESUBCATEGORY; SERVICETIMETYPE1?: MSNAdmin.Models.SERVICETIMETYPE; USERINFO?: MSNAdmin.Models.USERINFO; USERSERVICETIMEREOCRDs?: MSNAdmin.Models.USERSERVICETIMEREOCRD[] });
 
         ID: Edm.Decimal;
         USERID: Edm.Decimal;
@@ -197,7 +197,6 @@ declare module MSNAdmin.Models {
         MAXBUDGET: Edm.Decimal;
         SERVICESTATE: Edm.Int32;
         SERVICETIMETYPE: Edm.Int32;
-        SERVICENEEDEDDATE: Edm.DateTimeOffset;
         ALLOCATEDBIDID: Edm.Decimal;
         SERVICEBIDs: MSNAdmin.Models.SERVICEBID[];
         SERVICEBID: MSNAdmin.Models.SERVICEBID;
@@ -206,6 +205,7 @@ declare module MSNAdmin.Models {
         SERVICESUBCATEGORY: MSNAdmin.Models.SERVICESUBCATEGORY;
         SERVICETIMETYPE1: MSNAdmin.Models.SERVICETIMETYPE;
         USERINFO: MSNAdmin.Models.USERINFO;
+        USERSERVICETIMEREOCRDs: MSNAdmin.Models.USERSERVICETIMEREOCRD[];
     }
 
     export class USERSERVICE extends $data.Entity {
@@ -223,12 +223,14 @@ declare module MSNAdmin.Models {
 
     export class USERMEMBERSHIP extends $data.Entity {
         constructor();
-        constructor(initData: { ID?: Edm.Decimal; USERID?: Edm.Decimal; MEMBERSHIPID?: Edm.Decimal; COMMENTS?: Edm.String; MEMBERSHIP?: MSNAdmin.Models.MEMBERSHIP; USERINFO?: MSNAdmin.Models.USERINFO });
+        constructor(initData: { ID?: Edm.Decimal; USERID?: Edm.Decimal; MEMBERSHIPID?: Edm.Decimal; COMMENTS?: Edm.String; STARTDATE?: Edm.DateTimeOffset; ENDDATE?: Edm.DateTimeOffset; MEMBERSHIP?: MSNAdmin.Models.MEMBERSHIP; USERINFO?: MSNAdmin.Models.USERINFO });
 
         ID: Edm.Decimal;
         USERID: Edm.Decimal;
         MEMBERSHIPID: Edm.Decimal;
         COMMENTS: Edm.String;
+        STARTDATE: Edm.DateTimeOffset;
+        ENDDATE: Edm.DateTimeOffset;
         MEMBERSHIP: MSNAdmin.Models.MEMBERSHIP;
         USERINFO: MSNAdmin.Models.USERINFO;
     }
@@ -246,7 +248,7 @@ declare module MSNAdmin.Models {
 
     export class USERINFO extends $data.Entity {
         constructor();
-        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; EMAIL?: Edm.String; PHONE?: Edm.String; CITYID?: Edm.Decimal; CITYAREAID?: Edm.Decimal; LOGINTYPEID?: Edm.Int32; CURRENTLOCATION?: Edm.String; CITY?: MSNAdmin.Models.CITY; CITYAREA?: MSNAdmin.Models.CITYAREA; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SOCIALLOGIN?: MSNAdmin.Models.SOCIALLOGIN; USERBIDS?: MSNAdmin.Models.USERBID[]; USERFUNDS?: MSNAdmin.Models.USERFUND[]; USERMEMBERSHIPs?: MSNAdmin.Models.USERMEMBERSHIP[]; USERSERVICEs?: MSNAdmin.Models.USERSERVICE[]; USERSERVICENEEDs?: MSNAdmin.Models.USERSERVICENEED[] });
+        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; EMAIL?: Edm.String; PHONE?: Edm.String; CITYID?: Edm.Decimal; CITYAREAID?: Edm.Decimal; LOGINTYPEID?: Edm.Int32; CURRENTLOCATION?: Edm.String; CITY?: MSNAdmin.Models.CITY; CITYAREA?: MSNAdmin.Models.CITYAREA; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SOCIALLOGIN?: MSNAdmin.Models.SOCIALLOGIN; USERBIDS?: MSNAdmin.Models.USERBID[]; USERFUNDS?: MSNAdmin.Models.USERFUND[]; USERMEMBERSHIPs?: MSNAdmin.Models.USERMEMBERSHIP[]; USERSERVICEs?: MSNAdmin.Models.USERSERVICE[]; USERSERVICENEEDs?: MSNAdmin.Models.USERSERVICENEED[]; USERPWDs?: MSNAdmin.Models.USERPWD[] });
 
         ID: Edm.Decimal;
         NAME: Edm.String;
@@ -265,6 +267,7 @@ declare module MSNAdmin.Models {
         USERMEMBERSHIPs: MSNAdmin.Models.USERMEMBERSHIP[];
         USERSERVICEs: MSNAdmin.Models.USERSERVICE[];
         USERSERVICENEEDs: MSNAdmin.Models.USERSERVICENEED[];
+        USERPWDs: MSNAdmin.Models.USERPWD[];
     }
 
     export class USERFUND extends $data.Entity {
@@ -357,6 +360,30 @@ declare module MSNAdmin.Models {
         USERSERVICENEEDs: MSNAdmin.Models.USERSERVICENEED[];
     }
 
+    export class USERSERVICETIMEREOCRD extends $data.Entity {
+        constructor();
+        constructor(initData: { ID?: Edm.Decimal; SERVICEID?: Edm.Decimal; SERVICENEEDEDDATE?: Edm.DateTimeOffset; SERVICESTARTDATE?: Edm.DateTimeOffset; SERVICEENDDATE?: Edm.DateTimeOffset; SERVICESTARTTIME?: Edm.Duration; SERVICEENDTIME?: Edm.Duration; USERSERVICENEED?: MSNAdmin.Models.USERSERVICENEED });
+
+        ID: Edm.Decimal;
+        SERVICEID: Edm.Decimal;
+        SERVICENEEDEDDATE: Edm.DateTimeOffset;
+        SERVICESTARTDATE: Edm.DateTimeOffset;
+        SERVICEENDDATE: Edm.DateTimeOffset;
+        SERVICESTARTTIME: Edm.Duration;
+        SERVICEENDTIME: Edm.Duration;
+        USERSERVICENEED: MSNAdmin.Models.USERSERVICENEED;
+    }
+
+    export class USERPWD extends $data.Entity {
+        constructor();
+        constructor(initData: { ID?: Edm.Decimal; USERID?: Edm.Decimal; PWD?: Edm.String; USERINFO?: MSNAdmin.Models.USERINFO });
+
+        ID: Edm.Decimal;
+        USERID: Edm.Decimal;
+        PWD: Edm.String;
+        USERINFO: MSNAdmin.Models.USERINFO;
+    }
+
     export class MEMBERSHIP extends $data.Entity {
         constructor();
         constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; DESCRIPTION?: Edm.String; USERMEMBERSHIPs?: MSNAdmin.Models.USERMEMBERSHIP[] });
@@ -400,6 +427,8 @@ declare module MSN {
         CITies: $data.EntitySet<typeof MSNAdmin.Models.CITY, MSNAdmin.Models.CITY>;
         CITYAREAs: $data.EntitySet<typeof MSNAdmin.Models.CITYAREA, MSNAdmin.Models.CITYAREA>;
         MEMBERSHIPs: $data.EntitySet<typeof MSNAdmin.Models.MEMBERSHIP, MSNAdmin.Models.MEMBERSHIP>;
+        USERPWDs: $data.EntitySet<typeof MSNAdmin.Models.USERPWD, MSNAdmin.Models.USERPWD>;
+        USERSERVICETIMEREOCRDs: $data.EntitySet<typeof MSNAdmin.Models.USERSERVICETIMEREOCRD, MSNAdmin.Models.USERSERVICETIMEREOCRD>;
         SERVICEBIDs: $data.EntitySet<typeof MSNAdmin.Models.SERVICEBID, MSNAdmin.Models.SERVICEBID>;
         SERVICECATEGORies: $data.EntitySet<typeof MSNAdmin.Models.SERVICECATEGORY, MSNAdmin.Models.SERVICECATEGORY>;
         SERVICESTATEs: $data.EntitySet<typeof MSNAdmin.Models.SERVICESTATE, MSNAdmin.Models.SERVICESTATE>;
