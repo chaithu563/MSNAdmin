@@ -132,6 +132,7 @@
     <NavigationProperty Name="USERMEMBERSHIPs" Relationship="Self.FK__USERMEMBE__USERI__182C9B23" FromRole="USERINFO" ToRole="USERMEMBERSHIP" />
     <NavigationProperty Name="USERSERVICEs" Relationship="Self.FK__USERSERVI__USERI__300424B4" FromRole="USERINFO" ToRole="USERSERVICE" />
     <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__USERI__3E52440B" FromRole="USERINFO" ToRole="USERSERVICENEED" />
+    <NavigationProperty Name="USERPWDs" Relationship="myserviceneedModel.FK__USERPWD__USERID__182C9B23" FromRole="USERINFO" ToRole="USERPWD" />
   </EntityType>
   <EntityType Name="USERMEMBERSHIP">
     <Key>
@@ -143,6 +144,8 @@
     <Property Name="COMMENTS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MEMBERSHIP" Relationship="Self.FK__USERMEMBE__MEMBE__1920BF5C" FromRole="USERMEMBERSHIP" ToRole="MEMBERSHIP" />
     <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERMEMBE__USERI__182C9B23" FromRole="USERMEMBERSHIP" ToRole="USERINFO" />
+    <Property Name="STARTDATE" Type="DateTime" Precision="3" />
+    <Property Name="ENDDATE" Type="DateTime" Precision="3" />
   </EntityType>
   <EntityType Name="USERSERVICE">
     <Key>
@@ -171,7 +174,6 @@
     <Property Name="MAXBUDGET" Type="Decimal" Precision="19" Scale="4" />
     <Property Name="SERVICESTATE" Type="Int32" />
     <Property Name="SERVICETIMETYPE" Type="Int32" />
-    <Property Name="SERVICENEEDEDDATE" Type="DateTime" Precision="3" />
     <Property Name="ALLOCATEDBIDID" Type="Decimal" Precision="18" Scale="0" />
     <NavigationProperty Name="SERVICEBIDs" Relationship="Self.FK__SERVICEBI__USERS__47DBAE45" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
     <NavigationProperty Name="SERVICEBID" Relationship="Self.FK__USERSERVI__ALLOC__48CFD27E" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
@@ -180,6 +182,7 @@
     <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="Self.FK__USERSERVI__SERVI__403A8C7D" FromRole="USERSERVICENEED" ToRole="SERVICESUBCATEGORY" />
     <NavigationProperty Name="SERVICETIMETYPE1" Relationship="Self.FK__USERSERVI__SERVI__4222D4EF" FromRole="USERSERVICENEED" ToRole="SERVICETIMETYPE" />
     <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERSERVI__USERI__3E52440B" FromRole="USERSERVICENEED" ToRole="USERINFO" />
+    <NavigationProperty Name="USERSERVICETIMEREOCRDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4F7CD00D" FromRole="USERSERVICENEED" ToRole="USERSERVICETIMEREOCRD" />
   </EntityType>
   <Association Name="FK__CITYAREA__CITYID__08EA5793">
     <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
@@ -518,6 +521,16 @@
       <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
     </AssociationSet>
     <EntitySet Name="ADMININFOes" EntityType="myserviceneedModel.ADMININFO" />
+    <EntitySet Name="USERPWDs" EntityType="myserviceneedModel.USERPWD" />
+    <EntitySet Name="USERSERVICETIMEREOCRDs" EntityType="myserviceneedModel.USERSERVICETIMEREOCRD" />
+    <AssociationSet Name="FK__USERPWD__USERID__182C9B23" Association="myserviceneedModel.FK__USERPWD__USERID__182C9B23">
+      <End Role="USERINFO" EntitySet="USERINFOes" />
+      <End Role="USERPWD" EntitySet="USERPWDs" />
+    </AssociationSet>
+    <AssociationSet Name="FK__USERSERVI__SERVI__4F7CD00D" Association="myserviceneedModel.FK__USERSERVI__SERVI__4F7CD00D">
+      <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+      <End Role="USERSERVICETIMEREOCRD" EntitySet="USERSERVICETIMEREOCRDs" />
+    </AssociationSet>
   </EntityContainer>
   <EntityType Name="ADMININFO">
     <Key>
@@ -529,4 +542,50 @@
     <Property Name="PHONE" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
     <Property Name="PWD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
   </EntityType>
+  <EntityType Name="USERPWD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="PWD" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+    <NavigationProperty Name="USERINFO" Relationship="myserviceneedModel.FK__USERPWD__USERID__182C9B23" FromRole="USERPWD" ToRole="USERINFO" />
+  </EntityType>
+  <EntityType Name="USERSERVICETIMEREOCRD">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="SERVICEID" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="SERVICENEEDEDDATE" Type="DateTime" Precision="0" />
+    <Property Name="SERVICESTARTDATE" Type="DateTime" Precision="0" />
+    <Property Name="SERVICEENDDATE" Type="DateTime" Precision="0" />
+    <Property Name="SERVICESTARTTIME" Type="Time" Precision="7" />
+    <Property Name="SERVICEENDTIME" Type="Time" Precision="7" />
+    <NavigationProperty Name="USERSERVICENEED" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4F7CD00D" FromRole="USERSERVICETIMEREOCRD" ToRole="USERSERVICENEED" />
+  </EntityType>
+  <Association Name="FK__USERPWD__USERID__182C9B23">
+    <End Type="myserviceneedModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
+    <End Type="myserviceneedModel.USERPWD" Role="USERPWD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERINFO">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERPWD">
+        <PropertyRef Name="USERID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__USERSERVI__SERVI__4F7CD00D">
+    <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="0..1" />
+    <End Type="myserviceneedModel.USERSERVICETIMEREOCRD" Role="USERSERVICETIMEREOCRD" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="USERSERVICENEED">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="USERSERVICETIMEREOCRD">
+        <PropertyRef Name="SERVICEID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
 </Schema>

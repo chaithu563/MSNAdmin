@@ -1,6 +1,5 @@
-System.register(['@angular/core', '../../../services/msn.service', '@angular/router'], function(exports_1, context_1) {
+System.register(["@angular/core", "../../../services/msn.service", "@angular/router"], function (exports_1, context_1) {
     "use strict";
-    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -10,10 +9,10 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, msn_service_1, router_1;
-    var AddAreaComponent;
+    var __moduleName = context_1 && context_1.id;
+    var core_1, msn_service_1, router_1, AddAreaComponent;
     return {
-        setters:[
+        setters: [
             function (core_1_1) {
                 core_1 = core_1_1;
             },
@@ -22,8 +21,9 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
             },
             function (router_1_1) {
                 router_1 = router_1_1;
-            }],
-        execute: function() {
+            }
+        ],
+        execute: function () {
             AddAreaComponent = (function () {
                 function AddAreaComponent(mSNService, router) {
                     this.mSNService = mSNService;
@@ -75,17 +75,17 @@ System.register(['@angular/core', '../../../services/msn.service', '@angular/rou
                 AddAreaComponent.prototype.onCityChange = function (id) {
                     this.area.CITYID = id;
                 };
-                AddAreaComponent = __decorate([
-                    core_1.Component({
-                        selector: 'addcity',
-                        templateUrl: 'app/core/adminview/cityareas/addarea.html',
-                    }), 
-                    __metadata('design:paramtypes', [msn_service_1.MSNService, router_1.Router])
-                ], AddAreaComponent);
                 return AddAreaComponent;
             }());
+            AddAreaComponent = __decorate([
+                core_1.Component({
+                    selector: 'addcity',
+                    templateUrl: 'app/core/adminview/cityareas/addarea.html',
+                }),
+                __metadata("design:paramtypes", [msn_service_1.MSNService, router_1.Router])
+            ], AddAreaComponent);
             exports_1("AddAreaComponent", AddAreaComponent);
         }
-    }
+    };
 });
 //# sourceMappingURL=addarea.js.map

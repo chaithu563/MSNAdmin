@@ -1,5 +1,5 @@
 ﻿import { Component } from '@angular/core';
-
+import { Injectable } from '@angular/core';
 
 import { MSN } from './jaydata-model/MSN';
 import { MSNService } from './services/msn.service';
@@ -12,25 +12,26 @@ import { MSNService } from './services/msn.service';
    // directives: [HeaderComponent]
    
 })
+//@Injectable()
 export class AppComponent {
     cities: any;
-    constructor(private mSNService: MSNService) {
-
-			this.init();
+    constructor() {
+			//private mSNService: MSNService
+			//this.init();
 		}
 
-    private init() {
-        this.mSNService.getContext(
-            context => this.OnContextLoaded(context)
-        );
-    }
-    private OnContextLoaded(context:any) {
-			context.CITies.toArray(function(cities){
+    //private init() {
+    //    this.mSNService.getContext(
+    //        context => this.OnContextLoaded(context)
+    //    );
+    //}
+    //private OnContextLoaded(context:any) {
+	//		context.CITies.toArray(function(cities){
             
-                this.cities = cities;
-                console.log(this.cities);
-			});
+    //            this.cities = cities;
+    //            console.log(this.cities);
+	//		});
 				
-    }
+    //}
 
 }
