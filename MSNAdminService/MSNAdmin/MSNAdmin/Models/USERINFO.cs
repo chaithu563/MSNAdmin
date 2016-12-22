@@ -22,8 +22,8 @@ namespace MSNAdmin.Models
             this.USERFUNDS = new HashSet<USERFUND>();
             this.USERMEMBERSHIPs = new HashSet<USERMEMBERSHIP>();
             this.USERSERVICEs = new HashSet<USERSERVICE>();
-            this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
             this.USERPWDs = new HashSet<USERPWD>();
+            this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
         }
     
         public decimal ID { get; set; }
@@ -34,6 +34,8 @@ namespace MSNAdmin.Models
         public Nullable<decimal> CITYAREAID { get; set; }
         public Nullable<int> LOGINTYPEID { get; set; }
         public string CURRENTLOCATION { get; set; }
+        public Nullable<double> USERLOCATIONLATITUDE { get; set; }
+        public Nullable<double> USERLOCATIONLONGITUDE { get; set; }
     
         public virtual CITY CITY { get; set; }
         public virtual CITYAREA CITYAREA { get; set; }
@@ -49,8 +51,8 @@ namespace MSNAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICE> USERSERVICEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERPWD> USERPWDs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
     }
 }

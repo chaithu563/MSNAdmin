@@ -184,7 +184,7 @@ declare module MSNAdmin.Models {
 
     export class USERSERVICENEED extends $data.Entity {
         constructor();
-        constructor(initData: { ID?: Edm.Decimal; USERID?: Edm.Decimal; SERVICELOCATION?: Edm.String; SERVICETITLE?: Edm.String; SERVICEDESCRIPTION?: Edm.String; SERVICECATEGORYID?: Edm.Decimal; SERVICESUBCATEGORYID?: Edm.Decimal; MINBUDGET?: Edm.Decimal; MAXBUDGET?: Edm.Decimal; SERVICESTATE?: Edm.Int32; SERVICETIMETYPE?: Edm.Int32; ALLOCATEDBIDID?: Edm.Decimal; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SERVICEBID?: MSNAdmin.Models.SERVICEBID; SERVICECATEGORY?: MSNAdmin.Models.SERVICECATEGORY; SERVICESTATE1?: MSNAdmin.Models.SERVICESTATE; SERVICESUBCATEGORY?: MSNAdmin.Models.SERVICESUBCATEGORY; SERVICETIMETYPE1?: MSNAdmin.Models.SERVICETIMETYPE; USERINFO?: MSNAdmin.Models.USERINFO; USERSERVICETIMEREOCRDs?: MSNAdmin.Models.USERSERVICETIMEREOCRD[] });
+        constructor(initData: { ID?: Edm.Decimal; USERID?: Edm.Decimal; SERVICELOCATION?: Edm.String; SERVICETITLE?: Edm.String; SERVICEDESCRIPTION?: Edm.String; SERVICECATEGORYID?: Edm.Decimal; SERVICESUBCATEGORYID?: Edm.Decimal; MINBUDGET?: Edm.Decimal; MAXBUDGET?: Edm.Decimal; SERVICESTATE?: Edm.Int32; SERVICETIMETYPE?: Edm.Int32; ALLOCATEDBIDID?: Edm.Decimal; SERVICELOCATIONADDRESS?: Edm.String; LOCATIONLATITUDE?: Edm.Double; LOCATIONLONGITUDE?: Edm.Double; SERVICECITYID?: Edm.Decimal; SERVICECITYAREAID?: Edm.Decimal; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SERVICEBID?: MSNAdmin.Models.SERVICEBID; SERVICECATEGORY?: MSNAdmin.Models.SERVICECATEGORY; SERVICESTATE1?: MSNAdmin.Models.SERVICESTATE; SERVICESUBCATEGORY?: MSNAdmin.Models.SERVICESUBCATEGORY; SERVICETIMETYPE1?: MSNAdmin.Models.SERVICETIMETYPE; USERINFO?: MSNAdmin.Models.USERINFO; USERSERVICETIMEREOCRDs?: MSNAdmin.Models.USERSERVICETIMEREOCRD[]; CITY?: MSNAdmin.Models.CITY; CITYAREA?: MSNAdmin.Models.CITYAREA });
 
         ID: Edm.Decimal;
         USERID: Edm.Decimal;
@@ -198,6 +198,11 @@ declare module MSNAdmin.Models {
         SERVICESTATE: Edm.Int32;
         SERVICETIMETYPE: Edm.Int32;
         ALLOCATEDBIDID: Edm.Decimal;
+        SERVICELOCATIONADDRESS: Edm.String;
+        LOCATIONLATITUDE: Edm.Double;
+        LOCATIONLONGITUDE: Edm.Double;
+        SERVICECITYID: Edm.Decimal;
+        SERVICECITYAREAID: Edm.Decimal;
         SERVICEBIDs: MSNAdmin.Models.SERVICEBID[];
         SERVICEBID: MSNAdmin.Models.SERVICEBID;
         SERVICECATEGORY: MSNAdmin.Models.SERVICECATEGORY;
@@ -206,6 +211,8 @@ declare module MSNAdmin.Models {
         SERVICETIMETYPE1: MSNAdmin.Models.SERVICETIMETYPE;
         USERINFO: MSNAdmin.Models.USERINFO;
         USERSERVICETIMEREOCRDs: MSNAdmin.Models.USERSERVICETIMEREOCRD[];
+        CITY: MSNAdmin.Models.CITY;
+        CITYAREA: MSNAdmin.Models.CITYAREA;
     }
 
     export class USERSERVICE extends $data.Entity {
@@ -248,7 +255,7 @@ declare module MSNAdmin.Models {
 
     export class USERINFO extends $data.Entity {
         constructor();
-        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; EMAIL?: Edm.String; PHONE?: Edm.String; CITYID?: Edm.Decimal; CITYAREAID?: Edm.Decimal; LOGINTYPEID?: Edm.Int32; CURRENTLOCATION?: Edm.String; CITY?: MSNAdmin.Models.CITY; CITYAREA?: MSNAdmin.Models.CITYAREA; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SOCIALLOGIN?: MSNAdmin.Models.SOCIALLOGIN; USERBIDS?: MSNAdmin.Models.USERBID[]; USERFUNDS?: MSNAdmin.Models.USERFUND[]; USERMEMBERSHIPs?: MSNAdmin.Models.USERMEMBERSHIP[]; USERSERVICEs?: MSNAdmin.Models.USERSERVICE[]; USERSERVICENEEDs?: MSNAdmin.Models.USERSERVICENEED[]; USERPWDs?: MSNAdmin.Models.USERPWD[] });
+        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; EMAIL?: Edm.String; PHONE?: Edm.String; CITYID?: Edm.Decimal; CITYAREAID?: Edm.Decimal; LOGINTYPEID?: Edm.Int32; CURRENTLOCATION?: Edm.String; USERLOCATIONLATITUDE?: Edm.Double; USERLOCATIONLONGITUDE?: Edm.Double; CITY?: MSNAdmin.Models.CITY; CITYAREA?: MSNAdmin.Models.CITYAREA; SERVICEBIDs?: MSNAdmin.Models.SERVICEBID[]; SOCIALLOGIN?: MSNAdmin.Models.SOCIALLOGIN; USERBIDS?: MSNAdmin.Models.USERBID[]; USERFUNDS?: MSNAdmin.Models.USERFUND[]; USERMEMBERSHIPs?: MSNAdmin.Models.USERMEMBERSHIP[]; USERSERVICEs?: MSNAdmin.Models.USERSERVICE[]; USERSERVICENEEDs?: MSNAdmin.Models.USERSERVICENEED[]; USERPWDs?: MSNAdmin.Models.USERPWD[] });
 
         ID: Edm.Decimal;
         NAME: Edm.String;
@@ -258,6 +265,8 @@ declare module MSNAdmin.Models {
         CITYAREAID: Edm.Decimal;
         LOGINTYPEID: Edm.Int32;
         CURRENTLOCATION: Edm.String;
+        USERLOCATIONLATITUDE: Edm.Double;
+        USERLOCATIONLONGITUDE: Edm.Double;
         CITY: MSNAdmin.Models.CITY;
         CITYAREA: MSNAdmin.Models.CITYAREA;
         SERVICEBIDs: MSNAdmin.Models.SERVICEBID[];
@@ -396,7 +405,7 @@ declare module MSNAdmin.Models {
 
     export class CITYAREA extends $data.Entity {
         constructor();
-        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; DESCRIPTION?: Edm.String; CITYID?: Edm.Decimal; CITY?: MSNAdmin.Models.CITY; USERINFOes?: MSNAdmin.Models.USERINFO[] });
+        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; DESCRIPTION?: Edm.String; CITYID?: Edm.Decimal; CITY?: MSNAdmin.Models.CITY; USERINFOes?: MSNAdmin.Models.USERINFO[]; USERSERVICENEEDs?: MSNAdmin.Models.USERSERVICENEED[] });
 
         ID: Edm.Decimal;
         NAME: Edm.String;
@@ -404,16 +413,18 @@ declare module MSNAdmin.Models {
         CITYID: Edm.Decimal;
         CITY: MSNAdmin.Models.CITY;
         USERINFOes: MSNAdmin.Models.USERINFO[];
+        USERSERVICENEEDs: MSNAdmin.Models.USERSERVICENEED[];
     }
 
     export class CITY extends $data.Entity {
         constructor();
-        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; CITYAREAs?: MSNAdmin.Models.CITYAREA[]; USERINFOes?: MSNAdmin.Models.USERINFO[] });
+        constructor(initData: { ID?: Edm.Decimal; NAME?: Edm.String; CITYAREAs?: MSNAdmin.Models.CITYAREA[]; USERINFOes?: MSNAdmin.Models.USERINFO[]; USERSERVICENEEDs?: MSNAdmin.Models.USERSERVICENEED[] });
 
         ID: Edm.Decimal;
         NAME: Edm.String;
         CITYAREAs: MSNAdmin.Models.CITYAREA[];
         USERINFOes: MSNAdmin.Models.USERINFO[];
+        USERSERVICENEEDs: MSNAdmin.Models.USERSERVICENEED[];
     }
 
 }

@@ -27,6 +27,11 @@
             "type": "Array",
             "elementType": "MSNAdmin.Models.USERINFO",
             "inverseProperty": "$$unbound"
+        },
+        USERSERVICENEEDs: {
+            "type": "Array",
+            "elementType": "MSNAdmin.Models.USERSERVICENEED",
+            "inverseProperty": "$$unbound"
         }
     });
 
@@ -53,6 +58,11 @@
         USERINFOes: {
             "type": "Array",
             "elementType": "MSNAdmin.Models.USERINFO",
+            "inverseProperty": "$$unbound"
+        },
+        USERSERVICENEEDs: {
+            "type": "Array",
+            "elementType": "MSNAdmin.Models.USERSERVICENEED",
             "inverseProperty": "$$unbound"
         }
     });
@@ -352,6 +362,12 @@
         CURRENTLOCATION: {
             "type": "Edm.String"
         },
+        USERLOCATIONLATITUDE: {
+            "type": "Edm.Double"
+        },
+        USERLOCATIONLONGITUDE: {
+            "type": "Edm.Double"
+        },
         CITY: {
             "type": "MSNAdmin.Models.CITY",
             "inverseProperty": "$$unbound"
@@ -524,6 +540,21 @@
         ALLOCATEDBIDID: {
             "type": "Edm.Decimal"
         },
+        SERVICELOCATIONADDRESS: {
+            "type": "Edm.String"
+        },
+        LOCATIONLATITUDE: {
+            "type": "Edm.Double"
+        },
+        LOCATIONLONGITUDE: {
+            "type": "Edm.Double"
+        },
+        SERVICECITYID: {
+            "type": "Edm.Decimal"
+        },
+        SERVICECITYAREAID: {
+            "type": "Edm.Decimal"
+        },
         SERVICEBIDs: {
             "type": "Array",
             "elementType": "MSNAdmin.Models.SERVICEBID",
@@ -556,6 +587,14 @@
         USERSERVICETIMEREOCRDs: {
             "type": "Array",
             "elementType": "MSNAdmin.Models.USERSERVICETIMEREOCRD",
+            "inverseProperty": "$$unbound"
+        },
+        CITY: {
+            "type": "MSNAdmin.Models.CITY",
+            "inverseProperty": "$$unbound"
+        },
+        CITYAREA: {
+            "type": "MSNAdmin.Models.CITYAREA",
             "inverseProperty": "$$unbound"
         }
     });

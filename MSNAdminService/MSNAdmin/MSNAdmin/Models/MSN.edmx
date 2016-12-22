@@ -119,6 +119,8 @@
           <Property Name="CITYAREAID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="LOGINTYPEID" Type="int" />
           <Property Name="CURRENTLOCATION" Type="varchar(max)" />
+          <Property Name="USERLOCATIONLATITUDE" Type="float" />
+          <Property Name="USERLOCATIONLONGITUDE" Type="float" />
         </EntityType>
         <EntityType Name="USERMEMBERSHIP">
           <Key>
@@ -154,7 +156,7 @@
           </Key>
           <Property Name="ID" Type="numeric" Precision="18" Scale="0" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="USERID" Type="numeric" Precision="18" Scale="0" />
-          <Property Name="SERVICELOCATION" Type="varchar(max)" />
+          <Property Name="SERVICELOCATIONADDRESS" Type="varchar(max)" />
           <Property Name="SERVICETITLE" Type="varchar" MaxLength="300" />
           <Property Name="SERVICEDESCRIPTION" Type="varchar(max)" />
           <Property Name="SERVICECATEGORYID" Type="numeric" Precision="18" Scale="0" />
@@ -163,6 +165,10 @@
           <Property Name="MAXBUDGET" Type="money" />
           <Property Name="SERVICESTATE" Type="int" />
           <Property Name="SERVICETIMETYPE" Type="int" />
+          <Property Name="LOCATIONLATITUDE" Type="float" />
+          <Property Name="LOCATIONLONGITUDE" Type="float" />
+          <Property Name="SERVICECITYID" Type="numeric" Precision="18" Scale="0" />
+          <Property Name="SERVICECITYAREAID" Type="numeric" Precision="18" Scale="0" />
           <Property Name="ALLOCATEDBIDID" Type="numeric" Precision="18" Scale="0" />
         </EntityType>
         <EntityType Name="USERSERVICETIMEREOCRD">
@@ -189,7 +195,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICEBI__USERI__5441852A">
+        <Association Name="FK__SERVICEBI__USERI__5629CD9C">
           <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
           <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="*" />
           <ReferentialConstraint>
@@ -201,7 +207,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICEBI__USERS__5535A963">
+        <Association Name="FK__SERVICEBI__USERS__571DF1D5">
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="0..1" />
           <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="*" />
           <ReferentialConstraint>
@@ -321,7 +327,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__ALLOC__5629CD9C">
+        <Association Name="FK__USERSERVI__ALLOC__5812160E">
           <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="0..1" />
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
           <ReferentialConstraint>
@@ -405,7 +411,31 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__4F7CD00D">
+        <Association Name="FK__USERSERVI__SERVI__4BAC3F29">
+          <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
+          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="SERVICECITYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__SERVI__4CA06362">
+          <End Role="CITYAREA" Type="Self.CITYAREA" Multiplicity="0..1" />
+          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITYAREA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="SERVICECITYAREAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__SERVI__5165187F">
           <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="0..1" />
           <End Role="USERSERVICETIMEREOCRD" Type="Self.USERSERVICETIMEREOCRD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -464,11 +494,11 @@
             <End Role="CITY" EntitySet="CITY" />
             <End Role="CITYAREA" EntitySet="CITYAREA" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__USERI__5441852A" Association="Self.FK__SERVICEBI__USERI__5441852A">
+          <AssociationSet Name="FK__SERVICEBI__USERI__5629CD9C" Association="Self.FK__SERVICEBI__USERI__5629CD9C">
             <End Role="USERINFO" EntitySet="USERINFO" />
             <End Role="SERVICEBID" EntitySet="SERVICEBID" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__USERS__5535A963" Association="Self.FK__SERVICEBI__USERS__5535A963">
+          <AssociationSet Name="FK__SERVICEBI__USERS__571DF1D5" Association="Self.FK__SERVICEBI__USERS__571DF1D5">
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
             <End Role="SERVICEBID" EntitySet="SERVICEBID" />
           </AssociationSet>
@@ -508,7 +538,7 @@
             <End Role="USERINFO" EntitySet="USERINFO" />
             <End Role="USERPWD" EntitySet="USERPWD" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__ALLOC__5629CD9C" Association="Self.FK__USERSERVI__ALLOC__5629CD9C">
+          <AssociationSet Name="FK__USERSERVI__ALLOC__5812160E" Association="Self.FK__USERSERVI__ALLOC__5812160E">
             <End Role="SERVICEBID" EntitySet="SERVICEBID" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
@@ -536,7 +566,15 @@
             <End Role="SERVICETIMETYPE" EntitySet="SERVICETIMETYPE" />
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__4F7CD00D" Association="Self.FK__USERSERVI__SERVI__4F7CD00D">
+          <AssociationSet Name="FK__USERSERVI__SERVI__4BAC3F29" Association="Self.FK__USERSERVI__SERVI__4BAC3F29">
+            <End Role="CITY" EntitySet="CITY" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__SERVI__4CA06362" Association="Self.FK__USERSERVI__SERVI__4CA06362">
+            <End Role="CITYAREA" EntitySet="CITYAREA" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__SERVI__5165187F" Association="Self.FK__USERSERVI__SERVI__5165187F">
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEED" />
             <End Role="USERSERVICETIMEREOCRD" EntitySet="USERSERVICETIMEREOCRD" />
           </AssociationSet>
@@ -561,6 +599,7 @@
           <Property Name="NAME" Type="String" MaxLength="60" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="CITYAREAs" Relationship="Self.FK__CITYAREA__CITYID__08EA5793" FromRole="CITY" ToRole="CITYAREA" />
           <NavigationProperty Name="USERINFOes" Relationship="Self.FK__USERINFO__CITYID__0DAF0CB0" FromRole="CITY" ToRole="USERINFO" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4BAC3F29" FromRole="CITY" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="CITYAREA">
           <Key>
@@ -572,6 +611,7 @@
           <Property Name="CITYID" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="CITY" Relationship="Self.FK__CITYAREA__CITYID__08EA5793" FromRole="CITYAREA" ToRole="CITY" />
           <NavigationProperty Name="USERINFOes" Relationship="Self.FK__USERINFO__CITYAR__0EA330E9" FromRole="CITYAREA" ToRole="USERINFO" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4CA06362" FromRole="CITYAREA" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="MEMBERSHIP">
           <Key>
@@ -593,9 +633,9 @@
           <Property Name="BIDDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <Property Name="BIDAMOUNT" Type="Decimal" Precision="19" Scale="4" />
           <NavigationProperty Name="USERINFO" Relationship="Self.FK__SERVICEBI__USERI__46E78A0C" FromRole="SERVICEBID" ToRole="USERINFO" />
-          <NavigationProperty Name="USERSERVICENEED" Relationship="Self.FK__SERVICEBI__USERS__47DBAE45" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__ALLOC__48CFD27E" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
-        </EntityType>
+          <NavigationProperty Name="USERSERVICENEED" Relationship="myserviceneedModel.FK__SERVICEBI__USERS__571DF1D5" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="myserviceneedModel.FK__USERSERVI__ALLOC__5812160E" FromRole="SERVICEBID" ToRole="USERSERVICENEED" />
+          </EntityType>
         <EntityType Name="SERVICECATEGORY">
           <Key>
             <PropertyRef Name="ID" />
@@ -605,7 +645,7 @@
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="SERVICESUBCATEGORies" Relationship="Self.FK__SERVICESU__SERVI__2B3F6F97" FromRole="SERVICECATEGORY" ToRole="SERVICESUBCATEGORY" />
           <NavigationProperty Name="USERSERVICEs" Relationship="Self.FK__USERSERVI__SERVI__30F848ED" FromRole="SERVICECATEGORY" ToRole="USERSERVICE" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__SERVI__3F466844" FromRole="SERVICECATEGORY" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__47DBAE45" FromRole="SERVICECATEGORY" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SERVICESTATE">
           <Key>
@@ -614,7 +654,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__SERVI__412EB0B6" FromRole="SERVICESTATE" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__49C3F6B7" FromRole="SERVICESTATE" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SERVICESUBCATEGORY">
           <Key>
@@ -626,7 +666,7 @@
           <Property Name="SERVICECATEGORYID" Type="Decimal" Precision="18" Scale="0" />
           <NavigationProperty Name="SERVICECATEGORY" Relationship="Self.FK__SERVICESU__SERVI__2B3F6F97" FromRole="SERVICESUBCATEGORY" ToRole="SERVICECATEGORY" />
           <NavigationProperty Name="USERSERVICEs" Relationship="Self.FK__USERSERVI__SERVI__31EC6D26" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICE" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__SERVI__403A8C7D" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__48CFD27E" FromRole="SERVICESUBCATEGORY" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SERVICETIMETYPE">
           <Key>
@@ -635,7 +675,7 @@
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="NAME" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
           <Property Name="DESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__SERVI__4222D4EF" FromRole="SERVICETIMETYPE" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4AB81AF0" FromRole="SERVICETIMETYPE" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="SOCIALLOGIN">
           <Key>
@@ -684,8 +724,10 @@
           <NavigationProperty Name="USERFUNDS" Relationship="Self.FK__USERFUNDS__USERI__1DE57479" FromRole="USERINFO" ToRole="USERFUNDS" />
           <NavigationProperty Name="USERMEMBERSHIPs" Relationship="Self.FK__USERMEMBE__USERI__182C9B23" FromRole="USERINFO" ToRole="USERMEMBERSHIP" />
           <NavigationProperty Name="USERSERVICEs" Relationship="Self.FK__USERSERVI__USERI__300424B4" FromRole="USERINFO" ToRole="USERSERVICE" />
-          <NavigationProperty Name="USERSERVICENEEDs" Relationship="Self.FK__USERSERVI__USERI__3E52440B" FromRole="USERINFO" ToRole="USERSERVICENEED" />
           <NavigationProperty Name="USERPWDs" Relationship="myserviceneedModel.FK__USERPWD__USERID__182C9B23" FromRole="USERINFO" ToRole="USERPWD" />
+          <Property Name="USERLOCATIONLATITUDE" Type="Double" />
+          <Property Name="USERLOCATIONLONGITUDE" Type="Double" />
+          <NavigationProperty Name="USERSERVICENEEDs" Relationship="myserviceneedModel.FK__USERSERVI__USERI__46E78A0C" FromRole="USERINFO" ToRole="USERSERVICENEED" />
         </EntityType>
         <EntityType Name="USERMEMBERSHIP">
           <Key>
@@ -711,31 +753,6 @@
           <NavigationProperty Name="SERVICECATEGORY" Relationship="Self.FK__USERSERVI__SERVI__30F848ED" FromRole="USERSERVICE" ToRole="SERVICECATEGORY" />
           <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="Self.FK__USERSERVI__SERVI__31EC6D26" FromRole="USERSERVICE" ToRole="SERVICESUBCATEGORY" />
           <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERSERVI__USERI__300424B4" FromRole="USERSERVICE" ToRole="USERINFO" />
-        </EntityType>
-        <EntityType Name="USERSERVICENEED">
-          <Key>
-            <PropertyRef Name="ID" />
-          </Key>
-          <Property Name="ID" Type="Decimal" Precision="18" Scale="0" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="SERVICELOCATION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SERVICETITLE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
-          <Property Name="SERVICEDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
-          <Property Name="SERVICECATEGORYID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="SERVICESUBCATEGORYID" Type="Decimal" Precision="18" Scale="0" />
-          <Property Name="MINBUDGET" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="MAXBUDGET" Type="Decimal" Precision="19" Scale="4" />
-          <Property Name="SERVICESTATE" Type="Int32" />
-          <Property Name="SERVICETIMETYPE" Type="Int32" />
-          <Property Name="ALLOCATEDBIDID" Type="Decimal" Precision="18" Scale="0" />
-          <NavigationProperty Name="SERVICEBIDs" Relationship="Self.FK__SERVICEBI__USERS__47DBAE45" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
-          <NavigationProperty Name="SERVICEBID" Relationship="Self.FK__USERSERVI__ALLOC__48CFD27E" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
-          <NavigationProperty Name="SERVICECATEGORY" Relationship="Self.FK__USERSERVI__SERVI__3F466844" FromRole="USERSERVICENEED" ToRole="SERVICECATEGORY" />
-          <NavigationProperty Name="SERVICESTATE1" Relationship="Self.FK__USERSERVI__SERVI__412EB0B6" FromRole="USERSERVICENEED" ToRole="SERVICESTATE" />
-          <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="Self.FK__USERSERVI__SERVI__403A8C7D" FromRole="USERSERVICENEED" ToRole="SERVICESUBCATEGORY" />
-          <NavigationProperty Name="SERVICETIMETYPE1" Relationship="Self.FK__USERSERVI__SERVI__4222D4EF" FromRole="USERSERVICENEED" ToRole="SERVICETIMETYPE" />
-          <NavigationProperty Name="USERINFO" Relationship="Self.FK__USERSERVI__USERI__3E52440B" FromRole="USERSERVICENEED" ToRole="USERINFO" />
-          <NavigationProperty Name="USERSERVICETIMEREOCRDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4F7CD00D" FromRole="USERSERVICENEED" ToRole="USERSERVICETIMEREOCRD" />
         </EntityType>
         <Association Name="FK__CITYAREA__CITYID__08EA5793">
           <End Role="CITY" Type="Self.CITY" Multiplicity="0..1" />
@@ -797,30 +814,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__SERVICEBI__USERS__47DBAE45">
-          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="0..1" />
-          <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERSERVICENEED">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="SERVICEBID">
-              <PropertyRef Name="USERSERVICENEEDID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__ALLOC__48CFD27E">
-          <End Role="SERVICEBID" Type="Self.SERVICEBID" Multiplicity="0..1" />
-          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICEBID">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERSERVICENEED">
-              <PropertyRef Name="ALLOCATEDBIDID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__SERVICESU__SERVI__2B3F6F97">
           <End Role="SERVICECATEGORY" Type="Self.SERVICECATEGORY" Multiplicity="0..1" />
           <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="*" />
@@ -845,30 +838,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__3F466844">
-          <End Role="SERVICECATEGORY" Type="Self.SERVICECATEGORY" Multiplicity="0..1" />
-          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICECATEGORY">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERSERVICENEED">
-              <PropertyRef Name="SERVICECATEGORYID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__SERVI__412EB0B6">
-          <End Role="SERVICESTATE" Type="Self.SERVICESTATE" Multiplicity="0..1" />
-          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICESTATE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERSERVICENEED">
-              <PropertyRef Name="SERVICESTATE" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK__USERSERVI__SERVI__31EC6D26">
           <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="0..1" />
           <End Role="USERSERVICE" Type="Self.USERSERVICE" Multiplicity="*" />
@@ -878,30 +847,6 @@
             </Principal>
             <Dependent Role="USERSERVICE">
               <PropertyRef Name="SERVICESUBCATEGORYID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__SERVI__403A8C7D">
-          <End Role="SERVICESUBCATEGORY" Type="Self.SERVICESUBCATEGORY" Multiplicity="0..1" />
-          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICESUBCATEGORY">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERSERVICENEED">
-              <PropertyRef Name="SERVICESUBCATEGORYID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
-        <Association Name="FK__USERSERVI__SERVI__4222D4EF">
-          <End Role="SERVICETIMETYPE" Type="Self.SERVICETIMETYPE" Multiplicity="0..1" />
-          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="SERVICETIMETYPE">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERSERVICENEED">
-              <PropertyRef Name="SERVICETIMETYPE" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
@@ -965,18 +910,6 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__USERI__3E52440B">
-          <End Role="USERINFO" Type="Self.USERINFO" Multiplicity="0..1" />
-          <End Role="USERSERVICENEED" Type="Self.USERSERVICENEED" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="USERINFO">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="USERSERVICENEED">
-              <PropertyRef Name="USERID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <EntityContainer Name="myserviceneedEntities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="CITies" EntityType="Self.CITY" />
           <EntitySet Name="CITYAREAs" EntityType="Self.CITYAREA" />
@@ -992,7 +925,6 @@
           <EntitySet Name="USERINFOes" EntityType="Self.USERINFO" />
           <EntitySet Name="USERMEMBERSHIPs" EntityType="Self.USERMEMBERSHIP" />
           <EntitySet Name="USERSERVICEs" EntityType="Self.USERSERVICE" />
-          <EntitySet Name="USERSERVICENEEDs" EntityType="Self.USERSERVICENEED" />
           <AssociationSet Name="FK__CITYAREA__CITYID__08EA5793" Association="Self.FK__CITYAREA__CITYID__08EA5793">
             <End Role="CITY" EntitySet="CITies" />
             <End Role="CITYAREA" EntitySet="CITYAREAs" />
@@ -1013,14 +945,6 @@
             <End Role="USERINFO" EntitySet="USERINFOes" />
             <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__SERVICEBI__USERS__47DBAE45" Association="Self.FK__SERVICEBI__USERS__47DBAE45">
-            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
-            <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__ALLOC__48CFD27E" Association="Self.FK__USERSERVI__ALLOC__48CFD27E">
-            <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
-            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
-          </AssociationSet>
           <AssociationSet Name="FK__SERVICESU__SERVI__2B3F6F97" Association="Self.FK__SERVICESU__SERVI__2B3F6F97">
             <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
             <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
@@ -1029,25 +953,9 @@
             <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
             <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__3F466844" Association="Self.FK__USERSERVI__SERVI__3F466844">
-            <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
-            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__412EB0B6" Association="Self.FK__USERSERVI__SERVI__412EB0B6">
-            <End Role="SERVICESTATE" EntitySet="SERVICESTATEs" />
-            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
-          </AssociationSet>
           <AssociationSet Name="FK__USERSERVI__SERVI__31EC6D26" Association="Self.FK__USERSERVI__SERVI__31EC6D26">
             <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
             <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__403A8C7D" Association="Self.FK__USERSERVI__SERVI__403A8C7D">
-            <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
-            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
-          </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__4222D4EF" Association="Self.FK__USERSERVI__SERVI__4222D4EF">
-            <End Role="SERVICETIMETYPE" EntitySet="SERVICETIMETYPEs" />
-            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
           </AssociationSet>
           <AssociationSet Name="FK__USERINFO__LOGINT__0F975522" Association="Self.FK__USERINFO__LOGINT__0F975522">
             <End Role="SOCIALLOGIN" EntitySet="SOCIALLOGINs" />
@@ -1069,10 +977,6 @@
             <End Role="USERINFO" EntitySet="USERINFOes" />
             <End Role="USERSERVICE" EntitySet="USERSERVICEs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__USERI__3E52440B" Association="Self.FK__USERSERVI__USERI__3E52440B">
-            <End Role="USERINFO" EntitySet="USERINFOes" />
-            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
-          </AssociationSet>
           <EntitySet Name="ADMININFOes" EntityType="myserviceneedModel.ADMININFO" />
           <EntitySet Name="USERPWDs" EntityType="myserviceneedModel.USERPWD" />
           <EntitySet Name="USERSERVICETIMEREOCRDs" EntityType="myserviceneedModel.USERSERVICETIMEREOCRD" />
@@ -1080,11 +984,48 @@
             <End Role="USERINFO" EntitySet="USERINFOes" />
             <End Role="USERPWD" EntitySet="USERPWDs" />
           </AssociationSet>
-          <AssociationSet Name="FK__USERSERVI__SERVI__4F7CD00D" Association="myserviceneedModel.FK__USERSERVI__SERVI__4F7CD00D">
+          <EntitySet Name="USERSERVICENEEDs" EntityType="myserviceneedModel.USERSERVICENEED" />
+          <AssociationSet Name="FK__USERSERVI__SERVI__4BAC3F29" Association="myserviceneedModel.FK__USERSERVI__SERVI__4BAC3F29">
+            <End Role="CITY" EntitySet="CITies" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__SERVI__4CA06362" Association="myserviceneedModel.FK__USERSERVI__SERVI__4CA06362">
+            <End Role="CITYAREA" EntitySet="CITYAREAs" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__SERVICEBI__USERS__571DF1D5" Association="myserviceneedModel.FK__SERVICEBI__USERS__571DF1D5">
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+            <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__ALLOC__5812160E" Association="myserviceneedModel.FK__USERSERVI__ALLOC__5812160E">
+            <End Role="SERVICEBID" EntitySet="SERVICEBIDs" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__SERVI__47DBAE45" Association="myserviceneedModel.FK__USERSERVI__SERVI__47DBAE45">
+            <End Role="SERVICECATEGORY" EntitySet="SERVICECATEGORies" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__SERVI__49C3F6B7" Association="myserviceneedModel.FK__USERSERVI__SERVI__49C3F6B7">
+            <End Role="SERVICESTATE" EntitySet="SERVICESTATEs" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__SERVI__48CFD27E" Association="myserviceneedModel.FK__USERSERVI__SERVI__48CFD27E">
+            <End Role="SERVICESUBCATEGORY" EntitySet="SERVICESUBCATEGORies" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__SERVI__4AB81AF0" Association="myserviceneedModel.FK__USERSERVI__SERVI__4AB81AF0">
+            <End Role="SERVICETIMETYPE" EntitySet="SERVICETIMETYPEs" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__USERI__46E78A0C" Association="myserviceneedModel.FK__USERSERVI__USERI__46E78A0C">
+            <End Role="USERINFO" EntitySet="USERINFOes" />
+            <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__USERSERVI__SERVI__5165187F" Association="myserviceneedModel.FK__USERSERVI__SERVI__5165187F">
             <End Role="USERSERVICENEED" EntitySet="USERSERVICENEEDs" />
             <End Role="USERSERVICETIMEREOCRD" EntitySet="USERSERVICETIMEREOCRDs" />
           </AssociationSet>
-        </EntityContainer>
+          </EntityContainer>
         <EntityType Name="ADMININFO">
           <Key>
             <PropertyRef Name="ID" />
@@ -1115,7 +1056,7 @@
           <Property Name="SERVICEENDDATE" Type="DateTime" Precision="0" />
           <Property Name="SERVICESTARTTIME" Type="Time" Precision="7" />
           <Property Name="SERVICEENDTIME" Type="Time" Precision="7" />
-          <NavigationProperty Name="USERSERVICENEED" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4F7CD00D" FromRole="USERSERVICETIMEREOCRD" ToRole="USERSERVICENEED" />
+          <NavigationProperty Name="USERSERVICENEED" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__5165187F" FromRole="USERSERVICETIMEREOCRD" ToRole="USERSERVICENEED" />
         </EntityType>
         <Association Name="FK__USERPWD__USERID__182C9B23">
           <End Type="myserviceneedModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
@@ -1129,7 +1070,146 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <Association Name="FK__USERSERVI__SERVI__4F7CD00D">
+        <EntityType Name="USERSERVICENEED">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Decimal" Nullable="false" Precision="18" Scale="0" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="USERID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SERVICELOCATIONADDRESS" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SERVICETITLE" Type="String" MaxLength="300" FixedLength="false" Unicode="false" />
+          <Property Name="SERVICEDESCRIPTION" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="SERVICECATEGORYID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SERVICESUBCATEGORYID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="MINBUDGET" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="MAXBUDGET" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="SERVICESTATE" Type="Int32" />
+          <Property Name="SERVICETIMETYPE" Type="Int32" />
+          <Property Name="LOCATIONLATITUDE" Type="Double" />
+          <Property Name="LOCATIONLONGITUDE" Type="Double" />
+          <Property Name="SERVICECITYID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="SERVICECITYAREAID" Type="Decimal" Precision="18" Scale="0" />
+          <Property Name="ALLOCATEDBIDID" Type="Decimal" Precision="18" Scale="0" />
+          <NavigationProperty Name="CITY" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4BAC3F29" FromRole="USERSERVICENEED" ToRole="CITY" />
+          <NavigationProperty Name="CITYAREA" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4CA06362" FromRole="USERSERVICENEED" ToRole="CITYAREA" />
+          <NavigationProperty Name="SERVICEBIDs" Relationship="myserviceneedModel.FK__SERVICEBI__USERS__571DF1D5" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
+          <NavigationProperty Name="SERVICEBID" Relationship="myserviceneedModel.FK__USERSERVI__ALLOC__5812160E" FromRole="USERSERVICENEED" ToRole="SERVICEBID" />
+          <NavigationProperty Name="SERVICECATEGORY" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__47DBAE45" FromRole="USERSERVICENEED" ToRole="SERVICECATEGORY" />
+          <NavigationProperty Name="SERVICESTATE1" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__49C3F6B7" FromRole="USERSERVICENEED" ToRole="SERVICESTATE" />
+          <NavigationProperty Name="SERVICESUBCATEGORY" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__48CFD27E" FromRole="USERSERVICENEED" ToRole="SERVICESUBCATEGORY" />
+          <NavigationProperty Name="SERVICETIMETYPE1" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__4AB81AF0" FromRole="USERSERVICENEED" ToRole="SERVICETIMETYPE" />
+          <NavigationProperty Name="USERINFO" Relationship="myserviceneedModel.FK__USERSERVI__USERI__46E78A0C" FromRole="USERSERVICENEED" ToRole="USERINFO" />
+          <NavigationProperty Name="USERSERVICETIMEREOCRDs" Relationship="myserviceneedModel.FK__USERSERVI__SERVI__5165187F" FromRole="USERSERVICENEED" ToRole="USERSERVICETIMEREOCRD" />
+        </EntityType>
+        <Association Name="FK__USERSERVI__SERVI__4BAC3F29">
+          <End Type="myserviceneedModel.CITY" Role="CITY" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="SERVICECITYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__SERVI__4CA06362">
+          <End Type="myserviceneedModel.CITYAREA" Role="CITYAREA" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="CITYAREA">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="SERVICECITYAREAID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__SERVICEBI__USERS__571DF1D5">
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.SERVICEBID" Role="SERVICEBID" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERSERVICENEED">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="SERVICEBID">
+              <PropertyRef Name="USERSERVICENEEDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__ALLOC__5812160E">
+          <End Type="myserviceneedModel.SERVICEBID" Role="SERVICEBID" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICEBID">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="ALLOCATEDBIDID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__SERVI__47DBAE45">
+          <End Type="myserviceneedModel.SERVICECATEGORY" Role="SERVICECATEGORY" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICECATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="SERVICECATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__SERVI__49C3F6B7">
+          <End Type="myserviceneedModel.SERVICESTATE" Role="SERVICESTATE" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICESTATE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="SERVICESTATE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__SERVI__48CFD27E">
+          <End Type="myserviceneedModel.SERVICESUBCATEGORY" Role="SERVICESUBCATEGORY" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICESUBCATEGORY">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="SERVICESUBCATEGORYID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__SERVI__4AB81AF0">
+          <End Type="myserviceneedModel.SERVICETIMETYPE" Role="SERVICETIMETYPE" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="SERVICETIMETYPE">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="SERVICETIMETYPE" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__USERI__46E78A0C">
+          <End Type="myserviceneedModel.USERINFO" Role="USERINFO" Multiplicity="0..1" />
+          <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="USERINFO">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="USERSERVICENEED">
+              <PropertyRef Name="USERID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__USERSERVI__SERVI__5165187F">
           <End Type="myserviceneedModel.USERSERVICENEED" Role="USERSERVICENEED" Multiplicity="0..1" />
           <End Type="myserviceneedModel.USERSERVICETIMEREOCRD" Role="USERSERVICETIMEREOCRD" Multiplicity="*" />
           <ReferentialConstraint>
@@ -1141,7 +1221,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
@@ -1253,6 +1333,8 @@
           <EntitySetMapping Name="USERINFOes">
             <EntityTypeMapping TypeName="myserviceneedModel.USERINFO">
               <MappingFragment StoreEntitySet="USERINFO">
+                <ScalarProperty Name="USERLOCATIONLONGITUDE" ColumnName="USERLOCATIONLONGITUDE" />
+                <ScalarProperty Name="USERLOCATIONLATITUDE" ColumnName="USERLOCATIONLATITUDE" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="NAME" ColumnName="NAME" />
                 <ScalarProperty Name="EMAIL" ColumnName="EMAIL" />
@@ -1286,24 +1368,6 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="USERSERVICENEEDs">
-            <EntityTypeMapping TypeName="myserviceneedModel.USERSERVICENEED">
-              <MappingFragment StoreEntitySet="USERSERVICENEED">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="USERID" ColumnName="USERID" />
-                <ScalarProperty Name="SERVICELOCATION" ColumnName="SERVICELOCATION" />
-                <ScalarProperty Name="SERVICETITLE" ColumnName="SERVICETITLE" />
-                <ScalarProperty Name="SERVICEDESCRIPTION" ColumnName="SERVICEDESCRIPTION" />
-                <ScalarProperty Name="SERVICECATEGORYID" ColumnName="SERVICECATEGORYID" />
-                <ScalarProperty Name="SERVICESUBCATEGORYID" ColumnName="SERVICESUBCATEGORYID" />
-                <ScalarProperty Name="MINBUDGET" ColumnName="MINBUDGET" />
-                <ScalarProperty Name="MAXBUDGET" ColumnName="MAXBUDGET" />
-                <ScalarProperty Name="SERVICESTATE" ColumnName="SERVICESTATE" />
-                <ScalarProperty Name="SERVICETIMETYPE" ColumnName="SERVICETIMETYPE" />
-                <ScalarProperty Name="ALLOCATEDBIDID" ColumnName="ALLOCATEDBIDID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="ADMININFOes">
             <EntityTypeMapping TypeName="myserviceneedModel.ADMININFO">
               <MappingFragment StoreEntitySet="ADMININFO">
@@ -1333,6 +1397,28 @@
                 <ScalarProperty Name="SERVICESTARTDATE" ColumnName="SERVICESTARTDATE" />
                 <ScalarProperty Name="SERVICENEEDEDDATE" ColumnName="SERVICENEEDEDDATE" />
                 <ScalarProperty Name="SERVICEID" ColumnName="SERVICEID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="USERSERVICENEEDs">
+            <EntityTypeMapping TypeName="myserviceneedModel.USERSERVICENEED">
+              <MappingFragment StoreEntitySet="USERSERVICENEED">
+                <ScalarProperty Name="ALLOCATEDBIDID" ColumnName="ALLOCATEDBIDID" />
+                <ScalarProperty Name="SERVICECITYAREAID" ColumnName="SERVICECITYAREAID" />
+                <ScalarProperty Name="SERVICECITYID" ColumnName="SERVICECITYID" />
+                <ScalarProperty Name="LOCATIONLONGITUDE" ColumnName="LOCATIONLONGITUDE" />
+                <ScalarProperty Name="LOCATIONLATITUDE" ColumnName="LOCATIONLATITUDE" />
+                <ScalarProperty Name="SERVICETIMETYPE" ColumnName="SERVICETIMETYPE" />
+                <ScalarProperty Name="SERVICESTATE" ColumnName="SERVICESTATE" />
+                <ScalarProperty Name="MAXBUDGET" ColumnName="MAXBUDGET" />
+                <ScalarProperty Name="MINBUDGET" ColumnName="MINBUDGET" />
+                <ScalarProperty Name="SERVICESUBCATEGORYID" ColumnName="SERVICESUBCATEGORYID" />
+                <ScalarProperty Name="SERVICECATEGORYID" ColumnName="SERVICECATEGORYID" />
+                <ScalarProperty Name="SERVICEDESCRIPTION" ColumnName="SERVICEDESCRIPTION" />
+                <ScalarProperty Name="SERVICETITLE" ColumnName="SERVICETITLE" />
+                <ScalarProperty Name="SERVICELOCATIONADDRESS" ColumnName="SERVICELOCATIONADDRESS" />
+                <ScalarProperty Name="USERID" ColumnName="USERID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
