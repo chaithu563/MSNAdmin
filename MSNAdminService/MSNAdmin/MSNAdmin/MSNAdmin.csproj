@@ -200,7 +200,7 @@
     <Compile Include="Controllers\USERPWDsController.cs" />
     <Compile Include="Controllers\USERSERVICENEEDsController.cs" />
     <Compile Include="Controllers\USERSERVICEsController.cs" />
-    <Compile Include="Controllers\USERSERVICETIMEREOCRDsController.cs" />
+    <Compile Include="Controllers\USERSERVICETIMERECORDsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -279,7 +279,7 @@
     <Compile Include="Models\USERSERVICENEEDFILE.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\USERSERVICETIMEREOCRD.cs">
+    <Compile Include="Models\USERSERVICETIMERECORD.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
