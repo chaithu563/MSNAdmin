@@ -234,6 +234,9 @@
     <Compile Include="Models\SERVICEBID.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\SERVICEBIDNEEDFILE.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\SERVICECATEGORY.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
@@ -267,7 +270,13 @@
     <Compile Include="Models\USERSERVICE.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\USERSERVICEFILE.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\USERSERVICENEED.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\USERSERVICENEEDFILE.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USERSERVICETIMEREOCRD.cs">

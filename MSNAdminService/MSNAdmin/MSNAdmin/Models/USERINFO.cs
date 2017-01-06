@@ -21,8 +21,8 @@ namespace MSNAdmin.Models
             this.USERBIDS = new HashSet<USERBID>();
             this.USERFUNDS = new HashSet<USERFUND>();
             this.USERMEMBERSHIPs = new HashSet<USERMEMBERSHIP>();
-            this.USERSERVICEs = new HashSet<USERSERVICE>();
             this.USERPWDs = new HashSet<USERPWD>();
+            this.USERSERVICEs = new HashSet<USERSERVICE>();
             this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
         }
     
@@ -49,9 +49,9 @@ namespace MSNAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USERSERVICE> USERSERVICEs { get; set; }
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERPWD> USERPWDs { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<USERSERVICE> USERSERVICEs { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
     }
