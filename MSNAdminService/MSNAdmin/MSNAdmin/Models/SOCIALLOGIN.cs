@@ -17,7 +17,7 @@ namespace MSNAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public SOCIALLOGIN()
         {
-            this.USERINFOes = new HashSet<USERINFO>();
+            this.Clients = new HashSet<Client>();
         }
     
         public int ID { get; set; }
@@ -25,6 +25,6 @@ namespace MSNAdmin.Models
         public string DESCRIPTION { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USERINFO> USERINFOes { get; set; }
+        public virtual ICollection<Client> Clients { get; set; }
     }
 }

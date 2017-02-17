@@ -8,8 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
-using System.Web.OData;
-using System.Web.OData.Routing;
+using System.Web.Http.OData;
+using System.Web.Http.OData.Routing;
 using MSNAdmin.Models;
 
 namespace MSNAdmin.Controllers
@@ -20,43 +20,43 @@ namespace MSNAdmin.Controllers
     using System.Web.Http.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<CITY>("CITies");
-    builder.EntitySet<CITYAREA>("CITYAREAs"); 
-    builder.EntitySet<USERSERVICENEED>("USERSERVICENEEDs"); 
+    builder.EntitySet<USERMEMBERSHIP>("USERMEMBERSHIPs");
+    builder.EntitySet<MEMBERSHIP>("MEMBERSHIPs"); 
+    builder.EntitySet<USERINFO>("USERINFOes"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
-    public class CITiesController : ODataController
+    public class USERMEMBERSHIPsController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
 
-        // GET: odata/CITies
+        // GET: odata/USERMEMBERSHIPs
         [Queryable]
-        public IQueryable<CITY> GetCITies()
+        public IQueryable<USERMEMBERSHIP> GetUSERMEMBERSHIPs()
         {
-            return db.CITies;
+            return db.USERMEMBERSHIPs;
         }
 
-        // GET: odata/CITies(5)
+        // GET: odata/USERMEMBERSHIPs(5)
         [Queryable]
-        public SingleResult<CITY> GetCITY([FromODataUri] decimal key)
+        public SingleResult<USERMEMBERSHIP> GetUSERMEMBERSHIP([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.CITies.Where(cITY => cITY.ID == key));
+            return SingleResult.Create(db.USERMEMBERSHIPs.Where(uSERMEMBERSHIP => uSERMEMBERSHIP.ID == key));
         }
 
-        // PUT: odata/CITies(5)
-        public IHttpActionResult Put([FromODataUri] decimal key, CITY cITY)
+        // PUT: odata/USERMEMBERSHIPs(5)
+        public IHttpActionResult Put([FromODataUri] decimal key, USERMEMBERSHIP uSERMEMBERSHIP)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (key != cITY.ID)
+            if (key != uSERMEMBERSHIP.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(cITY).State = EntityState.Modified;
+            db.Entry(uSERMEMBERSHIP).State = EntityState.Modified;
 
             try
             {
@@ -64,7 +64,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CITYExists(key))
+                if (!USERMEMBERSHIPExists(key))
                 {
                     return NotFound();
                 }
@@ -74,39 +74,39 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(cITY);
+            return Updated(uSERMEMBERSHIP);
         }
 
-        // POST: odata/CITies
-        public IHttpActionResult Post(CITY cITY)
+        // POST: odata/USERMEMBERSHIPs
+        public IHttpActionResult Post(USERMEMBERSHIP uSERMEMBERSHIP)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.CITies.Add(cITY);
+            db.USERMEMBERSHIPs.Add(uSERMEMBERSHIP);
             db.SaveChanges();
 
-            return Created(cITY);
+            return Created(uSERMEMBERSHIP);
         }
 
-        // PATCH: odata/CITies(5)
+        // PATCH: odata/USERMEMBERSHIPs(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<CITY> patch)
+        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<USERMEMBERSHIP> patch)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            CITY cITY = db.CITies.Find(key);
-            if (cITY == null)
+            USERMEMBERSHIP uSERMEMBERSHIP = db.USERMEMBERSHIPs.Find(key);
+            if (uSERMEMBERSHIP == null)
             {
                 return NotFound();
             }
 
-            patch.Patch(cITY);
+            patch.Patch(uSERMEMBERSHIP);
 
             try
             {
@@ -114,7 +114,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!CITYExists(key))
+                if (!USERMEMBERSHIPExists(key))
                 {
                     return NotFound();
                 }
@@ -124,36 +124,36 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(cITY);
+            return Updated(uSERMEMBERSHIP);
         }
 
-        // DELETE: odata/CITies(5)
+        // DELETE: odata/USERMEMBERSHIPs(5)
         public IHttpActionResult Delete([FromODataUri] decimal key)
         {
-            CITY cITY = db.CITies.Find(key);
-            if (cITY == null)
+            USERMEMBERSHIP uSERMEMBERSHIP = db.USERMEMBERSHIPs.Find(key);
+            if (uSERMEMBERSHIP == null)
             {
                 return NotFound();
             }
 
-            db.CITies.Remove(cITY);
+            db.USERMEMBERSHIPs.Remove(uSERMEMBERSHIP);
             db.SaveChanges();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/CITies(5)/CITYAREAs
+        // GET: odata/USERMEMBERSHIPs(5)/MEMBERSHIP
         [Queryable]
-        public IQueryable<CITYAREA> GetCITYAREAs([FromODataUri] decimal key)
+        public SingleResult<MEMBERSHIP> GetMEMBERSHIP([FromODataUri] decimal key)
         {
-            return db.CITies.Where(m => m.ID == key).SelectMany(m => m.CITYAREAs);
+            return SingleResult.Create(db.USERMEMBERSHIPs.Where(m => m.ID == key).Select(m => m.MEMBERSHIP));
         }
 
-        // GET: odata/CITies(5)/USERSERVICENEEDs
+        // GET: odata/USERMEMBERSHIPs(5)/USERINFO
         [Queryable]
-        public IQueryable<USERSERVICENEED> GetUSERSERVICENEEDs([FromODataUri] decimal key)
+        public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
         {
-            return db.CITies.Where(m => m.ID == key).SelectMany(m => m.USERSERVICENEEDs);
+            return SingleResult.Create(db.USERMEMBERSHIPs.Where(m => m.ID == key).Select(m => m.USERINFO));
         }
 
         protected override void Dispose(bool disposing)
@@ -165,9 +165,9 @@ namespace MSNAdmin.Controllers
             base.Dispose(disposing);
         }
 
-        private bool CITYExists(decimal key)
+        private bool USERMEMBERSHIPExists(decimal key)
         {
-            return db.CITies.Count(e => e.ID == key) > 0;
+            return db.USERMEMBERSHIPs.Count(e => e.ID == key) > 0;
         }
     }
 }

@@ -25,10 +25,17 @@ namespace MSNAdmin.Models
             throw new UnintentionalCodeFirstException();
         }
     
+        public virtual DbSet<C__MigrationHistory> C__MigrationHistory { get; set; }
         public virtual DbSet<ADMININFO> ADMININFOes { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
+        public virtual DbSet<AspNetUserClaim> AspNetUserClaims { get; set; }
+        public virtual DbSet<AspNetUserLogin> AspNetUserLogins { get; set; }
+        public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
         public virtual DbSet<CITY> CITies { get; set; }
         public virtual DbSet<CITYAREA> CITYAREAs { get; set; }
+        public virtual DbSet<Client> Clients { get; set; }
         public virtual DbSet<MEMBERSHIP> MEMBERSHIPs { get; set; }
+        public virtual DbSet<RefreshToken> RefreshTokens { get; set; }
         public virtual DbSet<SERVICEBID> SERVICEBIDs { get; set; }
         public virtual DbSet<SERVICEBIDNEEDFILE> SERVICEBIDNEEDFILES { get; set; }
         public virtual DbSet<SERVICECATEGORY> SERVICECATEGORies { get; set; }
@@ -38,9 +45,7 @@ namespace MSNAdmin.Models
         public virtual DbSet<SOCIALLOGIN> SOCIALLOGINs { get; set; }
         public virtual DbSet<USERBID> USERBIDS { get; set; }
         public virtual DbSet<USERFUND> USERFUNDS { get; set; }
-        public virtual DbSet<USERINFO> USERINFOes { get; set; }
         public virtual DbSet<USERMEMBERSHIP> USERMEMBERSHIPs { get; set; }
-        public virtual DbSet<USERPWD> USERPWDs { get; set; }
         public virtual DbSet<USERSERVICE> USERSERVICEs { get; set; }
         public virtual DbSet<USERSERVICEFILE> USERSERVICEFILES { get; set; }
         public virtual DbSet<USERSERVICENEED> USERSERVICENEEDs { get; set; }

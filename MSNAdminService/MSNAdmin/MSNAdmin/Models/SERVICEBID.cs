@@ -22,15 +22,15 @@ namespace MSNAdmin.Models
         }
     
         public decimal ID { get; set; }
-        public Nullable<decimal> USERID { get; set; }
+        public string USERID { get; set; }
         public Nullable<decimal> USERSERVICENEEDID { get; set; }
         public string BIDTITLE { get; set; }
         public string BIDDESCRIPTION { get; set; }
         public Nullable<decimal> BIDAMOUNT { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SERVICEBIDNEEDFILE> SERVICEBIDNEEDFILES { get; set; }
-        public virtual USERINFO USERINFO { get; set; }
         public virtual USERSERVICENEED USERSERVICENEED { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }

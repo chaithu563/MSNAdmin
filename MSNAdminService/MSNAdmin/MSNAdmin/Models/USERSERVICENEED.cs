@@ -22,7 +22,7 @@ namespace MSNAdmin.Models
         }
     
         public decimal ID { get; set; }
-        public Nullable<decimal> USERID { get; set; }
+        public string USERID { get; set; }
         public string SERVICELOCATIONADDRESS { get; set; }
         public string SERVICETITLE { get; set; }
         public string SERVICEDESCRIPTION { get; set; }
@@ -39,6 +39,7 @@ namespace MSNAdmin.Models
         public Nullable<decimal> USERSERVICETIMERECORDID { get; set; }
         public Nullable<decimal> ALLOCATEDBIDID { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         public virtual CITY CITY { get; set; }
         public virtual CITYAREA CITYAREA { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
@@ -48,7 +49,6 @@ namespace MSNAdmin.Models
         public virtual SERVICESTATE SERVICESTATE1 { get; set; }
         public virtual SERVICESUBCATEGORY SERVICESUBCATEGORY { get; set; }
         public virtual SERVICETIMETYPE SERVICETIMETYPE1 { get; set; }
-        public virtual USERINFO USERINFO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEEDFILE> USERSERVICENEEDFILES { get; set; }
         public virtual USERSERVICETIMERECORD USERSERVICETIMERECORD { get; set; }

@@ -8,8 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
-using System.Web.Http.OData;
-using System.Web.Http.OData.Routing;
+using System.Web.OData;
+using System.Web.OData.Routing;
 using MSNAdmin.Models;
 
 namespace MSNAdmin.Controllers
@@ -17,45 +17,47 @@ namespace MSNAdmin.Controllers
     /*
     The WebApiConfig class may require additional changes to add a route for this controller. Merge these statements into the Register method of the WebApiConfig class as applicable. Note that OData URLs are case sensitive.
 
-    using System.Web.Http.OData.Builder;
+    using System.Web.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<USERSERVICETIMERECORD>("USERSERVICETIMERECORDs");
+    builder.EntitySet<SERVICECATEGORY>("SERVICECATEGORies");
+    builder.EntitySet<SERVICESUBCATEGORY>("SERVICESUBCATEGORies"); 
+    builder.EntitySet<USERSERVICE>("USERSERVICEs"); 
     builder.EntitySet<USERSERVICENEED>("USERSERVICENEEDs"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
-    public class USERSERVICETIMERECORDsController : ODataController
+    public class SERVICECATEGORiesController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
 
-        // GET: odata/USERSERVICETIMERECORDs
+        // GET: odata/SERVICECATEGORies
         [Queryable]
-        public IQueryable<USERSERVICETIMERECORD> GetUSERSERVICETIMERECORDs()
+        public IQueryable<SERVICECATEGORY> GetSERVICECATEGORies()
         {
-            return db.USERSERVICETIMERECORDs;
+            return db.SERVICECATEGORies;
         }
 
-        // GET: odata/USERSERVICETIMERECORDs(5)
+        // GET: odata/SERVICECATEGORies(5)
         [Queryable]
-        public SingleResult<USERSERVICETIMERECORD> GetUSERSERVICETIMERECORD([FromODataUri] decimal key)
+        public SingleResult<SERVICECATEGORY> GetSERVICECATEGORY([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.USERSERVICETIMERECORDs.Where(uSERSERVICETIMERECORD => uSERSERVICETIMERECORD.ID == key));
+            return SingleResult.Create(db.SERVICECATEGORies.Where(sERVICECATEGORY => sERVICECATEGORY.ID == key));
         }
 
-        // PUT: odata/USERSERVICETIMERECORDs(5)
-        public IHttpActionResult Put([FromODataUri] decimal key, USERSERVICETIMERECORD uSERSERVICETIMERECORD)
+        // PUT: odata/SERVICECATEGORies(5)
+        public IHttpActionResult Put([FromODataUri] decimal key, SERVICECATEGORY sERVICECATEGORY)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (key != uSERSERVICETIMERECORD.ID)
+            if (key != sERVICECATEGORY.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(uSERSERVICETIMERECORD).State = EntityState.Modified;
+            db.Entry(sERVICECATEGORY).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +65,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!USERSERVICETIMERECORDExists(key))
+                if (!SERVICECATEGORYExists(key))
                 {
                     return NotFound();
                 }
@@ -73,39 +75,39 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(uSERSERVICETIMERECORD);
+            return Updated(sERVICECATEGORY);
         }
 
-        // POST: odata/USERSERVICETIMERECORDs
-        public IHttpActionResult Post(USERSERVICETIMERECORD uSERSERVICETIMERECORD)
+        // POST: odata/SERVICECATEGORies
+        public IHttpActionResult Post(SERVICECATEGORY sERVICECATEGORY)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.USERSERVICETIMERECORDs.Add(uSERSERVICETIMERECORD);
+            db.SERVICECATEGORies.Add(sERVICECATEGORY);
             db.SaveChanges();
 
-            return Created(uSERSERVICETIMERECORD);
+            return Created(sERVICECATEGORY);
         }
 
-        // PATCH: odata/USERSERVICETIMERECORDs(5)
+        // PATCH: odata/SERVICECATEGORies(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<USERSERVICETIMERECORD> patch)
+        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<SERVICECATEGORY> patch)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            USERSERVICETIMERECORD uSERSERVICETIMERECORD = db.USERSERVICETIMERECORDs.Find(key);
-            if (uSERSERVICETIMERECORD == null)
+            SERVICECATEGORY sERVICECATEGORY = db.SERVICECATEGORies.Find(key);
+            if (sERVICECATEGORY == null)
             {
                 return NotFound();
             }
 
-            patch.Patch(uSERSERVICETIMERECORD);
+            patch.Patch(sERVICECATEGORY);
 
             try
             {
@@ -113,7 +115,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!USERSERVICETIMERECORDExists(key))
+                if (!SERVICECATEGORYExists(key))
                 {
                     return NotFound();
                 }
@@ -123,29 +125,43 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(uSERSERVICETIMERECORD);
+            return Updated(sERVICECATEGORY);
         }
 
-        // DELETE: odata/USERSERVICETIMERECORDs(5)
+        // DELETE: odata/SERVICECATEGORies(5)
         public IHttpActionResult Delete([FromODataUri] decimal key)
         {
-            USERSERVICETIMERECORD uSERSERVICETIMERECORD = db.USERSERVICETIMERECORDs.Find(key);
-            if (uSERSERVICETIMERECORD == null)
+            SERVICECATEGORY sERVICECATEGORY = db.SERVICECATEGORies.Find(key);
+            if (sERVICECATEGORY == null)
             {
                 return NotFound();
             }
 
-            db.USERSERVICETIMERECORDs.Remove(uSERSERVICETIMERECORD);
+            db.SERVICECATEGORies.Remove(sERVICECATEGORY);
             db.SaveChanges();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/USERSERVICETIMERECORDs(5)/USERSERVICENEEDs
+        // GET: odata/SERVICECATEGORies(5)/SERVICESUBCATEGORies
+        [Queryable]
+        public IQueryable<SERVICESUBCATEGORY> GetSERVICESUBCATEGORies([FromODataUri] decimal key)
+        {
+            return db.SERVICECATEGORies.Where(m => m.ID == key).SelectMany(m => m.SERVICESUBCATEGORies);
+        }
+
+        // GET: odata/SERVICECATEGORies(5)/USERSERVICEs
+        [Queryable]
+        public IQueryable<USERSERVICE> GetUSERSERVICEs([FromODataUri] decimal key)
+        {
+            return db.SERVICECATEGORies.Where(m => m.ID == key).SelectMany(m => m.USERSERVICEs);
+        }
+
+        // GET: odata/SERVICECATEGORies(5)/USERSERVICENEEDs
         [Queryable]
         public IQueryable<USERSERVICENEED> GetUSERSERVICENEEDs([FromODataUri] decimal key)
         {
-            return db.USERSERVICETIMERECORDs.Where(m => m.ID == key).SelectMany(m => m.USERSERVICENEEDs);
+            return db.SERVICECATEGORies.Where(m => m.ID == key).SelectMany(m => m.USERSERVICENEEDs);
         }
 
         protected override void Dispose(bool disposing)
@@ -157,9 +173,9 @@ namespace MSNAdmin.Controllers
             base.Dispose(disposing);
         }
 
-        private bool USERSERVICETIMERECORDExists(decimal key)
+        private bool SERVICECATEGORYExists(decimal key)
         {
-            return db.USERSERVICETIMERECORDs.Count(e => e.ID == key) > 0;
+            return db.SERVICECATEGORies.Count(e => e.ID == key) > 0;
         }
     }
 }

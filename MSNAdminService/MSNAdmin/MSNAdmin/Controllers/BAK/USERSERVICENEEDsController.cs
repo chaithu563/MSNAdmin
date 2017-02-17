@@ -8,8 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
-using System.Web.OData;
-using System.Web.OData.Routing;
+using System.Web.Http.OData;
+using System.Web.Http.OData.Routing;
 using MSNAdmin.Models;
 
 namespace MSNAdmin.Controllers
@@ -17,16 +17,20 @@ namespace MSNAdmin.Controllers
     /*
     The WebApiConfig class may require additional changes to add a route for this controller. Merge these statements into the Register method of the WebApiConfig class as applicable. Note that OData URLs are case sensitive.
 
-    using System.Web.OData.Builder;
+    using System.Web.Http.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
     builder.EntitySet<USERSERVICENEED>("USERSERVICENEEDs");
+    builder.EntitySet<CITY>("CITies"); 
+    builder.EntitySet<CITYAREA>("CITYAREAs"); 
     builder.EntitySet<SERVICEBID>("SERVICEBIDs"); 
     builder.EntitySet<SERVICECATEGORY>("SERVICECATEGORies"); 
     builder.EntitySet<SERVICESTATE>("SERVICESTATEs"); 
     builder.EntitySet<SERVICESUBCATEGORY>("SERVICESUBCATEGORies"); 
     builder.EntitySet<SERVICETIMETYPE>("SERVICETIMETYPEs"); 
     builder.EntitySet<USERINFO>("USERINFOes"); 
+    builder.EntitySet<USERSERVICENEEDFILE>("USERSERVICENEEDFILES"); 
+    builder.EntitySet<USERSERVICETIMERECORD>("USERSERVICETIMERECORDs"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
     public class USERSERVICENEEDsController : ODataController
@@ -146,6 +150,20 @@ namespace MSNAdmin.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // GET: odata/USERSERVICENEEDs(5)/CITY
+        [Queryable]
+        public SingleResult<CITY> GetCITY([FromODataUri] decimal key)
+        {
+            return SingleResult.Create(db.USERSERVICENEEDs.Where(m => m.ID == key).Select(m => m.CITY));
+        }
+
+        // GET: odata/USERSERVICENEEDs(5)/CITYAREA
+        [Queryable]
+        public SingleResult<CITYAREA> GetCITYAREA([FromODataUri] decimal key)
+        {
+            return SingleResult.Create(db.USERSERVICENEEDs.Where(m => m.ID == key).Select(m => m.CITYAREA));
+        }
+
         // GET: odata/USERSERVICENEEDs(5)/SERVICEBIDs
         [Queryable]
         public IQueryable<SERVICEBID> GetSERVICEBIDs([FromODataUri] decimal key)
@@ -193,6 +211,20 @@ namespace MSNAdmin.Controllers
         public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
         {
             return SingleResult.Create(db.USERSERVICENEEDs.Where(m => m.ID == key).Select(m => m.USERINFO));
+        }
+
+        // GET: odata/USERSERVICENEEDs(5)/USERSERVICENEEDFILES
+        [Queryable]
+        public IQueryable<USERSERVICENEEDFILE> GetUSERSERVICENEEDFILES([FromODataUri] decimal key)
+        {
+            return db.USERSERVICENEEDs.Where(m => m.ID == key).SelectMany(m => m.USERSERVICENEEDFILES);
+        }
+
+        // GET: odata/USERSERVICENEEDs(5)/USERSERVICETIMERECORD
+        [Queryable]
+        public SingleResult<USERSERVICETIMERECORD> GetUSERSERVICETIMERECORD([FromODataUri] decimal key)
+        {
+            return SingleResult.Create(db.USERSERVICENEEDs.Where(m => m.ID == key).Select(m => m.USERSERVICETIMERECORD));
         }
 
         protected override void Dispose(bool disposing)

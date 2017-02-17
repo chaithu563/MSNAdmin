@@ -15,13 +15,13 @@ namespace MSNAdmin.Models
     public partial class USERMEMBERSHIP
     {
         public decimal ID { get; set; }
-        public Nullable<decimal> USERID { get; set; }
+        public string USERID { get; set; }
         public Nullable<decimal> MEMBERSHIPID { get; set; }
         public Nullable<System.DateTime> STARTDATE { get; set; }
         public Nullable<System.DateTime> ENDDATE { get; set; }
         public string COMMENTS { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         public virtual MEMBERSHIP MEMBERSHIP { get; set; }
-        public virtual USERINFO USERINFO { get; set; }
     }
 }

@@ -17,7 +17,7 @@ namespace MSNAdmin.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public CITYAREA()
         {
-            this.USERINFOes = new HashSet<USERINFO>();
+            this.Clients = new HashSet<Client>();
             this.USERSERVICENEEDs = new HashSet<USERSERVICENEED>();
         }
     
@@ -28,7 +28,7 @@ namespace MSNAdmin.Models
     
         public virtual CITY CITY { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<USERINFO> USERINFOes { get; set; }
+        public virtual ICollection<Client> Clients { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICENEED> USERSERVICENEEDs { get; set; }
     }

@@ -8,8 +8,8 @@ using System.Net;
 using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.ModelBinding;
-using System.Web.OData;
-using System.Web.OData.Routing;
+using System.Web.Http.OData;
+using System.Web.Http.OData.Routing;
 using MSNAdmin.Models;
 
 namespace MSNAdmin.Controllers
@@ -17,45 +17,45 @@ namespace MSNAdmin.Controllers
     /*
     The WebApiConfig class may require additional changes to add a route for this controller. Merge these statements into the Register method of the WebApiConfig class as applicable. Note that OData URLs are case sensitive.
 
-    using System.Web.OData.Builder;
+    using System.Web.Http.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<SOCIALLOGIN>("SOCIALLOGINs");
+    builder.EntitySet<USERBID>("USERBIDs");
     builder.EntitySet<USERINFO>("USERINFOes"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
-    public class SOCIALLOGINsController : ODataController
+    public class USERBIDsController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
 
-        // GET: odata/SOCIALLOGINs
+        // GET: odata/USERBIDs
         [Queryable]
-        public IQueryable<SOCIALLOGIN> GetSOCIALLOGINs()
+        public IQueryable<USERBID> GetUSERBIDs()
         {
-            return db.SOCIALLOGINs;
+            return db.USERBIDS;
         }
 
-        // GET: odata/SOCIALLOGINs(5)
+        // GET: odata/USERBIDs(5)
         [Queryable]
-        public SingleResult<SOCIALLOGIN> GetSOCIALLOGIN([FromODataUri] int key)
+        public SingleResult<USERBID> GetUSERBID([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.SOCIALLOGINs.Where(sOCIALLOGIN => sOCIALLOGIN.ID == key));
+            return SingleResult.Create(db.USERBIDS.Where(uSERBID => uSERBID.ID == key));
         }
 
-        // PUT: odata/SOCIALLOGINs(5)
-        public IHttpActionResult Put([FromODataUri] int key, SOCIALLOGIN sOCIALLOGIN)
+        // PUT: odata/USERBIDs(5)
+        public IHttpActionResult Put([FromODataUri] decimal key, USERBID uSERBID)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (key != sOCIALLOGIN.ID)
+            if (key != uSERBID.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(sOCIALLOGIN).State = EntityState.Modified;
+            db.Entry(uSERBID).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +63,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SOCIALLOGINExists(key))
+                if (!USERBIDExists(key))
                 {
                     return NotFound();
                 }
@@ -73,39 +73,39 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(sOCIALLOGIN);
+            return Updated(uSERBID);
         }
 
-        // POST: odata/SOCIALLOGINs
-        public IHttpActionResult Post(SOCIALLOGIN sOCIALLOGIN)
+        // POST: odata/USERBIDs
+        public IHttpActionResult Post(USERBID uSERBID)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.SOCIALLOGINs.Add(sOCIALLOGIN);
+            db.USERBIDS.Add(uSERBID);
             db.SaveChanges();
 
-            return Created(sOCIALLOGIN);
+            return Created(uSERBID);
         }
 
-        // PATCH: odata/SOCIALLOGINs(5)
+        // PATCH: odata/USERBIDs(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public IHttpActionResult Patch([FromODataUri] int key, Delta<SOCIALLOGIN> patch)
+        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<USERBID> patch)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            SOCIALLOGIN sOCIALLOGIN = db.SOCIALLOGINs.Find(key);
-            if (sOCIALLOGIN == null)
+            USERBID uSERBID = db.USERBIDS.Find(key);
+            if (uSERBID == null)
             {
                 return NotFound();
             }
 
-            patch.Patch(sOCIALLOGIN);
+            patch.Patch(uSERBID);
 
             try
             {
@@ -113,7 +113,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SOCIALLOGINExists(key))
+                if (!USERBIDExists(key))
                 {
                     return NotFound();
                 }
@@ -123,29 +123,29 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(sOCIALLOGIN);
+            return Updated(uSERBID);
         }
 
-        // DELETE: odata/SOCIALLOGINs(5)
-        public IHttpActionResult Delete([FromODataUri] int key)
+        // DELETE: odata/USERBIDs(5)
+        public IHttpActionResult Delete([FromODataUri] decimal key)
         {
-            SOCIALLOGIN sOCIALLOGIN = db.SOCIALLOGINs.Find(key);
-            if (sOCIALLOGIN == null)
+            USERBID uSERBID = db.USERBIDS.Find(key);
+            if (uSERBID == null)
             {
                 return NotFound();
             }
 
-            db.SOCIALLOGINs.Remove(sOCIALLOGIN);
+            db.USERBIDS.Remove(uSERBID);
             db.SaveChanges();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/SOCIALLOGINs(5)/USERINFOes
+        // GET: odata/USERBIDs(5)/USERINFO
         [Queryable]
-        public IQueryable<USERINFO> GetUSERINFOes([FromODataUri] int key)
+        public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
         {
-            return db.SOCIALLOGINs.Where(m => m.ID == key).SelectMany(m => m.USERINFOes);
+            return SingleResult.Create(db.USERBIDS.Where(m => m.ID == key).Select(m => m.USERINFO));
         }
 
         protected override void Dispose(bool disposing)
@@ -157,9 +157,9 @@ namespace MSNAdmin.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SOCIALLOGINExists(int key)
+        private bool USERBIDExists(decimal key)
         {
-            return db.SOCIALLOGINs.Count(e => e.ID == key) > 0;
+            return db.USERBIDS.Count(e => e.ID == key) > 0;
         }
     }
 }

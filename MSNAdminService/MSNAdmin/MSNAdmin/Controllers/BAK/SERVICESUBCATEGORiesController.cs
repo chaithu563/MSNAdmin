@@ -20,43 +20,44 @@ namespace MSNAdmin.Controllers
     using System.Web.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<SERVICEBID>("SERVICEBIDs");
-    builder.EntitySet<USERINFO>("USERINFOes"); 
+    builder.EntitySet<SERVICESUBCATEGORY>("SERVICESUBCATEGORies");
+    builder.EntitySet<SERVICECATEGORY>("SERVICECATEGORies"); 
+    builder.EntitySet<USERSERVICE>("USERSERVICEs"); 
     builder.EntitySet<USERSERVICENEED>("USERSERVICENEEDs"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
-    public class SERVICEBIDsController : ODataController
+    public class SERVICESUBCATEGORiesController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
 
-        // GET: odata/SERVICEBIDs
+        // GET: odata/SERVICESUBCATEGORies
         [Queryable]
-        public IQueryable<SERVICEBID> GetSERVICEBIDs()
+        public IQueryable<SERVICESUBCATEGORY> GetSERVICESUBCATEGORies()
         {
-            return db.SERVICEBIDs;
+            return db.SERVICESUBCATEGORies;
         }
 
-        // GET: odata/SERVICEBIDs(5)
+        // GET: odata/SERVICESUBCATEGORies(5)
         [Queryable]
-        public SingleResult<SERVICEBID> GetSERVICEBID([FromODataUri] decimal key)
+        public SingleResult<SERVICESUBCATEGORY> GetSERVICESUBCATEGORY([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.SERVICEBIDs.Where(sERVICEBID => sERVICEBID.ID == key));
+            return SingleResult.Create(db.SERVICESUBCATEGORies.Where(sERVICESUBCATEGORY => sERVICESUBCATEGORY.ID == key));
         }
 
-        // PUT: odata/SERVICEBIDs(5)
-        public IHttpActionResult Put([FromODataUri] decimal key, SERVICEBID sERVICEBID)
+        // PUT: odata/SERVICESUBCATEGORies(5)
+        public IHttpActionResult Put([FromODataUri] decimal key, SERVICESUBCATEGORY sERVICESUBCATEGORY)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (key != sERVICEBID.ID)
+            if (key != sERVICESUBCATEGORY.ID)
             {
                 return BadRequest();
             }
 
-            db.Entry(sERVICEBID).State = EntityState.Modified;
+            db.Entry(sERVICESUBCATEGORY).State = EntityState.Modified;
 
             try
             {
@@ -64,7 +65,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SERVICEBIDExists(key))
+                if (!SERVICESUBCATEGORYExists(key))
                 {
                     return NotFound();
                 }
@@ -74,39 +75,39 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(sERVICEBID);
+            return Updated(sERVICESUBCATEGORY);
         }
 
-        // POST: odata/SERVICEBIDs
-        public IHttpActionResult Post(SERVICEBID sERVICEBID)
+        // POST: odata/SERVICESUBCATEGORies
+        public IHttpActionResult Post(SERVICESUBCATEGORY sERVICESUBCATEGORY)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.SERVICEBIDs.Add(sERVICEBID);
+            db.SERVICESUBCATEGORies.Add(sERVICESUBCATEGORY);
             db.SaveChanges();
 
-            return Created(sERVICEBID);
+            return Created(sERVICESUBCATEGORY);
         }
 
-        // PATCH: odata/SERVICEBIDs(5)
+        // PATCH: odata/SERVICESUBCATEGORies(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<SERVICEBID> patch)
+        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<SERVICESUBCATEGORY> patch)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            SERVICEBID sERVICEBID = db.SERVICEBIDs.Find(key);
-            if (sERVICEBID == null)
+            SERVICESUBCATEGORY sERVICESUBCATEGORY = db.SERVICESUBCATEGORies.Find(key);
+            if (sERVICESUBCATEGORY == null)
             {
                 return NotFound();
             }
 
-            patch.Patch(sERVICEBID);
+            patch.Patch(sERVICESUBCATEGORY);
 
             try
             {
@@ -114,7 +115,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!SERVICEBIDExists(key))
+                if (!SERVICESUBCATEGORYExists(key))
                 {
                     return NotFound();
                 }
@@ -124,43 +125,43 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(sERVICEBID);
+            return Updated(sERVICESUBCATEGORY);
         }
 
-        // DELETE: odata/SERVICEBIDs(5)
+        // DELETE: odata/SERVICESUBCATEGORies(5)
         public IHttpActionResult Delete([FromODataUri] decimal key)
         {
-            SERVICEBID sERVICEBID = db.SERVICEBIDs.Find(key);
-            if (sERVICEBID == null)
+            SERVICESUBCATEGORY sERVICESUBCATEGORY = db.SERVICESUBCATEGORies.Find(key);
+            if (sERVICESUBCATEGORY == null)
             {
                 return NotFound();
             }
 
-            db.SERVICEBIDs.Remove(sERVICEBID);
+            db.SERVICESUBCATEGORies.Remove(sERVICESUBCATEGORY);
             db.SaveChanges();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/SERVICEBIDs(5)/USERINFO
+        // GET: odata/SERVICESUBCATEGORies(5)/SERVICECATEGORY
         [Queryable]
-        public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
+        public SingleResult<SERVICECATEGORY> GetSERVICECATEGORY([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.SERVICEBIDs.Where(m => m.ID == key).Select(m => m.USERINFO));
+            return SingleResult.Create(db.SERVICESUBCATEGORies.Where(m => m.ID == key).Select(m => m.SERVICECATEGORY));
         }
 
-        // GET: odata/SERVICEBIDs(5)/USERSERVICENEED
+        // GET: odata/SERVICESUBCATEGORies(5)/USERSERVICEs
         [Queryable]
-        public SingleResult<USERSERVICENEED> GetUSERSERVICENEED([FromODataUri] decimal key)
+        public IQueryable<USERSERVICE> GetUSERSERVICEs([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.SERVICEBIDs.Where(m => m.ID == key).Select(m => m.USERSERVICENEED));
+            return db.SERVICESUBCATEGORies.Where(m => m.ID == key).SelectMany(m => m.USERSERVICEs);
         }
 
-        // GET: odata/SERVICEBIDs(5)/USERSERVICENEEDs
+        // GET: odata/SERVICESUBCATEGORies(5)/USERSERVICENEEDs
         [Queryable]
         public IQueryable<USERSERVICENEED> GetUSERSERVICENEEDs([FromODataUri] decimal key)
         {
-            return db.SERVICEBIDs.Where(m => m.ID == key).SelectMany(m => m.USERSERVICENEEDs);
+            return db.SERVICESUBCATEGORies.Where(m => m.ID == key).SelectMany(m => m.USERSERVICENEEDs);
         }
 
         protected override void Dispose(bool disposing)
@@ -172,9 +173,9 @@ namespace MSNAdmin.Controllers
             base.Dispose(disposing);
         }
 
-        private bool SERVICEBIDExists(decimal key)
+        private bool SERVICESUBCATEGORYExists(decimal key)
         {
-            return db.SERVICEBIDs.Count(e => e.ID == key) > 0;
+            return db.SERVICESUBCATEGORies.Count(e => e.ID == key) > 0;
         }
     }
 }

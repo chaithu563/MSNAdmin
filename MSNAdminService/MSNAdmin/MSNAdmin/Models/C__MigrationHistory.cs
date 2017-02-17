@@ -12,12 +12,11 @@ namespace MSNAdmin.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class USERPWD
+    public partial class C__MigrationHistory
     {
-        public decimal ID { get; set; }
-        public Nullable<decimal> USERID { get; set; }
-        public string PWD { get; set; }
-    
-        public virtual USERINFO USERINFO { get; set; }
+        public string MigrationId { get; set; }
+        public string ContextKey { get; set; }
+        public byte[] Model { get; set; }
+        public string ProductVersion { get; set; }
     }
 }

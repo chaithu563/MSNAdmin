@@ -17,32 +17,32 @@ namespace MSNAdmin.Controllers
     /*
     The WebApiConfig class may require additional changes to add a route for this controller. Merge these statements into the Register method of the WebApiConfig class as applicable. Note that OData URLs are case sensitive.
 
-    using System.Web.OData.Builder;
+    using System.Web.Http.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<USERBID>("USERBIDS");
-    builder.EntitySet<USERINFO>("USERINFOes"); 
+    builder.EntitySet<USERBID>("USERBIDs");
+    builder.EntitySet<AspNetUser>("AspNetUsers"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
-    public class USERBIDSController : ODataController
+    public class USERBIDsController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
 
-        // GET: odata/USERBIDS
+        // GET: odata/USERBIDs
         [Queryable]
-        public IQueryable<USERBID> GetUSERBIDS()
+        public IQueryable<USERBID> GetUSERBIDs()
         {
             return db.USERBIDS;
         }
 
-        // GET: odata/USERBIDS(5)
+        // GET: odata/USERBIDs(5)
         [Queryable]
         public SingleResult<USERBID> GetUSERBID([FromODataUri] decimal key)
         {
             return SingleResult.Create(db.USERBIDS.Where(uSERBID => uSERBID.ID == key));
         }
 
-        // PUT: odata/USERBIDS(5)
+        // PUT: odata/USERBIDs(5)
         public IHttpActionResult Put([FromODataUri] decimal key, USERBID uSERBID)
         {
             if (!ModelState.IsValid)
@@ -76,7 +76,7 @@ namespace MSNAdmin.Controllers
             return Updated(uSERBID);
         }
 
-        // POST: odata/USERBIDS
+        // POST: odata/USERBIDs
         public IHttpActionResult Post(USERBID uSERBID)
         {
             if (!ModelState.IsValid)
@@ -90,7 +90,7 @@ namespace MSNAdmin.Controllers
             return Created(uSERBID);
         }
 
-        // PATCH: odata/USERBIDS(5)
+        // PATCH: odata/USERBIDs(5)
         [AcceptVerbs("PATCH", "MERGE")]
         public IHttpActionResult Patch([FromODataUri] decimal key, Delta<USERBID> patch)
         {
@@ -126,7 +126,7 @@ namespace MSNAdmin.Controllers
             return Updated(uSERBID);
         }
 
-        // DELETE: odata/USERBIDS(5)
+        // DELETE: odata/USERBIDs(5)
         public IHttpActionResult Delete([FromODataUri] decimal key)
         {
             USERBID uSERBID = db.USERBIDS.Find(key);
@@ -141,11 +141,11 @@ namespace MSNAdmin.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/USERBIDS(5)/USERINFO
+        // GET: odata/USERBIDs(5)/AspNetUser
         [Queryable]
-        public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
+        public SingleResult<AspNetUser> GetAspNetUser([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.USERBIDS.Where(m => m.ID == key).Select(m => m.USERINFO));
+            return SingleResult.Create(db.USERBIDS.Where(m => m.ID == key).Select(m => m.AspNetUser));
         }
 
         protected override void Dispose(bool disposing)

@@ -17,13 +17,14 @@ namespace MSNAdmin.Controllers
     /*
     The WebApiConfig class may require additional changes to add a route for this controller. Merge these statements into the Register method of the WebApiConfig class as applicable. Note that OData URLs are case sensitive.
 
-    using System.Web.OData.Builder;
+    using System.Web.Http.OData.Builder;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
     builder.EntitySet<USERSERVICE>("USERSERVICEs");
+    builder.EntitySet<AspNetUser>("AspNetUsers"); 
     builder.EntitySet<SERVICECATEGORY>("SERVICECATEGORies"); 
     builder.EntitySet<SERVICESUBCATEGORY>("SERVICESUBCATEGORies"); 
-    builder.EntitySet<USERINFO>("USERINFOes"); 
+    builder.EntitySet<USERSERVICEFILE>("USERSERVICEFILES"); 
     config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
     public class USERSERVICEsController : ODataController
@@ -143,6 +144,13 @@ namespace MSNAdmin.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // GET: odata/USERSERVICEs(5)/AspNetUser
+        [Queryable]
+        public SingleResult<AspNetUser> GetAspNetUser([FromODataUri] decimal key)
+        {
+            return SingleResult.Create(db.USERSERVICEs.Where(m => m.ID == key).Select(m => m.AspNetUser));
+        }
+
         // GET: odata/USERSERVICEs(5)/SERVICECATEGORY
         [Queryable]
         public SingleResult<SERVICECATEGORY> GetSERVICECATEGORY([FromODataUri] decimal key)
@@ -157,11 +165,11 @@ namespace MSNAdmin.Controllers
             return SingleResult.Create(db.USERSERVICEs.Where(m => m.ID == key).Select(m => m.SERVICESUBCATEGORY));
         }
 
-        // GET: odata/USERSERVICEs(5)/USERINFO
+        // GET: odata/USERSERVICEs(5)/USERSERVICEFILES
         [Queryable]
-        public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
+        public IQueryable<USERSERVICEFILE> GetUSERSERVICEFILES([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.USERSERVICEs.Where(m => m.ID == key).Select(m => m.USERINFO));
+            return db.USERSERVICEs.Where(m => m.ID == key).SelectMany(m => m.USERSERVICEFILES);
         }
 
         protected override void Dispose(bool disposing)

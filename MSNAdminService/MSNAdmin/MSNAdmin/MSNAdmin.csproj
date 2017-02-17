@@ -183,34 +183,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="Controllers\ADMININFOesController.cs" />
     <Compile Include="Controllers\CITiesController.cs" />
-    <Compile Include="Controllers\CITYAREAsController.cs" />
-    <Compile Include="Controllers\MEMBERSHIPsController.cs" />
-    <Compile Include="Controllers\SERVICEBIDsController.cs" />
     <Compile Include="Controllers\SERVICECATEGORiesController.cs" />
-    <Compile Include="Controllers\SERVICESTATEsController.cs" />
     <Compile Include="Controllers\SERVICESUBCATEGORiesController.cs" />
-    <Compile Include="Controllers\SERVICETIMETYPEsController.cs" />
-    <Compile Include="Controllers\SOCIALLOGINsController.cs" />
-    <Compile Include="Controllers\USERBIDSController.cs" />
-    <Compile Include="Controllers\USERFUNDSController.cs" />
-    <Compile Include="Controllers\USERINFOesController.cs" />
-    <Compile Include="Controllers\USERMEMBERSHIPsController.cs" />
-    <Compile Include="Controllers\USERPWDsController.cs" />
-    <Compile Include="Controllers\USERSERVICENEEDsController.cs" />
+    <Compile Include="Controllers\USERBIDsController.cs" />
     <Compile Include="Controllers\USERSERVICEsController.cs" />
-    <Compile Include="Controllers\USERSERVICETIMERECORDsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ADMININFO.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\AspNetRole.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserClaim.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AspNetUserLogin.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\CITY.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\CITYAREA.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Client.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\C__MigrationHistory.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MEMBERSHIP.cs">
@@ -230,6 +235,9 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>MSN.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\RefreshToken.cs">
+      <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\SERVICEBID.cs">
       <DependentUpon>MSN.tt</DependentUpon>
@@ -258,13 +266,7 @@
     <Compile Include="Models\USERFUND.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\USERINFO.cs">
-      <DependentUpon>MSN.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\USERMEMBERSHIP.cs">
-      <DependentUpon>MSN.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Models\USERPWD.cs">
       <DependentUpon>MSN.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\USERSERVICE.cs">

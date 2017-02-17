@@ -33,7 +33,7 @@ namespace MSNAdmin
 						builder.EntitySet<CITY>("CITies");
             builder.EntitySet<CITYAREA>("CITYAREAs");
             builder.EntitySet<MEMBERSHIP>("MEMBERSHIPs");
-            builder.EntitySet<USERPWD>("USERPWDs");
+//builder.EntitySet<USERPWD>("USERPWDs");
 						builder.EntitySet<USERSERVICETIMERECORD>("USERSERVICETIMERECORDs");
             builder.EntitySet<SERVICEBID>("SERVICEBIDs");
             builder.EntitySet<SERVICECATEGORY>("SERVICECATEGORies");
@@ -43,7 +43,7 @@ namespace MSNAdmin
             builder.EntitySet<SOCIALLOGIN>("SOCIALLOGINs");
             builder.EntitySet<USERBID>("USERBIDS");
             builder.EntitySet<USERFUND>("USERFUNDS");
-            builder.EntitySet<USERINFO>("USERINFOes");
+						builder.EntitySet<AspNetUser>("AspNetUsers");
 						builder.EntitySet<ADMININFO>("ADMININFOes");
             builder.EntitySet<USERMEMBERSHIP>("USERMEMBERSHIPs");
             builder.EntitySet<USERSERVICE>("USERSERVICEs");

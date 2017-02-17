@@ -18,48 +18,44 @@ namespace MSNAdmin.Controllers
     The WebApiConfig class may require additional changes to add a route for this controller. Merge these statements into the Register method of the WebApiConfig class as applicable. Note that OData URLs are case sensitive.
 
     using System.Web.Http.OData.Builder;
-    using System.Web.Http.OData.Extensions;
     using MSNAdmin.Models;
     ODataConventionModelBuilder builder = new ODataConventionModelBuilder();
-    builder.EntitySet<USERPWD>("USERPWDs");
+    builder.EntitySet<USERFUND>("USERFUNDs");
     builder.EntitySet<USERINFO>("USERINFOes"); 
-    config.Routes.MapODataServiceRoute("odata", "odata", builder.GetEdmModel());
+    config.Routes.MapODataRoute("odata", "odata", builder.GetEdmModel());
     */
-    public class USERPWDsController : ODataController
+    public class USERFUNDsController : ODataController
     {
         private myserviceneedEntities db = new myserviceneedEntities();
 
-        // GET: odata/USERPWDs
-        [EnableQuery]
-        public IQueryable<USERPWD> GetUSERPWDs()
+        // GET: odata/USERFUNDs
+        [Queryable]
+        public IQueryable<USERFUND> GetUSERFUNDs()
         {
-            return db.USERPWDs;
+            return db.USERFUNDS;
         }
 
-        // GET: odata/USERPWDs(5)
-        [EnableQuery]
-        public SingleResult<USERPWD> GetUSERPWD([FromODataUri] decimal key)
+        // GET: odata/USERFUNDs(5)
+        [Queryable]
+        public SingleResult<USERFUND> GetUSERFUND([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.USERPWDs.Where(uSERPWD => uSERPWD.ID == key));
+            return SingleResult.Create(db.USERFUNDS.Where(uSERFUND => uSERFUND.ID == key));
         }
 
-        // PUT: odata/USERPWDs(5)
-        public IHttpActionResult Put([FromODataUri] decimal key, Delta<USERPWD> patch)
+        // PUT: odata/USERFUNDs(5)
+        public IHttpActionResult Put([FromODataUri] decimal key, USERFUND uSERFUND)
         {
-            Validate(patch.GetEntity());
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            USERPWD uSERPWD = db.USERPWDs.Find(key);
-            if (uSERPWD == null)
+            if (key != uSERFUND.ID)
             {
-                return NotFound();
+                return BadRequest();
             }
 
-            patch.Put(uSERPWD);
+            db.Entry(uSERFUND).State = EntityState.Modified;
 
             try
             {
@@ -67,7 +63,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!USERPWDExists(key))
+                if (!USERFUNDExists(key))
                 {
                     return NotFound();
                 }
@@ -77,41 +73,39 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(uSERPWD);
+            return Updated(uSERFUND);
         }
 
-        // POST: odata/USERPWDs
-        public IHttpActionResult Post(USERPWD uSERPWD)
+        // POST: odata/USERFUNDs
+        public IHttpActionResult Post(USERFUND uSERFUND)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.USERPWDs.Add(uSERPWD);
+            db.USERFUNDS.Add(uSERFUND);
             db.SaveChanges();
 
-            return Created(uSERPWD);
+            return Created(uSERFUND);
         }
 
-        // PATCH: odata/USERPWDs(5)
+        // PATCH: odata/USERFUNDs(5)
         [AcceptVerbs("PATCH", "MERGE")]
-        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<USERPWD> patch)
+        public IHttpActionResult Patch([FromODataUri] decimal key, Delta<USERFUND> patch)
         {
-            Validate(patch.GetEntity());
-
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            USERPWD uSERPWD = db.USERPWDs.Find(key);
-            if (uSERPWD == null)
+            USERFUND uSERFUND = db.USERFUNDS.Find(key);
+            if (uSERFUND == null)
             {
                 return NotFound();
             }
 
-            patch.Patch(uSERPWD);
+            patch.Patch(uSERFUND);
 
             try
             {
@@ -119,7 +113,7 @@ namespace MSNAdmin.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!USERPWDExists(key))
+                if (!USERFUNDExists(key))
                 {
                     return NotFound();
                 }
@@ -129,29 +123,29 @@ namespace MSNAdmin.Controllers
                 }
             }
 
-            return Updated(uSERPWD);
+            return Updated(uSERFUND);
         }
 
-        // DELETE: odata/USERPWDs(5)
+        // DELETE: odata/USERFUNDs(5)
         public IHttpActionResult Delete([FromODataUri] decimal key)
         {
-            USERPWD uSERPWD = db.USERPWDs.Find(key);
-            if (uSERPWD == null)
+            USERFUND uSERFUND = db.USERFUNDS.Find(key);
+            if (uSERFUND == null)
             {
                 return NotFound();
             }
 
-            db.USERPWDs.Remove(uSERPWD);
+            db.USERFUNDS.Remove(uSERFUND);
             db.SaveChanges();
 
             return StatusCode(HttpStatusCode.NoContent);
         }
 
-        // GET: odata/USERPWDs(5)/USERINFO
-        [EnableQuery]
+        // GET: odata/USERFUNDs(5)/USERINFO
+        [Queryable]
         public SingleResult<USERINFO> GetUSERINFO([FromODataUri] decimal key)
         {
-            return SingleResult.Create(db.USERPWDs.Where(m => m.ID == key).Select(m => m.USERINFO));
+            return SingleResult.Create(db.USERFUNDS.Where(m => m.ID == key).Select(m => m.USERINFO));
         }
 
         protected override void Dispose(bool disposing)
@@ -163,9 +157,9 @@ namespace MSNAdmin.Controllers
             base.Dispose(disposing);
         }
 
-        private bool USERPWDExists(decimal key)
+        private bool USERFUNDExists(decimal key)
         {
-            return db.USERPWDs.Count(e => e.ID == key) > 0;
+            return db.USERFUNDS.Count(e => e.ID == key) > 0;
         }
     }
 }

@@ -21,13 +21,13 @@ namespace MSNAdmin.Models
         }
     
         public decimal ID { get; set; }
-        public Nullable<decimal> USERID { get; set; }
+        public string USERID { get; set; }
         public Nullable<decimal> SERVICECATEGORYID { get; set; }
         public Nullable<decimal> SERVICESUBCATEGORYID { get; set; }
     
+        public virtual AspNetUser AspNetUser { get; set; }
         public virtual SERVICECATEGORY SERVICECATEGORY { get; set; }
         public virtual SERVICESUBCATEGORY SERVICESUBCATEGORY { get; set; }
-        public virtual USERINFO USERINFO { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<USERSERVICEFILE> USERSERVICEFILES { get; set; }
     }

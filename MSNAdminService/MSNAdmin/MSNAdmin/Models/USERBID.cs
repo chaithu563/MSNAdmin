@@ -15,9 +15,9 @@ namespace MSNAdmin.Models
     public partial class USERBID
     {
         public decimal ID { get; set; }
-        public Nullable<decimal> USERID { get; set; }
+        public string USERID { get; set; }
         public Nullable<int> BIDS { get; set; }
     
-        public virtual USERINFO USERINFO { get; set; }
+        public virtual AspNetUser AspNetUser { get; set; }
     }
 }
