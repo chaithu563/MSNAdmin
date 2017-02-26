@@ -24,6 +24,7 @@
       '@angular/upgrade': 'npm:@angular/upgrade/bundles/upgrade.umd.js',
       'ng2-bootstrap': 'node_modules/ng2-bootstrap/bundles/ng2-bootstrap.umd.js',
       'ng2-dropdown': 'node_modules/ng2-dropdown',
+      'ng2-file-upload': 'npm:ng2-file-upload',
       'moment': 'node_modules/moment/moment.js',
       // other libraries
       'rxjs':                      'npm:rxjs',
@@ -31,7 +32,8 @@
       'jaydata/core': 'lib/jaydata/jaydata.js',
       'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
       'ag-grid-ng2': 'node_modules/ag-grid-ng2',
-      'ag-grid': 'node_modules/ag-grid'
+      'ag-grid': 'node_modules/ag-grid',
+      'ng2-cloudinary': 'npm:ng2-cloudinary/dist/umd/ng2-cloudinary.js',
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
@@ -51,7 +53,11 @@
       'ng2-dropdown': {
           main: "index.js",
           defaultExtension: "js"
-      }
+      },
+      'ng2-file-upload': {
+          main: "ng2-file-upload",
+          defaultextension: "js"
+      },
 			
     },
 

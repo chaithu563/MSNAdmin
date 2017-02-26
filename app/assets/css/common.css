@@ -1,2 +1,6 @@
-﻿body {
+﻿.galleryItem > cl-image img 
+
+{
+width: 100% !important;
+height:100%;
 }

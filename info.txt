@@ -12,6 +12,9 @@ http://www.primefaces.org/primeng/#/accordion   sample page for admin
 routing
 https://johnpapa.net/introducing-angular-modules-routing-module/
 
+Google map ovelapping on map
+http://stackoverflow.com/questions/40294080/implementing-overlappingmarkerspidifier-with-sebm-angular2-google-map
+
 
 Membership Types
 

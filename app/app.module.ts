@@ -8,8 +8,9 @@ import { RouterModule, Routes } from '@angular/router';
 import { routing }              from './app.routing';
 import {AgGridModule} from 'ag-grid-ng2/main';
 import {DropdownModule} from "ng2-dropdown";
+import {Ng2CloudinaryModule} from 'ng2-cloudinary';
 @NgModule({
-	imports: [RouterModule, BrowserModule, Ng2BootstrapModule, DropdownModule, AgGridModule.withAotSupport(), routing],
+    imports: [RouterModule, BrowserModule, Ng2BootstrapModule, DropdownModule, Ng2CloudinaryModule, AgGridModule.withAotSupport(), routing],
 	declarations: [...myComponents],
 	 providers: [{ provide: APP_BASE_HREF, useValue: '/' }],
     bootstrap: [AppComponent]

@@ -2,8 +2,9 @@
 import {GridOptions} from 'ag-grid/main';
 import { MSNService } from '../../../services/msn.service';
 import {Router} from '@angular/router';
+import {CloudinaryOptions, CloudinaryUploader, CloudinaryImageComponent}  from 'ng2-cloudinary';
 @Component({
-    selector: 'addcity',
+    selector: 'addsubcategory',
     templateUrl: 'app/core/adminview/subcategories/addsubcategories.html',
 
 })
@@ -20,12 +21,47 @@ export class AddSubCategoriesComponent {
     private categories: any;
     private subcategoryorig: any;
     private context: any;
+    cloudinaryImage: any;
+    serviceicon: any;
+    serviceimage: any;
+    cloudinaryOptions: CloudinaryOptions = new CloudinaryOptions({
+        cloud_name: 'myserviceneed',
+        upload_preset: 'e8pd1qgk',
+        autoUpload: true,
+        api_key: 375471576546793,
+        api_secret: "u0oknAWF4KFEswzF-OOs_KubB30"
+    });
+    serviceiconuploader: CloudinaryUploader = new CloudinaryUploader(this.cloudinaryOptions);
+    serviceimageuploader: CloudinaryUploader = new CloudinaryUploader(this.cloudinaryOptions);
     constructor(private mSNService: MSNService, private router: Router) {
 
         this.init();
         this.getCategoriesOnOpen();
         this.subcategory = [];
 
+       var _this = this;
+        this.serviceiconuploader.onSuccessItem = function (item: any, response: string, status: number, headers: any) {
+
+            let image = JSON.parse(response);
+           
+            _this.serviceicon=(image.public_id);
+
+            return { item, response, status, headers };
+
+
+        };
+
+        this.serviceimageuploader.onSuccessItem = function (item: any, response: string, status: number, headers: any) {
+
+            let image = JSON.parse(response);
+            _this.serviceimage = (image.public_id);
+
+            return { item, response, status, headers };
+
+
+        };
+
+     
     }
 
     private init() {
@@ -69,6 +105,14 @@ export class AddSubCategoriesComponent {
 
     }
 
+  
+  
+
+
+	
+
+
+
     private saveSubCategory(subcategory) {
 
         // var userdetails=[];
@@ -77,6 +121,8 @@ export class AddSubCategoriesComponent {
         this.subcategory.NAME = subcategory.NAME;
         this.subcategory.DESCRIPTION = subcategory.DESCRIPTION;
         this.subcategory.SERVICECATEGORYID = subcategory.SERVICECATEGORYID;
+        this.subcategory.IMAGEPUBLICKEY =this.serviceimage;
+        this.subcategory.ICONPUBLICKEY = this.serviceicon;
         this.context.SERVICESUBCATEGORies.add(this.subcategory);
         //this.userdetailsorig.ID = 2;
         //	this.context.ADMININFOes.add(this.userdetailsorig);
@@ -94,5 +140,8 @@ export class AddSubCategoriesComponent {
 
         this.subcategory.SERVICECATEGORYID = id;
     }
+    
+  
+
 }
    

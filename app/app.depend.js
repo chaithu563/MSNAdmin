@@ -1,7 +1,7 @@
-System.register(["./app.component", "./core/header/header", "./core/leftmenu/leftmenu", "./core/adminview/adminview", "./core/adminview/adminuser/adminuser", "./core/adminview/adminuser/editadmin", "./core/adminview/adminuser/addadmin", "./core/adminview/cities/cities", "./core/adminview/cities/EditCity", "./core/adminview/cities/AddCities", "./core/adminview/cityareas/cityareas", "./core/adminview/cityareas/editarea", "./core/adminview/cityareas/addarea", "./core/adminview/membership/membership", "./core/adminview/membership/editmembership", "./core/adminview/membership/addmembership", "./core/adminview/categories/categories", "./core/adminview/categories/editcategories", "./core/adminview/categories/addcategories", "./core/adminview/subcategories/subcategories", "./core/adminview/subcategories/editsubcategories", "./core/adminview/subcategories/addsubcategories"], function (exports_1, context_1) {
+System.register(["./app.component", "./core/header/header", "./core/leftmenu/leftmenu", "./core/adminview/adminview", "./core/adminview/adminuser/adminuser", "./core/adminview/adminuser/editadmin", "./core/adminview/adminuser/addadmin", "./core/adminview/cities/cities", "./core/adminview/cities/EditCity", "./core/adminview/cities/AddCities", "./core/adminview/cityareas/cityareas", "./core/adminview/cityareas/editarea", "./core/adminview/cityareas/addarea", "./core/adminview/membership/membership", "./core/adminview/membership/editmembership", "./core/adminview/membership/addmembership", "./core/adminview/categories/categories", "./core/adminview/categories/editcategories", "./core/adminview/categories/addcategories", "./core/adminview/subcategories/subcategories", "./core/adminview/subcategories/editsubcategories", "./core/adminview/subcategories/addsubcategories", "ng2-file-upload"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var app_component_1, header_1, leftmenu_1, adminview_1, adminuser_1, editadmin_1, addadmin_1, cities_1, EditCity_1, AddCities_1, cityareas_1, editarea_1, addarea_1, membership_1, editmembership_1, addmembership_1, categories_1, editcategories_1, addcategories_1, subcategories_1, editsubcategories_1, addsubcategories_1, myComponents, myDirectives, myPipes;
+    var app_component_1, header_1, leftmenu_1, adminview_1, adminuser_1, editadmin_1, addadmin_1, cities_1, EditCity_1, AddCities_1, cityareas_1, editarea_1, addarea_1, membership_1, editmembership_1, addmembership_1, categories_1, editcategories_1, addcategories_1, subcategories_1, editsubcategories_1, addsubcategories_1, ng2_file_upload_1, myComponents, myDirectives, myPipes;
     return {
         setters: [
             function (app_component_1_1) {
@@ -69,13 +69,16 @@ System.register(["./app.component", "./core/header/header", "./core/leftmenu/lef
             },
             function (addsubcategories_1_1) {
                 addsubcategories_1 = addsubcategories_1_1;
+            },
+            function (ng2_file_upload_1_1) {
+                ng2_file_upload_1 = ng2_file_upload_1_1;
             }
         ],
         execute: function () {
             //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
             exports_1("myComponents", myComponents = [
                 header_1.HeaderComponent, leftmenu_1.LeftMenuComponent, adminview_1.AdminViewComponent, app_component_1.AppComponent, adminuser_1.AdminUserComponent, editadmin_1.EditAdminComponent, addadmin_1.AddAdminComponent, cities_1.CitiesComponent, EditCity_1.EditCityComponent, AddCities_1.AddCitiesComponent, cityareas_1.CityAreasComponent, editarea_1.EditAreaComponent, addarea_1.AddAreaComponent,
-                membership_1.MembershipComponent, editmembership_1.EditMembershipComponent, addmembership_1.AddMembershipComponent, categories_1.CategoriesComponent, editcategories_1.EditCategoriesComponent, addcategories_1.AddCategoriesComponent, subcategories_1.SubCategoriesComponent, editsubcategories_1.EditSubCategoriesComponent, addsubcategories_1.AddSubCategoriesComponent
+                membership_1.MembershipComponent, editmembership_1.EditMembershipComponent, addmembership_1.AddMembershipComponent, categories_1.CategoriesComponent, editcategories_1.EditCategoriesComponent, addcategories_1.AddCategoriesComponent, subcategories_1.SubCategoriesComponent, editsubcategories_1.EditSubCategoriesComponent, addsubcategories_1.AddSubCategoriesComponent, ng2_file_upload_1.FileSelectDirective
             ]);
             exports_1("myDirectives", myDirectives = []);
             exports_1("myPipes", myPipes = []);

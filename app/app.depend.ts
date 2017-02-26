@@ -27,11 +27,12 @@ import {SubCategoriesComponent} from './core/adminview/subcategories/subcategori
 import {EditSubCategoriesComponent} from './core/adminview/subcategories/editsubcategories';
 import {AddSubCategoriesComponent} from './core/adminview/subcategories/addsubcategories';
 
+import { FileSelectDirective } from 'ng2-file-upload';
 
 //import {AccordionPanelComponent, AccordionComponent} from 'ng2-bootstrap/components/accordion';
 export const myComponents = [
     HeaderComponent, LeftMenuComponent, AdminViewComponent, AppComponent, AdminUserComponent, EditAdminComponent, AddAdminComponent, CitiesComponent, EditCityComponent, AddCitiesComponent, CityAreasComponent, EditAreaComponent, AddAreaComponent,
-    MembershipComponent, EditMembershipComponent, AddMembershipComponent, CategoriesComponent, EditCategoriesComponent, AddCategoriesComponent, SubCategoriesComponent, EditSubCategoriesComponent, AddSubCategoriesComponent
+    MembershipComponent, EditMembershipComponent, AddMembershipComponent, CategoriesComponent, EditCategoriesComponent, AddCategoriesComponent, SubCategoriesComponent, EditSubCategoriesComponent, AddSubCategoriesComponent, FileSelectDirective
 ];
 
 export const myDirectives = [

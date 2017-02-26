@@ -6,5 +6,39 @@
     DESCRIPTION <input type="text" [(ngModel)]="subcategory.DESCRIPTION" /> <br />
 
 
+
+
+    <div class="form-group">
+        <label for="description">Service Icon</label>
+        <input type="file" ng2FileSelect [uploader]="serviceiconuploader" />
+    </div>
+    <div class="displayUploadImages">
+
+        <div class="container" *ngIf="subcategory.ICONPUBLICKEY">
+            <div class="galleryItem">
+                <cl-image public-id="{{subcategory.ICONPUBLICKEY}}" [options]="cloudinaryOptions"></cl-image>
+            </div>
+
+
+        </div>
+
+    </div>
+
+    <div class="form-group">
+        <label for="description">Service Image</label>
+        <input type="file" ng2FileSelect [uploader]="serviceimageuploader" />
+    </div>
+    <div class="displayUploadImages">
+
+        <div class="container" *ngIf="subcategory.IMAGEPUBLICKEY">
+            <div class="galleryItem">
+                <cl-image public-id="{{subcategory.IMAGEPUBLICKEY}}" [options]="cloudinaryOptions"></cl-image>
+            </div>
+
+
+        </div>
+
+    </div>
+
     <input type="submit" (click)="saveSubCategory(subcategory)" />
 </div>
