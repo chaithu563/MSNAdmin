@@ -33,7 +33,7 @@
       'jaydata/odata': 'lib/jaydata/jaydataproviders/oDataProvider.min.js',
       'ag-grid-ng2': 'node_modules/ag-grid-ng2',
       'ag-grid': 'node_modules/ag-grid',
-      'ng2-cloudinary': 'npm:ng2-cloudinary/dist/umd/ng2-cloudinary.js',
+      'ng2-cloudinary': 'node_modules/ng2-cloudinary/dist/umd/ng2-cloudinary.js'
     },
     // packages tells the System loader how to load when no filename and/or no extension
     packages: {
